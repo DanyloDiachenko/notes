@@ -22,7 +22,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${geistSans.variable} antialiased grid grid-cols-[260px_1fr]`}
+                className={`${geistSans.variable} antialiased grid grid-cols-[minmax(200px,_260px)_1fr]`}
             >
                 {children}
             </body>

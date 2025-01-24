@@ -1,6 +1,8 @@
 import { Aside } from "@/components/Aside";
 import { IoSettingsOutline } from "react-icons/io5";
 import { FaSearch } from "react-icons/fa";
+import { FiPlus } from "react-icons/fi";
+import Link from "next/link";
 
 const Home = () => {
     return (
@@ -23,8 +25,72 @@ const Home = () => {
                         </button>
                     </div>
                 </header>
-                <div>
-                    <div></div>
+                <div className="grid grid-cols-[0.25fr_0.5fr_0.25fr]">
+                    <div className="p-8">
+                        <button className="flex items-center justify-center gap-2 p-2 py-3 w-full bg-blue-600 text-white rounded-lg hover:bg-[#7351f5]">
+                            <FiPlus />
+                            <span>Create New Note</span>
+                        </button>
+                        <div className="mt-4">
+                            <div className="bg-slate-100 p-3 rounded-md">
+                                <Link
+                                    className="font-bold text-xl text-slate-800 hover:text-[#7351f5]"
+                                    href="/note/1"
+                                >
+                                    React Perfomance Optmization
+                                </Link>
+                                <div className="flex gap-2 mt-2">
+                                    <div className="bg-slate-300 p-1 rounded-sm text-sm font-medium">
+                                        Dev
+                                    </div>
+                                    <div className="bg-slate-300 p-1 rounded-sm text-sm font-medium">
+                                        React
+                                    </div>
+                                </div>
+                                <div className="text-slate-600 mt-3 font-medium">
+                                    29 Oct 2024
+                                </div>
+                            </div>
+                            <div className="mt-2 border-b-2 border-gray-200 p-3">
+                                <Link
+                                    className="font-bold text-xl text-slate-800 hover:text-[#7351f5]"
+                                    href="/note/1"
+                                >
+                                    React Perfomance Optmization
+                                </Link>
+                                <div className="flex gap-2 mt-2">
+                                    <div className="bg-slate-300 p-1 rounded-sm text-sm font-medium">
+                                        Dev
+                                    </div>
+                                    <div className="bg-slate-300 p-1 rounded-sm text-sm font-medium">
+                                        React
+                                    </div>
+                                </div>
+                                <div className="text-slate-600 mt-3 font-medium">
+                                    29 Oct 2024
+                                </div>
+                            </div>
+                            <div className="mt-2 border-b-2 border-gray-200 p-3">
+                                <Link
+                                    className="font-bold text-xl text-slate-800 hover:text-[#7351f5]"
+                                    href="/note/1"
+                                >
+                                    React Perfomance Optmization
+                                </Link>
+                                <div className="flex gap-2 mt-2">
+                                    <div className="bg-slate-300 p-1 rounded-sm text-sm font-medium">
+                                        Dev
+                                    </div>
+                                    <div className="bg-slate-300 p-1 rounded-sm text-sm font-medium">
+                                        React
+                                    </div>
+                                </div>
+                                <div className="text-slate-600 mt-3 font-medium">
+                                    29 Oct 2024
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div></div>
                     <div></div>
                 </div>

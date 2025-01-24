@@ -16,3 +16,7 @@ a {
         color: #c9bbff;
     }
 }
+
+button {
+    transition: 0.3s;
+}
