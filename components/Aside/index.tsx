@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export const Aside = () => {
     return (
-        <aside className="max-w-80 px-4 pt-4 text-gray-600">
+        <aside className="max-w-80 px-4 pt-4 text-gray-600 border-r-2 border-gray-200">
             <div className="border-b-2 border-gray-200 pb-4">
                 <Image
                     src="/icons/logo.png"
@@ -16,7 +16,7 @@ export const Aside = () => {
                 />
                 <Link
                     className="mt-6 bg-blue-100 p-2 px-4 flex justify-between items-center rounded-md text-gray-800 hover:bg-blue-50 hover:text-gray-800"
-                    href="/"
+                    href="/all"
                 >
                     <div className="flex items-center">
                         <IoHomeOutline className="text-blue-800" />
