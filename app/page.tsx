@@ -5,6 +5,8 @@ import { FiPlus } from "react-icons/fi";
 import Link from "next/link";
 import { HiOutlineTag } from "react-icons/hi2";
 import { IoMdTime } from "react-icons/io";
+import { IoArchiveOutline } from "react-icons/io5";
+import { MdOutlineDelete } from "react-icons/md";
 
 const Home = () => {
     return (
@@ -35,6 +37,63 @@ const Home = () => {
                         </button>
                         <div className="mt-4">
                             <div className="bg-slate-100 p-3 rounded-md">
+                                <Link
+                                    className="font-bold text-xl text-slate-800 hover:text-[#7351f5]"
+                                    href="/note/1"
+                                >
+                                    React Perfomance Optmization
+                                </Link>
+                                <div className="flex gap-2 mt-2">
+                                    <div className="bg-slate-300 p-1 rounded-sm text-sm font-medium">
+                                        Dev
+                                    </div>
+                                    <div className="bg-slate-300 p-1 rounded-sm text-sm font-medium">
+                                        React
+                                    </div>
+                                </div>
+                                <div className="text-slate-600 mt-3 font-medium">
+                                    29 Oct 2024
+                                </div>
+                            </div>
+                            <div className="mt-2 border-b-2 border-gray-200 p-3">
+                                <Link
+                                    className="font-bold text-xl text-slate-800 hover:text-[#7351f5]"
+                                    href="/note/1"
+                                >
+                                    React Perfomance Optmization
+                                </Link>
+                                <div className="flex gap-2 mt-2">
+                                    <div className="bg-slate-300 p-1 rounded-sm text-sm font-medium">
+                                        Dev
+                                    </div>
+                                    <div className="bg-slate-300 p-1 rounded-sm text-sm font-medium">
+                                        React
+                                    </div>
+                                </div>
+                                <div className="text-slate-600 mt-3 font-medium">
+                                    29 Oct 2024
+                                </div>
+                            </div>
+                            <div className="mt-2 border-b-2 border-gray-200 p-3">
+                                <Link
+                                    className="font-bold text-xl text-slate-800 hover:text-[#7351f5]"
+                                    href="/note/1"
+                                >
+                                    React Perfomance Optmization
+                                </Link>
+                                <div className="flex gap-2 mt-2">
+                                    <div className="bg-slate-300 p-1 rounded-sm text-sm font-medium">
+                                        Dev
+                                    </div>
+                                    <div className="bg-slate-300 p-1 rounded-sm text-sm font-medium">
+                                        React
+                                    </div>
+                                </div>
+                                <div className="text-slate-600 mt-3 font-medium">
+                                    29 Oct 2024
+                                </div>
+                            </div>
+                            <div className="mt-2 border-b-2 border-gray-200 p-3">
                                 <Link
                                     className="font-bold text-xl text-slate-800 hover:text-[#7351f5]"
                                     href="/note/1"
@@ -139,7 +198,22 @@ const Home = () => {
                             </p>
                         </div>
                     </div>
-                    <div></div>
+                    <div className="pl-4 pr-8">
+                        <button
+                            className="mt-6 p-2 px-4 flex gap-2 items-center rounded-lg border-2
+                        border-gray-200 w-full font-medium text-gray-600 hover:bg-gray-200 hover:text-gray-800"
+                        >
+                            <IoArchiveOutline />
+                            <span>Archive Note</span>
+                        </button>
+                        <button
+                            className="mt-3 p-2 px-4 flex gap-2 items-center rounded-lg border-2
+                        border-gray-200 w-full font-medium text-gray-600 hover:bg-red-400 hover:border-red-400 hover:text-white"
+                        >
+                            <MdOutlineDelete />
+                            <span>Delete Note</span>
+                        </button>
+                    </div>
                 </div>
             </main>
         </>
