@@ -9,7 +9,7 @@ export const Note = ({ note }: NoteProps) => {
 
     return (
         //bg-slate-100
-        <div className="p-3 rounded-md">
+        <div className="p-3 rounded-md border-b-2 border-gray-200">
             <Link
                 className="font-bold text-xl text-slate-800 hover:text-[#7351f5]"
                 href={`/${notesType}/${note.id}`}

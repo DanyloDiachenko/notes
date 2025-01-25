@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoHomeOutline } from "react-icons/io5";
 import { getActiveTab } from "../getActiveTab";
@@ -10,6 +10,7 @@ import { CategoriesProps } from "./categories.props";
 
 export const Categories = ({ pathname }: CategoriesProps) => {
     const clientPathname = usePathname();
+    const tagSearchParam = useSearchParams().get("tag");
 
     const [activeTab, setActiveTab] = useState<"all" | "archived" | "">(
         getActiveTab(pathname),
@@ -28,7 +29,7 @@ export const Categories = ({ pathname }: CategoriesProps) => {
                             ? "bg-blue-100 hover:bg-blue-100"
                             : ""
                     }`}
-                href="/all"
+                href={`/all${tagSearchParam ? `?tag=${tagSearchParam}` : ""}`}
             >
                 <div className="flex items-center">
                     <IoHomeOutline className="text-blue-800" />
@@ -43,7 +44,9 @@ export const Categories = ({ pathname }: CategoriesProps) => {
                             ? "bg-blue-100 hover:bg-blue-100"
                             : ""
                     }`}
-                href="/archived"
+                href={`/archived${
+                    tagSearchParam ? `?tag=${tagSearchParam}` : ""
+                }`}
             >
                 <div className="flex items-center">
                     <IoHomeOutline />
