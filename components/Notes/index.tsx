@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { CreateNote } from "./CreateNote";
 import { Note } from "@/interfaces/note.interface";
 import { Note as NoteComponent } from "./Note";
@@ -9,87 +8,95 @@ const notes: Note[] = [
         title: "React Perfomance Optmization",
         tags: [
             {
+                id: "1",
                 title: "React",
                 slug: "Dev",
             },
             {
+                id: "2",
                 title: "React",
                 slug: "Dev",
             },
         ],
-        createdAt: "29 Oct 2024",
+        updatedAt: "29 Oct 2024",
+        content:
+            "<p>Some text here to show the content of the note. This contentis just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of</p>",
     },
     {
-        id: "2",
+        id: "1",
         title: "React Perfomance Optmization",
         tags: [
             {
+                id: "1",
                 title: "React",
                 slug: "Dev",
             },
             {
-                title: "React",
-                slug: "Dev",
-            },
-            {
-                title: "React",
-                slug: "Dev",
-            },
-            {
+                id: "2",
                 title: "React",
                 slug: "Dev",
             },
         ],
-        createdAt: "29 Oct 2024",
+        updatedAt: "29 Oct 2024",
+        content:
+            "<p>Some text here to show the content of the note. This contentis just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of</p>",
     },
     {
-        id: "3",
+        id: "1",
         title: "React Perfomance Optmization",
         tags: [
             {
+                id: "1",
                 title: "React",
                 slug: "Dev",
             },
             {
+                id: "2",
                 title: "React",
                 slug: "Dev",
             },
         ],
-        createdAt: "29 Oct 2024",
+        updatedAt: "29 Oct 2024",
+        content:
+            "<p>Some text here to show the content of the note. This contentis just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of</p>",
     },
     {
-        id: "4",
+        id: "1",
         title: "React Perfomance Optmization",
         tags: [
             {
+                id: "1",
                 title: "React",
                 slug: "Dev",
             },
             {
-                title: "React",
-                slug: "Dev",
-            },
-            {
+                id: "2",
                 title: "React",
                 slug: "Dev",
             },
         ],
-        createdAt: "29 Oct 2024",
+        updatedAt: "29 Oct 2024",
+        content:
+            "<p>Some text here to show the content of the note. This contentis just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of</p>",
     },
     {
-        id: "5",
+        id: "1",
         title: "React Perfomance Optmization",
         tags: [
             {
+                id: "1",
                 title: "React",
                 slug: "Dev",
             },
             {
+                id: "2",
                 title: "React",
                 slug: "Dev",
             },
         ],
-        createdAt: "29 Oct 2024",
+        updatedAt: "29 Oct 2024",
+        content:
+            "<p>Some text here to show the content of the note. This contentis just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of</p>",
     },
 ];
 
