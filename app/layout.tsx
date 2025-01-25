@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Aside } from "@/components/Aside";
-import { headers } from "next/headers";
+import { getPathname } from "@/helpers/getPathname";
 
 const geistSans = Inter({
     variable: "--font-inter",
@@ -22,7 +22,7 @@ const RootLayout = async ({
 }: Readonly<{
     children: React.ReactNode;
 }>) => {
-    const pathname = (await headers()).get("x-next-pathname") as string;
+    const pathname = await getPathname();
 
     return (
         <html lang="en">
