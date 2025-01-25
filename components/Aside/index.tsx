@@ -10,6 +10,14 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getActiveTab } from "./getActiveTab";
 
+const tags = [
+    { title: "Cooking", slug: "cooking" },
+    { title: "Food", slug: "food" },
+    { title: "Tech", slug: "tech" },
+    { title: "Programming", slug: "programming" },
+    { title: "CSS", slug: "css" },
+];
+
 export const Aside = ({ pathname }: AsideProps) => {
     const clientPathname = usePathname();
 
@@ -65,41 +73,20 @@ export const Aside = ({ pathname }: AsideProps) => {
             </div>
             <div className="px-4 mt-2">
                 <div className="text-gray-500 font-semibold">Tags</div>
-                <Link
-                    className="mt-4 flex items-center gap-2 text-gray-500"
-                    href="/tags/cooking"
-                >
-                    <HiOutlineTag className="size-5" />
-                    <span className="font-medium">Cooking</span>
-                </Link>
-                <Link
-                    className="mt-4 flex items-center gap-2 text-gray-500 "
-                    href="/tags/food"
-                >
-                    <HiOutlineTag className="size-5" />
-                    <span className="font-medium">Food</span>
-                </Link>
-                <Link
-                    className="mt-4 flex items-center gap-2 text-gray-500 "
-                    href="/tags/tech"
-                >
-                    <HiOutlineTag className="size-5" />
-                    <span className="font-medium">Tech</span>
-                </Link>
-                <Link
-                    className="mt-4 flex items-center gap-2 text-gray-500 "
-                    href="/tags/programming"
-                >
-                    <HiOutlineTag className="size-5" />
-                    <span className="font-medium">Programming</span>
-                </Link>
-                <Link
-                    className="mt-4 flex items-center gap-2 text-gray-500 "
-                    href="/tags/css"
-                >
-                    <HiOutlineTag className="size-5" />
-                    <span className="font-medium">CSS</span>
-                </Link>
+                {tags.map((tag, index) => (
+                    <Link
+                        key={index}
+                        className="mt-4 flex items-center gap-2 text-gray-500 "
+                        href={`${
+                            clientPathname.includes("all")
+                                ? "/all"
+                                : "/archived"
+                        }?tag=${tag.slug}`}
+                    >
+                        <HiOutlineTag className="size-5" />
+                        <span className="font-medium">{tag.title}</span>
+                    </Link>
+                ))}
             </div>
         </aside>
     );
