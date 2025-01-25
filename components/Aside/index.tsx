@@ -43,7 +43,7 @@ export const Aside = ({ pathname }: AsideProps) => {
                         <IoHomeOutline className="text-blue-800" />
                         <span className="ml-2 font-medium">All Notes</span>
                     </div>
-                    <FaArrowRight />
+                    {activeTab === "all" && <FaArrowRight />}
                 </Link>
                 <Link
                     className={`mt-6 p-2 px-4 flex justify-between items-center rounded-md
@@ -58,6 +58,7 @@ export const Aside = ({ pathname }: AsideProps) => {
                         <IoHomeOutline />
                         <span className="ml-2 font-medium">Archived Notes</span>
                     </div>
+                    {activeTab === "archived" && <FaArrowRight />}
                 </Link>
             </div>
             <div className="px-4 mt-2">
