@@ -6,7 +6,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import { HiOutlineTag } from "react-icons/hi2";
 import Link from "next/link";
 import { AsideProps } from "./aside.props";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getActiveTab } from "./getActiveTab";
 
@@ -20,6 +20,7 @@ const tags = [
 
 export const Aside = ({ pathname }: AsideProps) => {
     const clientPathname = usePathname();
+    const tagParams = useSearchParams().get("tag");
 
     const [activeTab, setActiveTab] = useState<"all" | "archived" | "">(
         getActiveTab(pathname),
@@ -28,6 +29,7 @@ export const Aside = ({ pathname }: AsideProps) => {
     useEffect(() => {
         setActiveTab(getActiveTab(clientPathname));
     }, [clientPathname]);
+    console.log(tagParams);
 
     return (
         <aside className="w-full px-4 pt-4 text-gray-600 border-r-2 border-gray-200">
@@ -42,7 +44,7 @@ export const Aside = ({ pathname }: AsideProps) => {
                 </Link>
                 <Link
                     className={`mt-6 p-2 px-4 flex justify-between items-center rounded-md
-                    text-gray-800 hover:bg-blue-50 hover:text-gray-800 ${
+                    text-gray-800 hover:bg-blue-50 hover:text-gray-800 duration-300 ${
                         activeTab === "all"
                             ? "bg-blue-100 hover:bg-blue-100"
                             : ""
@@ -57,7 +59,7 @@ export const Aside = ({ pathname }: AsideProps) => {
                 </Link>
                 <Link
                     className={`mt-6 p-2 px-4 flex justify-between items-center rounded-md
-                    text-gray-800 hover:bg-blue-50 hover:text-gray-800 ${
+                    text-gray-800 hover:bg-blue-50 hover:text-gray-800 duration-300 ${
                         activeTab === "archived"
                             ? "bg-blue-100 hover:bg-blue-100"
                             : ""
@@ -76,15 +78,25 @@ export const Aside = ({ pathname }: AsideProps) => {
                 {tags.map((tag, index) => (
                     <Link
                         key={index}
-                        className="mt-4 flex items-center gap-2 text-gray-500 "
+                        className={`mt-4 flex items-center gap-2 text-gray-500 duration-0`}
                         href={`${
                             clientPathname.includes("all")
                                 ? "/all"
                                 : "/archived"
                         }?tag=${tag.slug}`}
                     >
-                        <HiOutlineTag className="size-5" />
-                        <span className="font-medium">{tag.title}</span>
+                        <HiOutlineTag
+                            className={`size-5 duration-300 ${
+                                tagParams === tag.slug ? "text-[#7351f5]" : ""
+                            }`}
+                        />
+                        <span
+                            className={`font-medium duration-300 ${
+                                tagParams === tag.slug ? "text-[#7351f5]" : ""
+                            }`}
+                        >
+                            {tag.title}
+                        </span>
                     </Link>
                 ))}
             </div>

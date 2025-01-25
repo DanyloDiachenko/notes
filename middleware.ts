@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 
 export default function middleware(request: NextRequest) {
     const requestHeaders = new Headers(request.headers);
-    requestHeaders.set("x-next-pathname", request.nextUrl.pathname);
+    requestHeaders.set("x-next-pathname", request.url);
 
     return NextResponse.next({
         request: {
