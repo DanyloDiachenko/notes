@@ -3,7 +3,7 @@ import { IoMdTime } from "react-icons/io";
 
 export const NoteDetails = () => {
     return (
-        <div className="p-8 px-4 border-r-2 border-l-2 border-gray-200">
+        <div className="p-8 px-4 border-r-2 border-gray-200">
             <h2 className="font-bold text-3xl">
                 React Perfomance Optimization
             </h2>

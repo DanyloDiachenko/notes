@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/components/Header";
+import { Aside } from "@/components/Aside";
 
 const geistSans = Inter({
     variable: "--font-inter",
@@ -24,7 +26,11 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} antialiased grid grid-cols-[minmax(200px,_260px)_1fr]`}
             >
-                {children}
+                <Aside />
+                <main className="w-full">
+                    <Header />
+                    {children}
+                </main>
             </body>
         </html>
     );

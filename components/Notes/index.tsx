@@ -3,7 +3,7 @@ import { CreateNote } from "./CreateNote";
 
 export const Notes = () => {
     return (
-        <div className="p-8 pr-4">
+        <div className="p-8 pr-4 border-r-2 border-gray-200">
             <CreateNote />
             <div className="mt-4">
                 <div className="bg-slate-100 p-3 rounded-md">

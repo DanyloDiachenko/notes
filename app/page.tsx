@@ -7,15 +7,7 @@ import { NoteActions } from "@/components/NoteActions";
 const Home = () => {
     return (
         <>
-            <Aside />
-            <main className="w-full">
-                <Header />
-                <div className="grid grid-cols-[0.25fr_0.5fr_0.25fr]">
-                    <Notes />
-                    <NoteDetails />
-                    <NoteActions />
-                </div>
-            </main>
+            {/*  */}
         </>
     );
 };
