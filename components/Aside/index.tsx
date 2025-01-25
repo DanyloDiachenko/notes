@@ -1,10 +1,26 @@
+"use client";
+
 import Image from "next/image";
 import { IoHomeOutline } from "react-icons/io5";
 import { FaArrowRight } from "react-icons/fa6";
 import { HiOutlineTag } from "react-icons/hi2";
 import Link from "next/link";
+import { AsideProps } from "./aside.props";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { getActiveTab } from "./getActiveTab";
 
-export const Aside = () => {
+export const Aside = ({ pathname }: AsideProps) => {
+    const clientPathname = usePathname();
+
+    const [activeTab, setActiveTab] = useState<"all" | "archived" | "">(
+        getActiveTab(pathname),
+    );
+
+    useEffect(() => {
+        setActiveTab(getActiveTab(clientPathname));
+    }, [clientPathname]);
+
     return (
         <aside className="w-full px-4 pt-4 text-gray-600 border-r-2 border-gray-200">
             <div className="border-b-2 border-gray-200 pb-4">
@@ -15,7 +31,12 @@ export const Aside = () => {
                     alt="Logo"
                 />
                 <Link
-                    className="mt-6 bg-blue-100 p-2 px-4 flex justify-between items-center rounded-md text-gray-800 hover:bg-blue-50 hover:text-gray-800"
+                    className={`mt-6 p-2 px-4 flex justify-between items-center rounded-md
+                    text-gray-800 hover:bg-blue-50 hover:text-gray-800 ${
+                        activeTab === "all"
+                            ? "bg-blue-100 hover:bg-blue-100"
+                            : ""
+                    }`}
                     href="/all"
                 >
                     <div className="flex items-center">
@@ -25,7 +46,12 @@ export const Aside = () => {
                     <FaArrowRight />
                 </Link>
                 <Link
-                    className="mt-4 p-2 px-4 flex justify-between items-center rounded-md text-gray-800 hover:bg-blue-50 hover:text-gray-800"
+                    className={`mt-6 p-2 px-4 flex justify-between items-center rounded-md
+                    text-gray-800 hover:bg-blue-50 hover:text-gray-800 ${
+                        activeTab === "archived"
+                            ? "bg-blue-100 hover:bg-blue-100"
+                            : ""
+                    }`}
                     href="/archived"
                 >
                     <div className="flex items-center">

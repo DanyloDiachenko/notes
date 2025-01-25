@@ -29,7 +29,7 @@ const RootLayout = async ({
             <body
                 className={`${geistSans.variable} antialiased grid grid-cols-[minmax(200px,_260px)_1fr]`}
             >
-                <Aside />
+                <Aside pathname={pathname} />
                 <main className="w-full">
                     <Header pathname={pathname} />
                     {children}
