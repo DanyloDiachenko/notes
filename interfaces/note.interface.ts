@@ -4,5 +4,6 @@ export interface Note {
     id: string;
     title: string;
     tags: Tag[];
-    createdAt: string;
+    updatedAt: string;
+    content: string;
 }

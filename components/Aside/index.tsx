@@ -5,11 +5,11 @@ import { Categories } from "./Categories";
 import { Tags } from "./Tags";
 
 const tags = [
-    { title: "Cooking", slug: "cooking" },
-    { title: "Food", slug: "food" },
-    { title: "Tech", slug: "tech" },
-    { title: "Programming", slug: "programming" },
-    { title: "CSS", slug: "css" },
+    { title: "Cooking", slug: "cooking", id: "da" },
+    { title: "Food", slug: "food", id: "d" },
+    { title: "Tech", slug: "tech", id: "d" },
+    { title: "Programming", slug: "programming", id: "d" },
+    { title: "CSS", slug: "css", id: "d" },
 ];
 
 export const Aside = ({ pathname }: AsideProps) => {
