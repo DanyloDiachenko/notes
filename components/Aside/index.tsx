@@ -20,7 +20,7 @@ const tags = [
 
 export const Aside = ({ pathname }: AsideProps) => {
     const clientPathname = usePathname();
-    const tagParams = useSearchParams().get("tag");
+    const tagSearchParam = useSearchParams().get("tag");
 
     const [activeTab, setActiveTab] = useState<"all" | "archived" | "">(
         getActiveTab(pathname),
@@ -29,7 +29,6 @@ export const Aside = ({ pathname }: AsideProps) => {
     useEffect(() => {
         setActiveTab(getActiveTab(clientPathname));
     }, [clientPathname]);
-    console.log(tagParams);
 
     return (
         <aside className="w-full px-4 pt-4 text-gray-600 border-r-2 border-gray-200">
@@ -87,12 +86,16 @@ export const Aside = ({ pathname }: AsideProps) => {
                     >
                         <HiOutlineTag
                             className={`size-5 duration-300 ${
-                                tagParams === tag.slug ? "text-[#7351f5]" : ""
+                                tagSearchParam === tag.slug
+                                    ? "text-[#7351f5]"
+                                    : ""
                             }`}
                         />
                         <span
                             className={`font-medium duration-300 ${
-                                tagParams === tag.slug ? "text-[#7351f5]" : ""
+                                tagSearchParam === tag.slug
+                                    ? "text-[#7351f5]"
+                                    : ""
                             }`}
                         >
                             {tag.title}
