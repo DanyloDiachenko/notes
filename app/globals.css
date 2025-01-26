@@ -9,11 +9,11 @@ body {
 }
 
 a {
-    color: #7351f5;
+    color: rgb(179, 159, 255);
     transition: 0.3s;
 
     &:hover {
-        color: #c9bbff;
+        color: #b39fff;
     }
 }
 
