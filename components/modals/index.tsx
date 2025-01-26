@@ -7,6 +7,7 @@ import { CreateNote } from "./CreateNote";
 import { EditNote } from "./EditNote";
 import { ConfirmArchiveNote } from "./ArchiveNote";
 import { ConfirmDeleteNote } from "./DeleteNote";
+import { CreateTag } from "./CreateTag";
 
 export const Modals = () => {
     const dispatch = useDispatch();
@@ -46,6 +47,7 @@ export const Modals = () => {
                 {openedModal === "editNote" && <EditNote />}
                 {openedModal === "confirmArchiveNote" && <ConfirmArchiveNote />}
                 {openedModal === "confirmDeleteNote" && <ConfirmDeleteNote />}
+                {openedModal === "createTag" && <CreateTag />}
             </div>
         </>
     );

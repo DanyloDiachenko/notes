@@ -4,6 +4,7 @@ import Link from "next/link";
 import { TagsProps } from "./tags.props";
 import { usePathname, useSearchParams } from "next/navigation";
 import { HiOutlineTag } from "react-icons/hi2";
+import { AddTag } from "./AddTag";
 
 export const Tags = ({ tags }: TagsProps) => {
     const clientPathname = usePathname();
@@ -34,6 +35,7 @@ export const Tags = ({ tags }: TagsProps) => {
                     </span>
                 </Link>
             ))}
+            <AddTag />
         </div>
     );
 };
