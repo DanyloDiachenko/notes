@@ -9,7 +9,6 @@ export const Note = ({ note }: NoteProps) => {
     const noteId = useParams().noteId;
 
     return (
-        //bg-slate-100
         <div
             className={`p-3 rounded-md border-b-2 border-gray-200 ${
                 noteId === note.id ? "bg-slate-100" : ""
