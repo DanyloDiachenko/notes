@@ -5,6 +5,7 @@ import { Header } from "@/components/common/Header";
 import { Aside } from "@/components/common/Aside";
 import { getPathname } from "@/helpers/getPathname";
 import { ReduxProvider } from "@/components/providers/Redux";
+import { Modals } from "@/components/modals";
 
 const geistSans = Inter({
     variable: "--font-inter",
@@ -36,6 +37,7 @@ const RootLayout = async ({
                         <Header pathname={pathname} />
                         {children}
                     </main>
+                    <Modals />
                 </ReduxProvider>
             </body>
         </html>
