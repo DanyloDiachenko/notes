@@ -1,1 +1,1 @@
-export type Modal = "" | "createNote" | "editNote" | "confirmArchiveNote" | "confirmDeleteNote";
+export type Modal = "" | "createNote" | "editNote" | "confirmArchiveNote" | "confirmDeleteNote" | "createTag";
