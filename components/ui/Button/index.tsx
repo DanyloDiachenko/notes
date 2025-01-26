@@ -36,7 +36,7 @@ export const Button = ({
             return (
                 <button
                     className={`p-2 px-4 flex items-center rounded-lg w-full font-medium
-                        bg-red-600 hover:bg-red-400 text-white ${
+                        bg-red-500 hover:bg-red-300 text-white ${
                             className ? className : ""
                         }`}
                     {...rest}
