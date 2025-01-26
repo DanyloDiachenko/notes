@@ -6,8 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { CreateNote } from "./CreateNote";
 import { EditNote } from "./EditNote";
 import { ConfirmArchiveNote } from "./ArchiveNote";
-import { ConfirmDeleteNote } from "./DeleteNote";
+import { ConfirmDeleteNote } from "./ConfirmDeleteNote";
 import { CreateTag } from "./CreateTag";
+import { ConfirmDeleteTag } from "./ConfirmDeleteTag";
+import { EditTag } from "./EditTag";
 
 export const Modals = () => {
     const dispatch = useDispatch();
@@ -48,6 +50,8 @@ export const Modals = () => {
                 {openedModal === "confirmArchiveNote" && <ConfirmArchiveNote />}
                 {openedModal === "confirmDeleteNote" && <ConfirmDeleteNote />}
                 {openedModal === "createTag" && <CreateTag />}
+                {openedModal === "confirmDeleteTag" && <ConfirmDeleteTag />}
+                {openedModal === "editTag" && <EditTag />}
             </div>
         </>
     );
