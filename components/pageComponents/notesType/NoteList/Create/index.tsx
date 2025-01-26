@@ -18,7 +18,7 @@ export const CreateNote = () => {
             color="purple"
             onClick={onCreateNewNoteClick}
         >
-            <FiPlus />
+            <FiPlus className="size-5" />
             <span>Create New Note</span>
         </Button>
     );

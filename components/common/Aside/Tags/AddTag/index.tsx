@@ -18,7 +18,7 @@ export const AddTag = () => {
             className="mt-6 py-2 gap-2"
             onClick={onAddTagButtonClick}
         >
-            <FiPlus />
+            <FiPlus className="size-5" />
             <span>Add Tag</span>
         </Button>
     );

@@ -30,7 +30,7 @@ export const NoteActions = ({ note }: NoteActionsProps) => {
                 color="gray"
                 onClick={() => setOpenedModalHandler("confirmArchiveNote")}
             >
-                <IoArchiveOutline />
+                <IoArchiveOutline className="size-5" />
                 <span>Archive Note</span>
             </Button>
             <Button
@@ -38,7 +38,7 @@ export const NoteActions = ({ note }: NoteActionsProps) => {
                 color="red"
                 onClick={() => setOpenedModalHandler("confirmDeleteNote")}
             >
-                <MdOutlineDelete />
+                <MdOutlineDelete className="size-5" />
                 <span>Delete Note</span>
             </Button>
         </div>
