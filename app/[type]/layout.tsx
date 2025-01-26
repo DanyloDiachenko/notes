@@ -1,4 +1,4 @@
-import { Notes } from "@/components/Notes";
+import { NoteList } from "@/components/pageComponents/notesType/NoteList";
 import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 
@@ -26,7 +26,7 @@ const NoteTypeLayout = async ({
     return (
         <>
             <div className="grid grid-cols-[0.25fr_0.5fr_0.25fr]">
-                <Notes />
+                <NoteList />
                 {children}
             </div>
         </>

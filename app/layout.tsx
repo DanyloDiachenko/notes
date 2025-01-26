@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/Header";
-import { Aside } from "@/components/Aside";
+import { Header } from "@/components/pageComponents/common/Header";
+import { Aside } from "@/components/pageComponents/common/Aside";
 import { getPathname } from "@/helpers/getPathname";
 
 const geistSans = Inter({

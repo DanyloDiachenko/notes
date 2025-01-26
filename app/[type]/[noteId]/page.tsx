@@ -1,5 +1,5 @@
-import { NoteActions } from "@/components/NoteActions";
-import { NoteDetails } from "@/components/NoteDetails";
+import { NoteActions } from "@/components/pageComponents/noteDetails/Actions";
+import { NoteDetails } from "@/components/pageComponents/noteDetails/Details";
 import { Note as INote } from "@/interfaces/note.interface";
 
 export const Note = () => {

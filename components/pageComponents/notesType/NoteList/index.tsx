@@ -1,4 +1,4 @@
-import { CreateNote } from "./CreateNote";
+import { CreateNote } from "./Create";
 import { Note } from "@/interfaces/note.interface";
 import { Note as NoteComponent } from "./Note";
 
@@ -100,7 +100,7 @@ const notes: Note[] = [
     },
 ];
 
-export const Notes = () => {
+export const NoteList = () => {
     return (
         <div className="p-8 pr-4 border-r-2 border-gray-200">
             <CreateNote />
