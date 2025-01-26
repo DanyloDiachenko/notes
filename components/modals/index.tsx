@@ -18,26 +18,31 @@ export const Modals = () => {
 
     return (
         <>
-            {openedModal ? (
-                <>
-                    <div
-                        className="fixed z-10 top-0 right-0 left-0 bottom-0 bg-slate-900 opacity-30 w-full h-full"
-                        onClick={closeModalHandler}
-                    ></div>
-                    <div className="max-w-[700px] w-full absolute z-20 top-20 bg-white right-[50%] left-[50%] translate-x-[-50%] p-6">
-                        <button
-                            className="absolute top-2 right-3"
-                            onClick={closeModalHandler}
-                        >
-                            x
-                        </button>
-                        {openedModal === "createNote" && <CreateNote />}
-                        {openedModal === "editNote" && <EditNote />}
-                    </div>
-                </>
-            ) : (
-                ""
-            )}
+            <div
+                className={`fixed top-0 right-0 left-0 bottom-0 bg-slate-900 w-full h-full transition-[opacity]  ${
+                    openedModal
+                        ? "opacity-30 z-10 duration-500 "
+                        : "opacity-0 -z-10 duration-0"
+                }`}
+                onClick={closeModalHandler}
+            ></div>
+            <div
+                className={`max-w-[700px] w-full absolute bg-white right-[50%] left-[50%] translate-x-[-50%]
+                    p-6 transition-[opacity] ${
+                        openedModal
+                            ? "top-20 z-20 opacity-100 duration-500"
+                            : "-z-10 opacity-0 duration-0"
+                    }`}
+            >
+                <button
+                    className="absolute top-2 right-3"
+                    onClick={closeModalHandler}
+                >
+                    x
+                </button>
+                {openedModal === "createNote" && <CreateNote />}
+                {openedModal === "editNote" && <EditNote />}
+            </div>
         </>
     );
 };
