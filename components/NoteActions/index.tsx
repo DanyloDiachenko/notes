@@ -1,7 +1,8 @@
 import { IoArchiveOutline } from "react-icons/io5";
 import { MdOutlineDelete } from "react-icons/md";
+import { NoteActionsProps } from "./noteActions.props";
 
-export const NoteActions = () => {
+export const NoteActions = ({ note }: NoteActionsProps) => {
     return (
         <div className="pl-4 pr-8">
             <button

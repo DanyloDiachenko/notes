@@ -26,7 +26,7 @@ export const Note = () => {
     return (
         <>
             <NoteDetails note={note} />
-            <NoteActions />
+            <NoteActions note={note} />
         </>
     );
 };
