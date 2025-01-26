@@ -10,7 +10,8 @@ export const Button = ({
         case "purple": {
             return (
                 <button
-                    className={`flex items-center justify-center p-2 px-4 w-full bg-[#7351f5] text-white rounded-lg hover:bg-[#4020c3] ${
+                    className={`flex items-center justify-center p-3 px-4 w-full bg-[#7351f5]
+                        text-white rounded-lg hover:bg-[#4020c3] font-semibold ${
                         className ? className : ""
                     }`}
                     {...rest}
@@ -22,8 +23,8 @@ export const Button = ({
         case "gray": {
             return (
                 <button
-                    className={`p-2 px-4 flex items-center rounded-lg border-2
-                        border-gray-200 w-full font-medium text-gray-600 hover:bg-gray-200 hover:text-gray-800 ${
+                    className={`p-3 px-4 flex items-center justify-center rounded-lg border-2
+                        border-gray-200 w-full font-semibold text-gray-600 hover:bg-gray-200 hover:text-gray-800 ${
                             className ? className : ""
                         }`}
                     {...rest}
@@ -35,7 +36,7 @@ export const Button = ({
         case "red": {
             return (
                 <button
-                    className={`p-2 px-4 flex items-center rounded-lg w-full font-medium
+                    className={`p-3 px-4 flex items-center justify-center rounded-lg w-full font-semibold
                         bg-red-500 hover:bg-red-300 text-white ${
                             className ? className : ""
                         }`}
@@ -48,7 +49,7 @@ export const Button = ({
         default: {
             return (
                 <button
-                    className={`p-2 px-4 flex items-center w-full font-medium ${
+                    className={`p-3 px-4 flex items-center justify-center w-full font-semibold ${
                         className ? className : ""
                     }`}
                     {...rest}
