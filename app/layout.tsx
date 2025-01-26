@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/common/Header";
 import { Aside } from "@/components/common/Aside";
 import { getPathname } from "@/helpers/getPathname";
+import { ReduxProvider } from "@/components/providers/Redux";
 
 const geistSans = Inter({
     variable: "--font-inter",
@@ -29,11 +30,13 @@ const RootLayout = async ({
             <body
                 className={`${geistSans.variable} antialiased grid grid-cols-[minmax(200px,_260px)_1fr]`}
             >
-                <Aside pathname={pathname} />
-                <main className="w-full">
-                    <Header pathname={pathname} />
-                    {children}
-                </main>
+                <ReduxProvider>
+                    <Aside pathname={pathname} />
+                    <main className="w-full">
+                        <Header pathname={pathname} />
+                        {children}
+                    </main>
+                </ReduxProvider>
             </body>
         </html>
     );
