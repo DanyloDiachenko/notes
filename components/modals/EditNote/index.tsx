@@ -1,11 +1,9 @@
 import { Button } from "@/components/ui/Button";
 
-export const CreateNote = () => {
+export const EditNote = () => {
     return (
         <div className="relative">
-            <div className="text-3xl font-bold mt-6 text-center">
-                Create New Note
-            </div>
+            <div className="text-3xl font-bold mt-6 text-center">Edit Note</div>
             <form action="#" className="mt-10 block">
                 <label htmlFor="">
                     <div className="font-medium text-lg">Note Title</div>

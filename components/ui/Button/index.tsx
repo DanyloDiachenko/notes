@@ -12,8 +12,8 @@ export const Button = ({
                 <button
                     className={`flex items-center justify-center p-3 px-4 w-full bg-[#7351f5]
                         text-white rounded-lg hover:bg-[#4020c3] font-semibold ${
-                        className ? className : ""
-                    }`}
+                            className ? className : ""
+                        }`}
                     {...rest}
                 >
                     {children}
