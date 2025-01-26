@@ -6,12 +6,19 @@ import { useParams } from "next/navigation";
 
 export const Note = ({ note }: NoteProps) => {
     const notesType = useParams().type as string;
+    const noteId = useParams().noteId;
 
     return (
         //bg-slate-100
-        <div className="p-3 rounded-md border-b-2 border-gray-200">
+        <div
+            className={`p-3 rounded-md border-b-2 border-gray-200 ${
+                noteId === note.id ? "bg-slate-100" : ""
+            }`}
+        >
             <Link
-                className="font-bold text-xl text-slate-800 hover:text-[#7351f5]"
+                className={`font-bold text-xl text-slate-800 hover:text-[#7351f5] ${
+                    noteId === note.id ? "text-[#7351f5_!important]" : ""
+                }`}
                 href={`/${notesType}/${note.id}`}
             >
                 {note.title}
@@ -27,7 +34,7 @@ export const Note = ({ note }: NoteProps) => {
                 ))}
             </div>
             <div className="text-slate-600 mt-3 font-medium">
-                {note.createdAt}
+                {note.updatedAt}
             </div>
         </div>
     );
