@@ -20,7 +20,7 @@ export const Modals = () => {
             {openedModal ? (
                 <>
                     <div
-                        className="absolute z-10 top-0 right-0 left-0 bottom-0 bg-slate-900 opacity-30 w-full h-full"
+                        className="fixed z-10 top-0 right-0 left-0 bottom-0 bg-slate-900 opacity-30 w-full h-full"
                         onClick={closeModalHandler}
                     ></div>
                     <div className="max-w-[700px] w-full absolute z-20 top-20 bg-white right-[50%] left-[50%] translate-x-[-50%] p-6">
