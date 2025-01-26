@@ -5,6 +5,7 @@ import { RootState } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateNote } from "./CreateNote";
 import { EditNote } from "./EditNote";
+import { ConfirmArchiveNote } from "./ArchiveNote";
 
 export const Modals = () => {
     const dispatch = useDispatch();
@@ -42,6 +43,7 @@ export const Modals = () => {
                 </button>
                 {openedModal === "createNote" && <CreateNote />}
                 {openedModal === "editNote" && <EditNote />}
+                {openedModal === "confirmArchiveNote" && <ConfirmArchiveNote />}
             </div>
         </>
     );
