@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/Button";
-import { Modal } from "@/interfaces/modal.type";
+import { Modal } from "@/interfaces/common/modal.type";
 import { setOpenedModal } from "@/store/slices/openedModal";
 import { useDispatch } from "react-redux";
 

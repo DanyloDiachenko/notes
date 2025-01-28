@@ -4,7 +4,7 @@ import { IoArchiveOutline } from "react-icons/io5";
 import { MdOutlineDelete } from "react-icons/md";
 import { NoteActionsProps } from "./noteActions.props";
 import { Button } from "@/components/ui/Button";
-import { Modal } from "@/interfaces/modal.type";
+import { Modal } from "@/interfaces/common/modal.type";
 import { useDispatch } from "react-redux";
 import { setOpenedModal } from "@/store/slices/openedModal";
 

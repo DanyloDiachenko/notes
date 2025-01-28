@@ -1,8 +1,8 @@
 import { NoteActions } from "@/components/pageComponents/noteDetails/Actions";
 import { NoteDetails } from "@/components/pageComponents/noteDetails/Details";
-import { Note as INote } from "@/interfaces/note.interface";
+import { Note as INote } from "@/interfaces/common/note.interface";
 
-export const Note = () => {
+const Note = () => {
     const note: INote = {
         id: "1",
         title: "Note title",

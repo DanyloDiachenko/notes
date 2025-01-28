@@ -1,5 +1,5 @@
 import { CreateNote } from "./Create";
-import { Note } from "@/interfaces/note.interface";
+import { Note } from "@/interfaces/common/note.interface";
 import { Note as NoteComponent } from "./Note";
 
 const notes: Note[] = [

@@ -1,6 +1,8 @@
+export const getTag = () => {};
+
 export const getTags = () => {};
 
-export const editTag = () => {};
+export const updateTag = () => {};
 
 export const deleteTag = () => {};
 
