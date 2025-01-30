@@ -10,6 +10,7 @@ import { ConfirmDeleteNote } from "./ConfirmDeleteNote";
 import { CreateTag } from "./CreateTag";
 import { ConfirmDeleteTag } from "./ConfirmDeleteTag";
 import { EditTag } from "./EditTag";
+import { Authorization } from "./Authorization";
 
 export const Modals = () => {
     const dispatch = useDispatch();
@@ -52,6 +53,7 @@ export const Modals = () => {
                 {openedModal === "createTag" && <CreateTag />}
                 {openedModal === "confirmDeleteTag" && <ConfirmDeleteTag />}
                 {openedModal === "editTag" && <EditTag />}
+                {openedModal === "authorization" && <Authorization />}
             </div>
         </>
     );

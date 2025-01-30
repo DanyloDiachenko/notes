@@ -6,11 +6,19 @@ import { HeaderProps } from "./header.props";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { getHeadingText } from "./getHeadingText";
+import { IoIosLogIn } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import { setOpenedModal } from "@/store/slices/openedModal";
 
-export const Header = ({ pathname }: HeaderProps) => {
+export const Header = ({ pathname, isAuthorized }: HeaderProps) => {
+    const dispatch = useDispatch();
     const clientPathname = usePathname();
 
     const [headingText, setHeadeingText] = useState(getHeadingText(pathname));
+
+    const onLoginClick = () => {
+        dispatch(setOpenedModal("authorization"));
+    };
 
     useEffect(() => {
         setHeadeingText(getHeadingText(clientPathname));
@@ -28,9 +36,11 @@ export const Header = ({ pathname }: HeaderProps) => {
                     />
                     <FaSearch className="absolute left-2 top-3 size-5 opacity-20" />
                 </div>
-                <button>
-                    <IoSettingsOutline className="size-6 text-gray-500" />
-                </button>
+                {!isAuthorized && (
+                    <button onClick={onLoginClick}>
+                        <IoIosLogIn className="size-8 text-gray-400" />
+                    </button>
+                )}
             </div>
         </header>
     );

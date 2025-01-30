@@ -6,4 +6,5 @@ export type Modal =
     | "confirmDeleteNote"
     | "createTag"
     | "editTag"
-    | "confirmDeleteTag";
+    | "confirmDeleteTag"
+    | "authorization";

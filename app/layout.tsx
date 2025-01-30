@@ -6,6 +6,8 @@ import { Aside } from "@/components/common/Aside";
 import { getPathname } from "@/helpers/getPathname";
 import { ReduxProvider } from "@/components/providers/Redux";
 import { Modals } from "@/components/modals";
+import { getCookie } from "@/helpers/getCookie";
+import { getProfile } from "@/api/auth";
 
 const geistSans = Inter({
     variable: "--font-inter",
@@ -25,6 +27,24 @@ const RootLayout = async ({
     children: React.ReactNode;
 }>) => {
     const pathname = await getPathname();
+    const token = await getCookie("token");
+    let isAuthorized = false;
+
+    if (!token) {
+        isAuthorized = false;
+    } else {
+        try {
+            const profile = await getProfile();
+
+            if (profile.email) {
+                isAuthorized = true;
+            }
+        } catch (error) {
+            console.log(error);
+
+            isAuthorized = false;
+        }
+    }
 
     return (
         <html lang="en">
@@ -34,7 +54,10 @@ const RootLayout = async ({
                 <ReduxProvider>
                     <Aside pathname={pathname} />
                     <main className="w-full">
-                        <Header pathname={pathname} />
+                        <Header
+                            pathname={pathname}
+                            isAuthorized={isAuthorized}
+                        />
                         {children}
                     </main>
                     <Modals />
