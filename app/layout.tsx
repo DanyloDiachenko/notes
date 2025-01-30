@@ -8,6 +8,7 @@ import { ReduxProvider } from "@/components/providers/Redux";
 import { Modals } from "@/components/modals";
 import { getCookie } from "@/helpers/getCookie";
 import { getProfile } from "@/api/auth";
+import { ToastProvider } from "@/components/providers/Toast";
 
 const geistSans = Inter({
     variable: "--font-inter",
@@ -61,6 +62,7 @@ const RootLayout = async ({
                         {children}
                     </main>
                     <Modals />
+                    <ToastProvider />
                 </ReduxProvider>
             </body>
         </html>

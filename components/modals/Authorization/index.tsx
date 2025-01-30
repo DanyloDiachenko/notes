@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { cn } from "@/helpers/cn";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export const Authorization = () => {
     const [tab, setTab] = useState<"login" | "register">("login");
@@ -12,6 +13,11 @@ export const Authorization = () => {
 
     const onAuthSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!email || !password) {
+            toast.error("Please fill all fields");
+            return;
+        }
     };
 
     return (
