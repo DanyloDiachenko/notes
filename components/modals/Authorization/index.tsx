@@ -1,22 +1,83 @@
 "use client";
 
+import { login, register } from "@/api/auth";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { cn } from "@/helpers/cn";
+import { setCookie } from "@/helpers/setCookie";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { closeModal } from "@/store/slices/openedModal";
 
 export const Authorization = () => {
+    const router = useRouter();
+    const dispatch = useDispatch();
+
     const [tab, setTab] = useState<"login" | "register">("login");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const onAuthSubmit = (e: React.FormEvent) => {
+    const closeModalHandler = () => {
+        dispatch(closeModal());
+    };
+
+    const onAuthSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!email || !password) {
             toast.error("Please fill all fields");
             return;
+        }
+
+        if (tab === "login") {
+            try {
+                const loginData = await login({ email, password });
+
+                if (loginData.token) {
+                    toast.success("Successfully logged in");
+                    setCookie("token", loginData.token);
+
+                    const timeoutId = setTimeout(() => {
+                        closeModalHandler();
+
+                        clearTimeout(timeoutId);
+                    }, 4000);
+
+                    router.refresh();
+                }
+
+                if (loginData.message) {
+                    toast.error(loginData.message);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        } else {
+            try {
+                const registerData = await register({ email, password });
+                console.log(registerData);
+
+                if (registerData.token) {
+                    toast.success("Successfully registered and logged in");
+                    setCookie("token", registerData.token);
+
+                    const timeoutId = setTimeout(() => {
+                        closeModalHandler();
+
+                        clearTimeout(timeoutId);
+                    }, 4000);
+
+                    router.refresh();
+                }
+
+                if (registerData.message) {
+                    toast.error(registerData.message);
+                }
+            } catch (error) {
+                console.log(error);
+            }
         }
     };
 
@@ -74,7 +135,9 @@ export const Authorization = () => {
                     <Button color="purple" onClick={onAuthSubmit}>
                         Sumbit
                     </Button>
-                    <Button color="red">Discard</Button>
+                    <Button color="red" onClick={closeModalHandler}>
+                        Discard
+                    </Button>
                 </div>
             </form>
         </div>

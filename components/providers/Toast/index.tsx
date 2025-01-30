@@ -1,6 +1,6 @@
 import { Bounce, ToastContainer as ToastContainerLib } from "react-toastify";
 
-const TOAST_AUTO_CLOSE_MILISECONDS = 5000;
+const TOAST_AUTO_CLOSE_MILISECONDS = 4000;
 
 export const ToastProvider = () => {
     return (

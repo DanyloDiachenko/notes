@@ -36,6 +36,7 @@ const RootLayout = async ({
     } else {
         try {
             const profile = await getProfile();
+            console.log(profile);
 
             if (profile.email) {
                 isAuthorized = true;
@@ -46,6 +47,7 @@ const RootLayout = async ({
             isAuthorized = false;
         }
     }
+    console.log(isAuthorized);
 
     return (
         <html lang="en">
