@@ -29,7 +29,7 @@ const RootLayout = async ({
     return (
         <html lang="en">
             <body
-                className={`${geistSans.variable} antialiased grid grid-cols-[minmax(200px,_260px)_1fr]`}
+                className={`${geistSans.variable} antialiased grid grid-cols-[minmax(200px,_280px)_1fr]`}
             >
                 <ReduxProvider>
                     <Aside pathname={pathname} />

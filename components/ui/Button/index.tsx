@@ -1,3 +1,4 @@
+import { cn } from "@/helpers/cn";
 import { ButtonProps } from "./button.props";
 
 export const Button = ({
@@ -6,57 +7,22 @@ export const Button = ({
     children,
     ...rest
 }: ButtonProps) => {
-    switch (color) {
-        case "purple": {
-            return (
-                <button
-                    className={`flex items-center justify-center p-3 px-4 w-full bg-[#7351f5]
-                        text-white rounded-lg hover:bg-[#4020c3] font-semibold ${
-                            className ? className : ""
-                        }`}
-                    {...rest}
-                >
-                    {children}
-                </button>
-            );
-        }
-        case "gray": {
-            return (
-                <button
-                    className={`p-3 px-4 flex items-center justify-center rounded-lg border-2
-                        border-gray-200 w-full font-semibold text-gray-600 hover:bg-gray-200 hover:text-gray-800 ${
-                            className ? className : ""
-                        }`}
-                    {...rest}
-                >
-                    {children}
-                </button>
-            );
-        }
-        case "red": {
-            return (
-                <button
-                    className={`p-3 px-4 flex items-center justify-center rounded-lg w-full font-semibold
-                        bg-red-500 hover:bg-red-300 text-white ${
-                            className ? className : ""
-                        }`}
-                    {...rest}
-                >
-                    {children}
-                </button>
-            );
-        }
-        default: {
-            return (
-                <button
-                    className={`p-3 px-4 flex items-center justify-center w-full font-semibold ${
-                        className ? className : ""
-                    }`}
-                    {...rest}
-                >
-                    {children}
-                </button>
-            );
-        }
-    }
+    const colorStyles = {
+        purple: "bg-[#7351f5] text-white hover:bg-[#4020c3]",
+        gray: "border-2 border-gray-200 text-gray-600 hover:bg-gray-200 hover:text-gray-800",
+        red: "bg-red-500 text-white hover:bg-red-300",
+    };
+
+    return (
+        <button
+            className={cn(
+                "p-3 px-4 flex items-center justify-center rounded-lg w-full font-semibold",
+                color && colorStyles[color],
+                className,
+            )}
+            {...rest}
+        >
+            {children}
+        </button>
+    );
 };
