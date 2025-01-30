@@ -1,7 +1,6 @@
 "use client";
 
 import { FaSearch } from "react-icons/fa";
-import { IoSettingsOutline } from "react-icons/io5";
 import { HeaderProps } from "./header.props";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";

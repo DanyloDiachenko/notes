@@ -7,14 +7,27 @@ import { IoHomeOutline } from "react-icons/io5";
 import { getActiveTab } from "../getActiveTab";
 import { FaArrowRight } from "react-icons/fa";
 import { CategoriesProps } from "./categories.props";
+import { FaRegFileArchive } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
-export const Categories = ({ pathname }: CategoriesProps) => {
+export const Categories = ({ pathname, isAuthorized }: CategoriesProps) => {
     const clientPathname = usePathname();
+    const router = useRouter();
     const tagSearchParam = useSearchParams().get("tag");
 
     const [activeTab, setActiveTab] = useState<"all" | "archived" | "">(
         getActiveTab(pathname),
     );
+
+    const onTabClick = (tab: "all" | "archived") => {
+        if (!isAuthorized) {
+            toast.error("Authorize first");
+            return;
+        }
+
+        router.push(`/${tab}${tagSearchParam ? `?tag=${tagSearchParam}` : ""}`);
+    };
 
     useEffect(() => {
         setActiveTab(getActiveTab(clientPathname));
@@ -22,38 +35,36 @@ export const Categories = ({ pathname }: CategoriesProps) => {
 
     return (
         <>
-            <Link
-                className={`mt-6 p-2 px-4 flex justify-between items-center rounded-md
+            <button
+                className={`mt-6 p-2 px-4 flex justify-between w-full items-center rounded-md
                     text-gray-800 hover:bg-blue-50 hover:text-gray-800 duration-300 ${
                         activeTab === "all"
                             ? "bg-blue-100 hover:bg-blue-100"
                             : ""
                     }`}
-                href={`/all${tagSearchParam ? `?tag=${tagSearchParam}` : ""}`}
+                onClick={() => onTabClick("all")}
             >
                 <div className="flex items-center">
-                    <IoHomeOutline className="text-blue-800" />
+                    <IoHomeOutline />
                     <span className="ml-2 font-medium">All Notes</span>
                 </div>
                 {activeTab === "all" && <FaArrowRight />}
-            </Link>
-            <Link
-                className={`mt-2 p-2 px-4 flex justify-between items-center rounded-md
+            </button>
+            <button
+                className={`mt-2 p-2 px-4 flex justify-between w-full items-center rounded-md
                     text-gray-800 hover:bg-blue-50 hover:text-gray-800 duration-300 ${
                         activeTab === "archived"
                             ? "bg-blue-100 hover:bg-blue-100"
                             : ""
                     }`}
-                href={`/archived${
-                    tagSearchParam ? `?tag=${tagSearchParam}` : ""
-                }`}
+                onClick={() => onTabClick("archived")}
             >
                 <div className="flex items-center">
-                    <IoHomeOutline />
+                    <FaRegFileArchive />
                     <span className="ml-2 font-medium">Archived Notes</span>
                 </div>
                 {activeTab === "archived" && <FaArrowRight />}
-            </Link>
+            </button>
         </>
     );
 };
