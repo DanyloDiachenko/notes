@@ -4,15 +4,7 @@ import { AsideProps } from "./aside.props";
 import { Categories } from "./Categories";
 import { Tags } from "./Tags";
 
-const tags = [
-    { title: "Cooking", slug: "cooking", id: "da" },
-    { title: "Food", slug: "food", id: "d" },
-    { title: "Tech", slug: "tech", id: "d" },
-    { title: "Programming", slug: "programming", id: "d" },
-    { title: "CSS", slug: "css", id: "d" },
-];
-
-export const Aside = ({ pathname }: AsideProps) => {
+export const Aside = ({ pathname, tags }: AsideProps) => {
     return (
         <aside className="w-full px-4 pt-4 text-gray-600 border-r-2 border-gray-200">
             <div className="border-b-2 border-gray-200 pb-4">
