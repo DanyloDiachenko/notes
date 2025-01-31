@@ -50,7 +50,7 @@ interface UpdateTagBody extends Partial<Tag> {}
 export const updateTag = async (newTag: UpdateTagBody): Promise<Tag> => {
     const token = await getCookie("token");
 
-    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/tag`, {
+    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/tags`, {
         method: "PUT",
         headers: {
             accept: "application/json",
@@ -73,7 +73,7 @@ export const updateTag = async (newTag: UpdateTagBody): Promise<Tag> => {
 export const deleteTag = async (tagId: string) => {
     const token = await getCookie("token");
 
-    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/tag/${tagId}`, {
+    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/tags/${tagId}`, {
         method: "DELETE",
         headers: {
             accept: "application/json",
@@ -92,17 +92,23 @@ export const deleteTag = async (tagId: string) => {
         });
 };
 
-export const createTag = async (newTag: Tag) => {
-    const token = await getCookie("token");
+interface CreateTagBody {
+    title: string;
+    slug: string;
+}
 
-    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/tag/`, {
+export const createTag = async (createTagBody: CreateTagBody) => {
+    const token = await getCookie("token");
+    console.log(createTagBody);
+
+    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/tags/`, {
         method: "POST",
         headers: {
             accept: "application/json",
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
-            Body: JSON.stringify(newTag),
         },
+        body: JSON.stringify(createTagBody),
     })
         .then((response) => {
             return response.json();

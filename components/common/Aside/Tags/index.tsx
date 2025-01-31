@@ -21,7 +21,7 @@ export const Tags = ({ tags }: TagsProps) => {
                         className={`mt-4 flex items-center justify-between`}
                     >
                         <Link
-                            className="flex items-center gap-2 duration-0"
+                            className="flex items-center gap-2 duration-0 text-gray-500"
                             href={`${
                                 clientPathname.includes("all")
                                     ? "/all"
