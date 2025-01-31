@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/interfaces/common/modal.type";
 import { setOpenedModal } from "@/store/slices/openedModal";
