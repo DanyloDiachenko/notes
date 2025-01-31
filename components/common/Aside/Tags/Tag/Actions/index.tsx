@@ -40,11 +40,7 @@ export const Actions = ({ tag }: ActionsProps) => {
             <Button color="gray" className="p-0" onClick={onEditClick}>
                 <MdOutlineModeEditOutline className="size-6 p-1" />
             </Button>
-            <Button
-                color="red"
-                className="p-0 px-0"
-                onClick={() => setOpenedModalHandler("confirmDeleteTag")}
-            >
+            <Button color="red" className="p-0 px-0" onClick={onDeleteClick}>
                 <MdOutlineDelete className="size-6 p-1" />
             </Button>
         </div>
