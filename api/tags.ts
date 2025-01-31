@@ -45,19 +45,21 @@ export const getTags = async (): Promise<Tag[]> => {
         });
 };
 
-interface UpdateTagBody extends Partial<Tag> {}
+interface UpdateTagBody extends Partial<Tag> {
+    id: string;
+}
 
-export const updateTag = async (newTag: UpdateTagBody): Promise<Tag> => {
+export const updateTag = async (tagToUpdate: UpdateTagBody) => {
     const token = await getCookie("token");
 
-    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/tags`, {
+    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/tags/${tagToUpdate.id}`, {
         method: "PUT",
         headers: {
             accept: "application/json",
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(newTag),
+        body: JSON.stringify(tagToUpdate),
     })
         .then((response) => {
             return response.json();

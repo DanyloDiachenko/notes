@@ -6,10 +6,29 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { HiOutlineTag } from "react-icons/hi2";
 import { AddTag } from "./AddTag";
 import { Actions } from "./Actions";
+import { useDispatch } from "react-redux";
+import { Modal } from "@/interfaces/common/modal.type";
+import { setOpenedModal } from "@/store/slices/openedModal";
+import { Tag } from "@/interfaces/common/tag.interface";
+import { setTagToEdit } from "@/store/slices/tagToEdit";
 
 export const Tags = ({ tags }: TagsProps) => {
+    const dispatch = useDispatch();
     const clientPathname = usePathname();
     const tagSearchParam = useSearchParams().get("tag");
+
+    const setOpenedModalHandler = (modalToOpen: Modal) => {
+        dispatch(setOpenedModal(modalToOpen));
+    };
+
+    const setTagToEditHandler = (tag: Tag) => {
+        dispatch(setTagToEdit(tag));
+    };
+
+    const onEditClickTagCallback = (tag: Tag) => {
+        setOpenedModalHandler("editTag");
+        setTagToEditHandler(tag);
+    };
 
     return (
         <div className="px-4 mt-2 text-gray-500">
@@ -45,7 +64,11 @@ export const Tags = ({ tags }: TagsProps) => {
                                 {tag.title}
                             </span>
                         </Link>
-                        <Actions />
+                        <Actions
+                            onEditClickTagCallback={() =>
+                                onEditClickTagCallback(tag)
+                            }
+                        />
                     </div>
                 ))
             ) : (
