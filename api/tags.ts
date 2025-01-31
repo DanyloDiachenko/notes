@@ -56,8 +56,8 @@ export const updateTag = async (newTag: UpdateTagBody): Promise<Tag> => {
             accept: "application/json",
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
-            Body: JSON.stringify(newTag),
         },
+        body: JSON.stringify(newTag),
     })
         .then((response) => {
             return response.json();
