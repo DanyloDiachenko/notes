@@ -1,10 +1,10 @@
 import { CreateNote } from "./Create";
-import { Note } from "@/interfaces/common/note.interface";
+import { Note } from "@/types/note.interface";
 import { Note as NoteComponent } from "./Note";
 import { NoteListProps } from "./noteList.props";
 import { getNotes } from "@/api/notes";
 
-const notes: Note[] = [
+/* const notes: Note[] = [
     {
         id: "1",
         title: "React Perfomance Optmization",
@@ -100,10 +100,10 @@ const notes: Note[] = [
         content:
             "<p>Some text here to show the content of the note. This contentis just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of</p>",
     },
-];
+]; */
 
 export const NoteList = ({ notesType, tag, search }: NoteListProps) => {
-    console.log(notesType);
+    let notes: Note[] = [];
 
     const getNotesHandler = async () => {
         try {
@@ -112,10 +112,14 @@ export const NoteList = ({ notesType, tag, search }: NoteListProps) => {
                 tag: tag,
                 search: search,
             });
+
+            console.log(notes);
         } catch (error) {
             console.log(error);
         }
     };
+
+    getNotesHandler();
 
     return (
         <div className="p-8 pr-4 border-r-2 border-gray-200">

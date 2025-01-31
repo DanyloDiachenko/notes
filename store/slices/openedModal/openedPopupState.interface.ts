@@ -1,4 +1,4 @@
-import { Modal } from "@/interfaces/common/modal.type";
+import { Modal } from "@/types/modal.type";
 
 export interface OpenedModalState {
     openedModal: Modal;

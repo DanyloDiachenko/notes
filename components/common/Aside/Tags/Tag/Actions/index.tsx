@@ -1,12 +1,12 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
-import { Modal } from "@/interfaces/common/modal.type";
+import { Modal } from "@/types/modal.type";
 import { setOpenedModal } from "@/store/slices/openedModal";
 import { useDispatch } from "react-redux";
 import { MdOutlineDelete, MdOutlineModeEditOutline } from "react-icons/md";
 import { ActionsProps } from "./actions.props";
-import { Tag } from "@/interfaces/common/tag.interface";
+import { Tag } from "@/types/tag.interface";
 import { setTagToEdit } from "@/store/slices/tagToEdit";
 import { setTagToDelete } from "@/store/slices/tagToDelete";
 

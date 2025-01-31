@@ -10,7 +10,7 @@ import { getCookie } from "@/helpers/getCookie";
 import { getProfile } from "@/api/auth";
 import { ToastProvider } from "@/components/providers/Toast";
 import { getTags } from "@/api/tags";
-import { Tag } from "@/interfaces/common/tag.interface";
+import { Tag } from "@/types/tag.interface";
 
 const geistSans = Inter({
     variable: "--font-inter",

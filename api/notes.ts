@@ -1,5 +1,5 @@
 import { getCookie } from "@/helpers/getCookie";
-import { Note } from "@/interfaces/common/note.interface";
+import { Note } from "@/types/note.interface";
 
 interface GetNotesParams {
     notesType?: "all" | "archived";

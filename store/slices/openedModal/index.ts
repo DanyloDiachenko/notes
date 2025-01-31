@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { OpenedModalState } from "./openedPopupState.interface";
-import { Modal } from "@/interfaces/common/modal.type";
+import { Modal } from "@/types/modal.type";
 
 const initialState: OpenedModalState = {
     openedModal: "",

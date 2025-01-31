@@ -1,5 +1,5 @@
 import { getCookie } from "@/helpers/getCookie";
-import { Tag } from "@/interfaces/common/tag.interface";
+import { Tag } from "@/types/tag.interface";
 
 export const getTag = async (tagId: string): Promise<Tag> => {
     const token = await getCookie("token");

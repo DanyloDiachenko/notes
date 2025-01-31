@@ -11,6 +11,7 @@ import { CreateTag } from "./CreateTag";
 import { ConfirmDeleteTag } from "./ConfirmDeleteTag";
 import { EditTag } from "./EditTag";
 import { Authorization } from "./Authorization";
+import { IoMdClose } from "react-icons/io";
 
 export const Modals = () => {
     const dispatch = useDispatch();

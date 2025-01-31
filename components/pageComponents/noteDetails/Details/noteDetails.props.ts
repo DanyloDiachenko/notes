@@ -1,4 +1,4 @@
-import { Note } from "@/interfaces/common/note.interface";
+import { Note } from "@/types/note.interface";
 
 export interface NoteDetailsProps {
     note: Note;

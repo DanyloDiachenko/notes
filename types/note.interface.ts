@@ -1,4 +1,4 @@
-import { Tag } from "./tag.interface";
+import { Tag } from "./common/tag.interface";
 
 export interface Note {
     id: string;
