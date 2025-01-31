@@ -1,6 +1,8 @@
 import { CreateNote } from "./Create";
 import { Note } from "@/interfaces/common/note.interface";
 import { Note as NoteComponent } from "./Note";
+import { NoteListProps } from "./noteList.props";
+import { getNotes } from "@/api/notes";
 
 const notes: Note[] = [
     {
@@ -100,7 +102,21 @@ const notes: Note[] = [
     },
 ];
 
-export const NoteList = () => {
+export const NoteList = ({ notesType, tag, search }: NoteListProps) => {
+    console.log(notesType);
+
+    const getNotesHandler = async () => {
+        try {
+            const notes = await getNotes({
+                notesType: notesType,
+                tag: tag,
+                search: search,
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <div className="p-8 pr-4 border-r-2 border-gray-200">
             <CreateNote />

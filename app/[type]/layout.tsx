@@ -23,10 +23,12 @@ const NoteTypeLayout = async ({
         }
     }
 
+    
+
     return (
         <>
             <div className="grid grid-cols-[0.25fr_0.5fr_0.25fr]">
-                <NoteList />
+                <NoteList notesType={paramsData.type} />
                 {children}
             </div>
         </>

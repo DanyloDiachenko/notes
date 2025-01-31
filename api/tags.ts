@@ -101,7 +101,6 @@ interface CreateTagBody {
 
 export const createTag = async (createTagBody: CreateTagBody) => {
     const token = await getCookie("token");
-    console.log(createTagBody);
 
     return fetch(`${process.env.NEXT_PUBLIC_API_URL}/tags/`, {
         method: "POST",

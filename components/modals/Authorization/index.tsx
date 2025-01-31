@@ -57,7 +57,6 @@ export const Authorization = () => {
         } else {
             try {
                 const registerData = await register({ email, password });
-                console.log(registerData);
 
                 if (registerData.token) {
                     toast.success("Successfully registered and logged in");

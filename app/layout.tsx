@@ -40,7 +40,6 @@ const RootLayout = async ({
     } else {
         try {
             const profile = await getProfile();
-            console.log(profile);
 
             if (profile.email) {
                 isAuthorized = true;
@@ -55,7 +54,6 @@ const RootLayout = async ({
     if (isAuthorized) {
         try {
             tags = await getTags();
-            console.log(tags);
         } catch (error) {
             console.log(error);
         }
