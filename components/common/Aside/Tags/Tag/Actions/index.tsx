@@ -6,17 +6,33 @@ import { setOpenedModal } from "@/store/slices/openedModal";
 import { useDispatch } from "react-redux";
 import { MdOutlineDelete, MdOutlineModeEditOutline } from "react-icons/md";
 import { ActionsProps } from "./actions.props";
+import { Tag } from "@/interfaces/common/tag.interface";
+import { setTagToEdit } from "@/store/slices/tagToEdit";
+import { setTagToDelete } from "@/store/slices/tagToDelete";
 
-export const Actions = ({ onEditClickTagCallback }: ActionsProps) => {
+export const Actions = ({ tag }: ActionsProps) => {
     const dispatch = useDispatch();
 
     const setOpenedModalHandler = (modalToOpen: Modal) => {
         dispatch(setOpenedModal(modalToOpen));
     };
 
+    const setTagToEditHandler = (tag: Tag) => {
+        dispatch(setTagToEdit(tag));
+    };
+
+    const setTagToDeleteHandler = (tag: Tag) => {
+        dispatch(setTagToDelete(tag));
+    };
+
     const onEditClick = () => {
         setOpenedModalHandler("editTag");
-        onEditClickTagCallback();
+        setTagToEditHandler(tag);
+    };
+
+    const onDeleteClick = () => {
+        setOpenedModalHandler("confirmDeleteTag");
+        setTagToDeleteHandler(tag);
     };
 
     return (

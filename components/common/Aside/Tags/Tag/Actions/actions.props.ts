@@ -1,3 +1,5 @@
+import { Tag } from "@/interfaces/common/tag.interface";
+
 export interface ActionsProps {
-    onEditClickTagCallback: () => void;
+    tag: Tag;
 }

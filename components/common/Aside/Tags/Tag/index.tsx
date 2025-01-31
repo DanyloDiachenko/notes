@@ -16,19 +16,6 @@ export const Tag = ({ tag }: TagProps) => {
     const clientPathname = usePathname();
     const tagSearchParam = useSearchParams().get("tag");
 
-    const setOpenedModalHandler = (modalToOpen: Modal) => {
-        dispatch(setOpenedModal(modalToOpen));
-    };
-
-    const setTagToEditHandler = (tag: ITag) => {
-        dispatch(setTagToEdit(tag));
-    };
-
-    const onEditClickTagCallback = (tag: ITag) => {
-        setOpenedModalHandler("editTag");
-        setTagToEditHandler(tag);
-    };
-
     return (
         <div className={`mt-4 flex items-center justify-between`}>
             <Link
@@ -50,9 +37,7 @@ export const Tag = ({ tag }: TagProps) => {
                     {tag.title}
                 </span>
             </Link>
-            <Actions
-                onEditClickTagCallback={() => onEditClickTagCallback(tag)}
-            />
+            <Actions tag={tag} />
         </div>
     );
 };
