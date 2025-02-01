@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { NoteProps } from "./note.props";
 import { useParams } from "next/navigation";
+import { formatDate } from "@/helpers/formatDate";
 
 export const Note = ({ note }: NoteProps) => {
     const notesType = useParams().type as string;
@@ -33,7 +34,7 @@ export const Note = ({ note }: NoteProps) => {
                 ))}
             </div>
             <div className="text-slate-600 mt-3 font-medium">
-                {note.updatedAt}
+                {formatDate(note.updatedAt)}
             </div>
         </div>
     );
