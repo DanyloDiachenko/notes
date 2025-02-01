@@ -1,11 +1,12 @@
+import { PageProps } from "@/.next/types/app/page";
 import { getNote } from "@/api/notes";
 import { NoteActions } from "@/components/pageComponents/noteDetails/Actions";
 import { NoteDetails } from "@/components/pageComponents/noteDetails/Details";
 import { Note as INote } from "@/types/note.interface";
 import { notFound } from "next/navigation";
 
-const Note = async ({ params }: { params: { noteId: string } }) => {
-    const noteId = params.noteId;
+const Note = async ({ params }: PageProps) => {
+    const noteId = (await params).noteId;
     let note: null | INote = null;
 
     await (async () => {
