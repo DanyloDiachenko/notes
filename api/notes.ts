@@ -74,7 +74,37 @@ export const getNote = async (noteId: string) => {
         });
 };
 
-export const updateNote = () => {};
+interface UpdateNoteBody {
+    title: string;
+    content: string;
+    tagIds: string[];
+}
+
+export const updateNote = async (
+    noteId: string,
+    updateNoteBody: UpdateNoteBody,
+) => {
+    const token = await getCookie("token");
+
+    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/notes/${noteId}`, {
+        method: "PUT",
+        headers: {
+            accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(updateNoteBody),
+    })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
 
 export const deleteNote = () => {};
 

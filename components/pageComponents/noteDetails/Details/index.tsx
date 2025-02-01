@@ -28,13 +28,7 @@ export const NoteDetails = ({ note }: NoteDetailsProps) => {
                 </div>
                 <div>{formatDate(note.updatedAt)}</div>
             </div>
-            <div className="mt-6">
-                <div
-                    dangerouslySetInnerHTML={{
-                        __html: note.content,
-                    }}
-                />
-            </div>
+            <p className="mt-6">{note.content}</p>
         </div>
     );
 };

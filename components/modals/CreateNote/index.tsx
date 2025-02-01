@@ -121,7 +121,6 @@ export const CreateNote = () => {
                     <div
                         ref={noteDetailsRef}
                         contentEditable="true"
-                        /* className="mt-2 p-3 min-h-[100px] border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" */
                         className="mt-2 min-h-40 w-full p-3 text-base font-medium bg-gray-100 rounded-md"
                         onInput={onNoteDetailsChange}
                         suppressContentEditableWarning={true}

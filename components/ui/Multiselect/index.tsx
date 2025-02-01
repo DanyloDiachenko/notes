@@ -2,7 +2,7 @@
 
 import { cn } from "@/helpers/cn";
 import { MultiselectProps } from "./multiselect.props";
-import { useEffect, useRef, useState } from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 import { onOutsideClick } from "@/helpers/onOutsideClick";
 import { IoMdClose } from "react-icons/io";
 import { SelectOption } from "@/types/selectOption.interface";
@@ -29,7 +29,9 @@ export const Multiselect = ({
         setActiveOptions([...activeOptions, option]);
     };
 
-    const onRemoveOptionClick = (option: SelectOption) => {
+    const onRemoveOptionClick = (option: SelectOption, e: MouseEvent) => {
+        e.preventDefault();
+
         setActiveOptions(
             activeOptions.filter(
                 (activeOption) => activeOption.value !== option.value,
@@ -64,7 +66,9 @@ export const Multiselect = ({
                                 <span>{option.title}</span>
                                 <button
                                     className="p-0 rounded-full leading-none"
-                                    onClick={() => onRemoveOptionClick(option)}
+                                    onClick={(e) =>
+                                        onRemoveOptionClick(option, e)
+                                    }
                                 >
                                     <IoMdClose />
                                 </button>

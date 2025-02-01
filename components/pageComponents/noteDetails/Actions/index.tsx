@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { Modal } from "@/types/modal.type";
 import { useDispatch } from "react-redux";
 import { setOpenedModal } from "@/store/slices/openedModal";
+import { setNoteToEdit } from "@/store/slices/noteToEdit";
 
 export const NoteActions = ({ note }: NoteActionsProps) => {
     const dispatch = useDispatch();
@@ -15,12 +16,21 @@ export const NoteActions = ({ note }: NoteActionsProps) => {
         dispatch(setOpenedModal(modalToOpen));
     };
 
+    const setNoteToEditHandler = () => {
+        dispatch(setNoteToEdit(note));
+    };
+
+    const onEditNoteClick = () => {
+        setOpenedModalHandler("editNote");
+        setNoteToEditHandler();
+    };
+
     return (
         <div className="pl-4 pr-8">
             <Button
                 className="mt-6 gap-2"
                 color="purple"
-                onClick={() => setOpenedModalHandler("editNote")}
+                onClick={onEditNoteClick}
             >
                 <MdOutlineModeEditOutline className="size-5" />
                 <span>Edit Note</span>

@@ -1,25 +1,27 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TagToEditState } from "./noteToEditState.interface";
+import { NoteToEditState } from "./noteToEditState.interface";
 
-const initialState: TagToEditState = {
-    tagToEdit: {
+const initialState: NoteToEditState = {
+    noteToEdit: {
         id: "",
         title: "",
-        slug: "",
+        content: "",
+        tags: [],
+        updatedAt: "",
     },
 };
 
-export const tagToEditSlice = createSlice({
-    name: "tagToEdit",
+export const noteToEditSlice = createSlice({
+    name: "noteToEdit",
     initialState,
     reducers: {
-        setTagToEdit: (
+        setNoteToEdit: (
             state,
-            action: PayloadAction<TagToEditState["tagToEdit"]>,
+            action: PayloadAction<NoteToEditState["noteToEdit"]>,
         ) => {
-            state.tagToEdit = action.payload;
+            state.noteToEdit = action.payload;
         },
     },
 });
 
-export const { setTagToEdit } = tagToEditSlice.actions;
+export const { setNoteToEdit } = noteToEditSlice.actions;
