@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoHomeOutline } from "react-icons/io5";
@@ -14,7 +13,6 @@ import { useRouter } from "next/navigation";
 export const Categories = ({ pathname, isAuthorized }: CategoriesProps) => {
     const clientPathname = usePathname();
     const router = useRouter();
-    const tagSearchParam = useSearchParams().get("tag");
 
     const [activeTab, setActiveTab] = useState<"all" | "archived" | "">(
         getActiveTab(pathname),
@@ -26,7 +24,7 @@ export const Categories = ({ pathname, isAuthorized }: CategoriesProps) => {
             return;
         }
 
-        router.push(`/${tab}${tagSearchParam ? `?tag=${tagSearchParam}` : ""}`);
+        router.push(`/${tab}`);
     };
 
     useEffect(() => {

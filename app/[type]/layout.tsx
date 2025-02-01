@@ -1,4 +1,7 @@
+import { getNotes } from "@/api/notes";
 import { NoteList } from "@/components/pageComponents/notesType/NoteList";
+import { getPathname } from "@/helpers/getPathname";
+import { Note } from "@/types/note.interface";
 import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 
@@ -9,7 +12,11 @@ const NoteTypeLayout = async ({
     children: ReactNode;
     params: Promise<{ type: string }>;
 }) => {
+    const pathname = await getPathname();
     const paramsData = await params;
+
+    const tag =
+        new URLSearchParams(new URL(pathname).search).get("tag") || undefined;
 
     switch (paramsData.type) {
         case "all": {
@@ -23,10 +30,16 @@ const NoteTypeLayout = async ({
         }
     }
 
+    const serverNotes: Note[] = await getNotes({
+        notesType: paramsData.type,
+        tag: tag,
+        /* search, */
+    });
+
     return (
         <>
             <div className="grid grid-cols-[0.25fr_0.5fr_0.25fr]">
-                <NoteList notesType={paramsData.type} />
+                <NoteList serverNotes={serverNotes} />
                 {children}
             </div>
         </>
