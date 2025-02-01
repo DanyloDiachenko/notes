@@ -1,27 +1,34 @@
+import { getNote } from "@/api/notes";
 import { NoteActions } from "@/components/pageComponents/noteDetails/Actions";
 import { NoteDetails } from "@/components/pageComponents/noteDetails/Details";
 import { Note as INote } from "@/types/note.interface";
+import { notFound } from "next/navigation";
 
-const Note = () => {
-    const note: INote = {
-        id: "1",
-        title: "Note title",
-        tags: [
-            {
-                id: "123",
-                title: "Tag 1",
-                slug: "tag-1",
-            },
-            {
-                id: "fds",
-                title: "Tag 2",
-                slug: "tag-2",
-            },
-        ],
-        updatedAt: "29 Oct 2024",
-        content:
-            "<p>Some text here to show the content of the note. This contentis just a placeholder and does not have any meaning. Some text here to show the content of the note.</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of the note. This content is just a placeholder and does not have any meaning. Some text here to show the content of</p><p>This content is just a placeholder and does not have any meaning. Some text here to show the content of</p>",
-    };
+const Note = async ({ params }: { params: { noteId: string } }) => {
+    const noteId = params.noteId;
+    let note: null | INote = null;
+
+    await (async () => {
+        try {
+            const noteData = await getNote(noteId);
+            console.log(noteData);
+
+            if (noteData.message) {
+                notFound();
+            }
+
+            if (noteData.id) {
+                note = noteData;
+            }
+        } catch (error) {
+            console.log("error", error);
+            notFound();
+        }
+    })();
+
+    if (!note) {
+        return <></>;
+    }
 
     return (
         <>

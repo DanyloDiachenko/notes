@@ -1,7 +1,7 @@
 "use client";
 
 import { IoArchiveOutline } from "react-icons/io5";
-import { MdOutlineDelete } from "react-icons/md";
+import { MdOutlineDelete, MdOutlineModeEditOutline } from "react-icons/md";
 import { NoteActionsProps } from "./noteActions.props";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/types/modal.type";
@@ -22,7 +22,7 @@ export const NoteActions = ({ note }: NoteActionsProps) => {
                 color="purple"
                 onClick={() => setOpenedModalHandler("editNote")}
             >
-                <span>icon</span>
+                <MdOutlineModeEditOutline className="size-5" />
                 <span>Edit Note</span>
             </Button>
             <Button

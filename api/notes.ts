@@ -52,7 +52,27 @@ export const getNotes = async ({
         });
 };
 
-export const getNote = () => {};
+export const getNote = async (noteId: string) => {
+    const token = await getCookie("token");
+
+    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/notes/${noteId}`, {
+        method: "GET",
+        headers: {
+            accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+    })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
 
 export const updateNote = () => {};
 

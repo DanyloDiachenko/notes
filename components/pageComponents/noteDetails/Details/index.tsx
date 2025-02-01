@@ -1,6 +1,7 @@
 import { HiOutlineTag } from "react-icons/hi2";
 import { IoMdTime } from "react-icons/io";
 import { NoteDetailsProps } from "./noteDetails.props";
+import { formatDate } from "@/helpers/formatDate";
 
 export const NoteDetails = ({ note }: NoteDetailsProps) => {
     return (
@@ -25,7 +26,7 @@ export const NoteDetails = ({ note }: NoteDetailsProps) => {
                     <IoMdTime className="size-6" />
                     <div>Last Edited</div>
                 </div>
-                <div>{note.updatedAt}</div>
+                <div>{formatDate(note.updatedAt)}</div>
             </div>
             <div className="mt-6">
                 <div
