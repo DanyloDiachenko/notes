@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { closeModal } from "@/store/slices/openedModal";
 import { useRouter } from "next/navigation";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Multiselect } from "@/components/ui/Multiselect";
 import { Tag } from "@/types/tag.interface";
@@ -17,8 +17,6 @@ import { toast } from "react-toastify";
 export const CreateNote = () => {
     const router = useRouter();
     const dispatch = useDispatch();
-
-    const noteDetailsRef = useRef<HTMLDivElement>(null);
 
     const [noteTitle, setNoteTitle] = useState("");
     const [noteDetails, setNoteDetails] = useState("");
@@ -62,14 +60,6 @@ export const CreateNote = () => {
             }
         } catch (error) {
             console.log(error);
-        }
-    };
-
-    console.log(noteDetails);
-
-    const onNoteDetailsChange = () => {
-        if (noteDetailsRef.current) {
-            setNoteDetails(noteDetailsRef.current.innerHTML);
         }
     };
 

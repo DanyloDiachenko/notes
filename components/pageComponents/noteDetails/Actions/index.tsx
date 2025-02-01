@@ -8,6 +8,7 @@ import { Modal } from "@/types/modal.type";
 import { useDispatch } from "react-redux";
 import { setOpenedModal } from "@/store/slices/openedModal";
 import { setNoteToEdit } from "@/store/slices/noteToEdit";
+import { setNoteToDelete } from "@/store/slices/noteToDelete";
 
 export const NoteActions = ({ note }: NoteActionsProps) => {
     const dispatch = useDispatch();
@@ -20,9 +21,18 @@ export const NoteActions = ({ note }: NoteActionsProps) => {
         dispatch(setNoteToEdit(note));
     };
 
+    const setNoteToDeleteHandler = () => {
+        dispatch(setNoteToDelete(note));
+    };
+
     const onEditNoteClick = () => {
         setOpenedModalHandler("editNote");
         setNoteToEditHandler();
+    };
+
+    const onDeleteNoteClick = () => {
+        setOpenedModalHandler("confirmDeleteNote");
+        setNoteToDeleteHandler();
     };
 
     return (
@@ -46,7 +56,7 @@ export const NoteActions = ({ note }: NoteActionsProps) => {
             <Button
                 className="mt-3 gap-2"
                 color="red"
-                onClick={() => setOpenedModalHandler("confirmDeleteNote")}
+                onClick={onDeleteNoteClick}
             >
                 <MdOutlineDelete className="size-5" />
                 <span>Delete Note</span>

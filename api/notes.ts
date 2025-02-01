@@ -106,7 +106,27 @@ export const updateNote = async (
         });
 };
 
-export const deleteNote = () => {};
+export const deleteNote = async (noteId: string) => {
+    const token = await getCookie("token");
+
+    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/notes/${noteId}`, {
+        method: "DELETE",
+        headers: {
+            accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+    })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
 
 interface CreateNoteBody {
     title: string;
