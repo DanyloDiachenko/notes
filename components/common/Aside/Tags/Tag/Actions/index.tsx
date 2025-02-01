@@ -37,10 +37,20 @@ export const Actions = ({ tag }: ActionsProps) => {
 
     return (
         <div className="flex items-center gap-2">
-            <Button color="gray" className="p-0" onClick={onEditClick}>
+            <Button
+                color="gray"
+                className="p-0"
+                onClick={onEditClick}
+                aria-label="Edit tag"
+            >
                 <MdOutlineModeEditOutline className="size-6 p-1" />
             </Button>
-            <Button color="red" className="p-0 px-0" onClick={onDeleteClick}>
+            <Button
+                color="red"
+                className="p-0 px-0"
+                onClick={onDeleteClick}
+                aria-label="Delete tag"
+            >
                 <MdOutlineDelete className="size-6 p-1" />
             </Button>
         </div>
