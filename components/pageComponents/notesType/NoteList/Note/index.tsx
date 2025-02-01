@@ -11,8 +11,8 @@ export const Note = ({ note }: NoteProps) => {
 
     return (
         <div
-            className={`p-3 rounded-md border-b-2 border-gray-200 ${
-                noteId === note.id ? "bg-slate-100" : ""
+            className={`p-3 border-b-2 border-gray-200 ${
+                noteId === note.id ? "bg-slate-100 border-opacity-0" : ""
             }`}
         >
             <Link

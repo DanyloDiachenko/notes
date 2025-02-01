@@ -4,11 +4,9 @@ import { Actions } from "./Actions";
 import { usePathname, useSearchParams } from "next/navigation";
 import { HiOutlineTag } from "react-icons/hi2";
 import { TagProps } from "./tag.props";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export const Tag = ({ tag }: TagProps) => {
-    const router = useRouter();
     const clientPathname = usePathname();
     const tagSearchParam = useSearchParams().get("tag");
 

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TagToDeleteState } from "./openedPopupState.interface";
+import { TagToDeleteState } from "./tagToDeleteState.interface";
 
 const initialState: TagToDeleteState = {
     tagToDelete: {
