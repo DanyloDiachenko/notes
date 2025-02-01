@@ -15,8 +15,6 @@ export const NoteList = ({ serverNotes }: NoteListProps) => {
 
     const [notes, setNotes] = useState<Note[]>(serverNotes);
 
-    console.log(pathname, params, searchParams);
-
     const getAndSetNotes = async () => {
         const notesType = params.type as "all" | "archived";
         const tag = searchParams.get("tag") || undefined;

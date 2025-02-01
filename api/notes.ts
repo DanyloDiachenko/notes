@@ -4,13 +4,11 @@ import { Note } from "@/types/note.interface";
 interface GetNotesParams {
     notesType?: "all" | "archived";
     tag?: string;
-    search?: string;
 }
 
 export const getNotes = async ({
     notesType,
     tag,
-    search,
 }: GetNotesParams): Promise<Note[]> => {
     const token = await getCookie("token");
 
@@ -24,9 +22,6 @@ export const getNotes = async ({
     }
     if (tag) {
         queryParams.append("tag", tag);
-    }
-    if (search) {
-        queryParams.append("search", search);
     }
 
     const url = `${

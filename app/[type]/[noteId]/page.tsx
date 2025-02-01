@@ -11,7 +11,6 @@ const Note = async ({ params }: { params: { noteId: string } }) => {
     await (async () => {
         try {
             const noteData = await getNote(noteId);
-            console.log(noteData);
 
             if (noteData.message) {
                 notFound();
@@ -21,7 +20,7 @@ const Note = async ({ params }: { params: { noteId: string } }) => {
                 note = noteData;
             }
         } catch (error) {
-            console.log("error", error);
+            console.log(error);
             notFound();
         }
     })();

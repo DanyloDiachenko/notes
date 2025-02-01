@@ -33,7 +33,6 @@ const NoteTypeLayout = async ({
     const serverNotes: Note[] = await getNotes({
         notesType: paramsData.type,
         tag: tag,
-        /* search, */
     });
 
     return (
