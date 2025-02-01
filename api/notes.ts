@@ -58,4 +58,31 @@ export const updateNote = () => {};
 
 export const deleteNote = () => {};
 
-export const createNote = () => {};
+interface CreateNoteBody {
+    title: string;
+    content: string;
+    tagIds: string[];
+}
+
+export const createNote = async (createNoteBody: CreateNoteBody) => {
+    const token = await getCookie("token");
+
+    return fetch(`${process.env.NEXT_PUBLIC_API_URL}/notes`, {
+        method: "POST",
+        headers: {
+            accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(createNoteBody),
+    })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};

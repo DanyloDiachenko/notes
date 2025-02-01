@@ -112,6 +112,7 @@ export const NoteList = ({ notesType, tag, search }: NoteListProps) => {
                 tag: tag,
                 search: search,
             });
+            console.log(notes);
 
             console.log(notes);
         } catch (error) {

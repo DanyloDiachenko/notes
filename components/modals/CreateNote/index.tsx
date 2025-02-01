@@ -11,6 +11,8 @@ import { Multiselect } from "@/components/ui/Multiselect";
 import { Tag } from "@/types/tag.interface";
 import { getTags } from "@/api/tags";
 import { SelectOption } from "@/types/selectOption.interface";
+import { createNote } from "@/api/notes";
+import { toast } from "react-toastify";
 
 export const CreateNote = () => {
     const router = useRouter();
@@ -25,8 +27,40 @@ export const CreateNote = () => {
         dispatch(closeModal());
     };
 
-    const onCreateNoteSubmit = (e: FormEvent) => {
+    const onCreateNoteSubmit = async (e: FormEvent) => {
         e.preventDefault();
+
+        if (!noteTitle || !noteDetails || !noteTags.length) {
+            toast.error("Please fill all fields");
+            return;
+        }
+
+        try {
+            const createNoteResponse = await createNote({
+                title: noteTitle,
+                content: noteDetails,
+                tagIds: noteTags.map((tag) => tag.value),
+            });
+
+            if (createNoteResponse.message) {
+                toast.error(createNoteResponse.message);
+                return;
+            }
+
+            if (createNoteResponse.id) {
+                toast.success("Note created successfuly");
+
+                const timeoutId = setTimeout(() => {
+                    closeModalHandler();
+
+                    clearTimeout(timeoutId);
+                }, 4000);
+
+                router.refresh();
+            }
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const getTagsHandler = async () => {
@@ -41,7 +75,7 @@ export const CreateNote = () => {
 
     useEffect(() => {
         getTagsHandler();
-    });
+    }, []);
 
     return (
         <div className="relative">
@@ -82,7 +116,11 @@ export const CreateNote = () => {
                     />
                 </label>
                 <div className="gap-2 mt-10 grid grid-cols-[150px_150px]">
-                    <Button color="purple" onClick={onCreateNoteSubmit}>
+                    <Button
+                        color="purple"
+                        onClick={onCreateNoteSubmit}
+                        type="submit"
+                    >
                         Sumbit
                     </Button>
                     <Button color="red" onClick={closeModalHandler}>
