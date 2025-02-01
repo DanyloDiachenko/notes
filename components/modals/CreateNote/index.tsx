@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { closeModal } from "@/store/slices/openedModal";
 import { useRouter } from "next/navigation";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Multiselect } from "@/components/ui/Multiselect";
 import { Tag } from "@/types/tag.interface";
@@ -17,6 +17,8 @@ import { toast } from "react-toastify";
 export const CreateNote = () => {
     const router = useRouter();
     const dispatch = useDispatch();
+
+    const noteDetailsRef = useRef<HTMLDivElement>(null);
 
     const [noteTitle, setNoteTitle] = useState("");
     const [noteDetails, setNoteDetails] = useState("");
@@ -60,6 +62,14 @@ export const CreateNote = () => {
             }
         } catch (error) {
             console.log(error);
+        }
+    };
+
+    console.log(noteDetails);
+
+    const onNoteDetailsChange = () => {
+        if (noteDetailsRef.current) {
+            setNoteDetails(noteDetailsRef.current.innerHTML);
         }
     };
 
@@ -108,12 +118,14 @@ export const CreateNote = () => {
                 </label>
                 <label htmlFor="" className="mt-4 block">
                     <div className="font-medium text-lg">Note Details</div>
-                    <Textarea
-                        className="mt-2"
-                        placeholder="Note details..."
-                        value={noteDetails}
-                        onChange={(e) => setNoteDetails(e.target.value)}
-                    />
+                    <div
+                        ref={noteDetailsRef}
+                        contentEditable="true"
+                        /* className="mt-2 p-3 min-h-[100px] border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" */
+                        className="mt-2 min-h-40 w-full p-3 text-base font-medium bg-gray-100 rounded-md"
+                        onInput={onNoteDetailsChange}
+                        suppressContentEditableWarning={true}
+                    ></div>
                 </label>
                 <div className="gap-2 mt-10 grid grid-cols-[150px_150px]">
                     <Button
