@@ -118,13 +118,12 @@ export const CreateNote = () => {
                 </label>
                 <label htmlFor="" className="mt-4 block">
                     <div className="font-medium text-lg">Note Details</div>
-                    <div
-                        ref={noteDetailsRef}
-                        contentEditable="true"
-                        className="mt-2 min-h-40 w-full p-3 text-base font-medium bg-gray-100 rounded-md"
-                        onInput={onNoteDetailsChange}
-                        suppressContentEditableWarning={true}
-                    ></div>
+                    <Textarea
+                        className="mt-2"
+                        placeholder="Note details..."
+                        value={noteDetails}
+                        onChange={(e) => setNoteDetails(e.target.value)}
+                    />
                 </label>
                 <div className="gap-2 mt-10 grid grid-cols-[150px_150px]">
                     <Button
