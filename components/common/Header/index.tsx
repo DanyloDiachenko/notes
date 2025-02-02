@@ -4,29 +4,30 @@ import { FaSearch } from "react-icons/fa";
 import { HeaderProps } from "./header.props";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { getHeadingText } from "./getHeadingText";
 import { IoIosLogIn } from "react-icons/io";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setOpenedModal } from "@/store/slices/openedModal";
 import { Button } from "@/components/ui/Button";
+import { RootState } from "@/store/store";
+import { setSearchNote } from "@/store/slices/searchNote";
 
 export const Header = ({ pathname, isAuthorized }: HeaderProps) => {
     const dispatch = useDispatch();
     const clientPathname = usePathname();
 
-    const getHeadingText = (pathname: string) => {
-        if (pathname.includes("all")) {
-            return "All Notes";
-        } else if (pathname.includes("archived")) {
-            return "Archived Notes";
-        } else {
-            return "Notes App";
-        }
-    };
+    const searchNote = useSelector(
+        (state: RootState) => state.searchNote.search,
+    );
 
     const [headingText, setHeadeingText] = useState(getHeadingText(pathname));
 
     const onLoginClick = () => {
         dispatch(setOpenedModal("authorization"));
+    };
+
+    const setSearchNoteHandler = (search: string) => {
+        dispatch(setSearchNote(search));
     };
 
     useEffect(() => {
@@ -43,6 +44,10 @@ export const Header = ({ pathname, isAuthorized }: HeaderProps) => {
                             type="text"
                             className="w-full border-2 border-gray-200 rounded-md p-2 pl-8"
                             placeholder="Search in..."
+                            value={searchNote}
+                            onChange={(e) =>
+                                setSearchNoteHandler(e.target.value)
+                            }
                         />
                         <FaSearch className="absolute left-2 top-3 size-5 opacity-20" />
                     </div>
