@@ -10,8 +10,9 @@ import { setOpenedModal } from "@/store/slices/openedModal";
 import { setNoteToEdit } from "@/store/slices/noteToEdit";
 import { setNoteToDelete } from "@/store/slices/noteToDelete";
 import { setNoteToArchive } from "@/store/slices/noteToArchive";
+import { setNoteToUnarchive } from "@/store/slices/noteToUnarchive";
 
-export const NoteActions = ({ note }: NoteActionsProps) => {
+export const NoteActions = ({ note, noteType }: NoteActionsProps) => {
     const dispatch = useDispatch();
 
     const setOpenedModalHandler = (modalToOpen: Modal) => {
@@ -30,6 +31,10 @@ export const NoteActions = ({ note }: NoteActionsProps) => {
         dispatch(setNoteToArchive(note));
     };
 
+    const setNoteToUnarchiveHandler = () => {
+        dispatch(setNoteToUnarchive(note));
+    };
+
     const onEditNoteClick = () => {
         setOpenedModalHandler("editNote");
         setNoteToEditHandler();
@@ -45,6 +50,11 @@ export const NoteActions = ({ note }: NoteActionsProps) => {
         setNoteToArchiveHandler();
     };
 
+    const onUnarchiveNoteClick = () => {
+        setOpenedModalHandler("confirmUnarchiveNote");
+        setNoteToUnarchiveHandler();
+    };
+
     return (
         <div className="pl-4 pr-8">
             <Button
@@ -58,10 +68,14 @@ export const NoteActions = ({ note }: NoteActionsProps) => {
             <Button
                 className="mt-3 gap-2"
                 color="gray"
-                onClick={onArchiveNoteClick}
+                onClick={
+                    noteType === "all"
+                        ? () => onArchiveNoteClick()
+                        : () => onUnarchiveNoteClick()
+                }
             >
                 <IoArchiveOutline className="size-5" />
-                <span>Archive Note</span>
+                <span>{noteType === "all" ? "Archive" : "Unarchive"} Note</span>
             </Button>
             <Button
                 className="mt-3 gap-2"

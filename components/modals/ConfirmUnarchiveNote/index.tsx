@@ -57,7 +57,7 @@ export const ConfirmUnarchiveNote = () => {
                 Archive Note
             </div>
             <div className="text-lg mt-10">
-                Are you sure want to archive note:
+                Are you sure want to unarchive note:
             </div>
             <div className="font-semibold text-xl">
                 {noteToUnarchive.title}?

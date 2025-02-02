@@ -12,6 +12,7 @@ import { ConfirmDeleteTag } from "./ConfirmDeleteTag";
 import { EditTag } from "./EditTag";
 import { Authorization } from "./Authorization";
 import { IoMdClose } from "react-icons/io";
+import { ConfirmUnarchiveNote } from "./ConfirmUnarchiveNote";
 
 export const Modals = () => {
     const dispatch = useDispatch();
@@ -55,6 +56,7 @@ export const Modals = () => {
                 {openedModal === "confirmDeleteTag" && <ConfirmDeleteTag />}
                 {openedModal === "editTag" && <EditTag />}
                 {openedModal === "authorization" && <Authorization />}
+                {openedModal === "confirmUnarchiveNote" && <ConfirmUnarchiveNote />}
             </div>
         </>
     );

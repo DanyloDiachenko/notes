@@ -7,4 +7,5 @@ export type Modal =
     | "createTag"
     | "editTag"
     | "confirmDeleteTag"
-    | "authorization";
+    | "authorization"
+    | "confirmUnarchiveNote";

@@ -6,7 +6,11 @@ import { Note as INote } from "@/types/note.interface";
 import { notFound } from "next/navigation";
 
 const Note = async ({ params }: PageProps) => {
-    const noteId = (await params).noteId;
+    const paramsData = await params;
+
+    const noteId = paramsData.noteId;
+    const noteType = paramsData.type;
+
     let note: null | INote = null;
 
     await (async () => {
@@ -33,7 +37,7 @@ const Note = async ({ params }: PageProps) => {
     return (
         <>
             <NoteDetails note={note} />
-            <NoteActions note={note} />
+            <NoteActions note={note} noteType={noteType} />
         </>
     );
 };
