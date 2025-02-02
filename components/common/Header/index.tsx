@@ -4,7 +4,6 @@ import { FaSearch } from "react-icons/fa";
 import { HeaderProps } from "./header.props";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { getHeadingText } from "./getHeadingText";
 import { IoIosLogIn } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { setOpenedModal } from "@/store/slices/openedModal";
@@ -13,6 +12,16 @@ import { Button } from "@/components/ui/Button";
 export const Header = ({ pathname, isAuthorized }: HeaderProps) => {
     const dispatch = useDispatch();
     const clientPathname = usePathname();
+
+    const getHeadingText = (pathname: string) => {
+        if (pathname.includes("all")) {
+            return "All Notes";
+        } else if (pathname.includes("archived")) {
+            return "Archived Notes";
+        } else {
+            return "Notes App";
+        }
+    };
 
     const [headingText, setHeadeingText] = useState(getHeadingText(pathname));
 

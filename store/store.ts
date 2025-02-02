@@ -6,6 +6,7 @@ import { noteToEditSlice } from "./slices/noteToEdit";
 import { noteTodeleteSlice } from "./slices/noteToDelete";
 import { noteToArchiveSlice } from "./slices/noteToArchive";
 import { noteToUnarchiveSlice } from "./slices/noteToUnarchive";
+import { searchNoteSlice } from "./slices/searchNote";
 
 export const store = configureStore({
     reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
         noteToDelete: noteTodeleteSlice.reducer,
         noteToArchive: noteToArchiveSlice.reducer,
         noteToUnarchive: noteToUnarchiveSlice.reducer,
+        searchNote: searchNoteSlice.reducer,
     },
 });
 
