@@ -5,7 +5,7 @@ import { RootState } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateNote } from "./CreateNote";
 import { EditNote } from "./EditNote";
-import { ConfirmArchiveNote } from "./ArchiveNote";
+import { ConfirmArchiveNote } from "./ConfirmArchiveNote";
 import { ConfirmDeleteNote } from "./ConfirmDeleteNote";
 import { CreateTag } from "./CreateTag";
 import { ConfirmDeleteTag } from "./ConfirmDeleteTag";

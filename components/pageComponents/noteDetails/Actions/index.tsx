@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { setOpenedModal } from "@/store/slices/openedModal";
 import { setNoteToEdit } from "@/store/slices/noteToEdit";
 import { setNoteToDelete } from "@/store/slices/noteToDelete";
+import { setNoteToArchive } from "@/store/slices/noteToArchive";
 
 export const NoteActions = ({ note }: NoteActionsProps) => {
     const dispatch = useDispatch();
@@ -25,6 +26,10 @@ export const NoteActions = ({ note }: NoteActionsProps) => {
         dispatch(setNoteToDelete(note));
     };
 
+    const setNoteToArchiveHandler = () => {
+        dispatch(setNoteToArchive(note));
+    };
+
     const onEditNoteClick = () => {
         setOpenedModalHandler("editNote");
         setNoteToEditHandler();
@@ -33,6 +38,11 @@ export const NoteActions = ({ note }: NoteActionsProps) => {
     const onDeleteNoteClick = () => {
         setOpenedModalHandler("confirmDeleteNote");
         setNoteToDeleteHandler();
+    };
+
+    const onArchiveNoteClick = () => {
+        setOpenedModalHandler("confirmArchiveNote");
+        setNoteToArchiveHandler();
     };
 
     return (
@@ -48,7 +58,7 @@ export const NoteActions = ({ note }: NoteActionsProps) => {
             <Button
                 className="mt-3 gap-2"
                 color="gray"
-                onClick={() => setOpenedModalHandler("confirmArchiveNote")}
+                onClick={onArchiveNoteClick}
             >
                 <IoArchiveOutline className="size-5" />
                 <span>Archive Note</span>

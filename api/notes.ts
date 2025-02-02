@@ -70,9 +70,10 @@ export const getNote = async (noteId: string) => {
 };
 
 interface UpdateNoteBody {
-    title: string;
-    content: string;
-    tagIds: string[];
+    title?: string;
+    content?: string;
+    tagIds?: string[];
+    isArchived?: boolean;
 }
 
 export const updateNote = async (
