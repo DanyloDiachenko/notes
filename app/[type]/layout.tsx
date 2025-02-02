@@ -15,10 +15,12 @@ const NoteTypeLayout = async ({
     const pathname = await getPathname();
     const paramsData = await params;
 
+    const notesType = paramsData.type;
+
     const tag =
         new URLSearchParams(new URL(pathname).search).get("tag") || undefined;
 
-    switch (paramsData.type) {
+    switch (notesType) {
         case "all": {
             break;
         }
@@ -31,14 +33,14 @@ const NoteTypeLayout = async ({
     }
 
     const serverNotes: Note[] = await getNotes({
-        notesType: paramsData.type,
+        notesType: notesType,
         tag: tag,
     });
 
     return (
         <>
             <div className="grid grid-cols-[0.25fr_0.5fr_0.25fr]">
-                <NoteList serverNotes={serverNotes} />
+                <NoteList serverNotes={serverNotes} notesType={notesType} />
                 {children}
             </div>
         </>
