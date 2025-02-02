@@ -5,6 +5,7 @@ import { tagTodeleteSlice } from "./slices/tagToDelete";
 import { noteToEditSlice } from "./slices/noteToEdit";
 import { noteTodeleteSlice } from "./slices/noteToDelete";
 import { noteToArchiveSlice } from "./slices/noteToArchive";
+import { noteToUnarchiveSlice } from "./slices/noteToUnarchive";
 
 export const store = configureStore({
     reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
         noteToEdit: noteToEditSlice.reducer,
         noteToDelete: noteTodeleteSlice.reducer,
         noteToArchive: noteToArchiveSlice.reducer,
+        noteToUnarchive: noteToUnarchiveSlice.reducer,
     },
 });
 
