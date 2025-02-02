@@ -38,7 +38,7 @@ export const NoteList = ({ serverNotes, notesType }: NoteListProps) => {
 
     useEffect(() => {
         getAndSetNotes();
-    }, [pathname, params, searchParams]);
+    }, [pathname, params, searchParams, search]);
 
     return (
         <div className="p-8 pr-4 border-r-2 border-gray-200">
