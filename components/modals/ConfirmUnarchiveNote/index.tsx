@@ -9,33 +9,33 @@ import { FormEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-export const ConfirmArchiveNote = () => {
+export const ConfirmUnarchiveNote = () => {
     const router = useRouter();
     const dispatch = useDispatch();
     const params = useParams();
 
-    const noteToArchive = useSelector(
-        (state: RootState) => state.noteToArchive.noteToArchive,
+    const noteToUnarchive = useSelector(
+        (state: RootState) => state.noteToUnarchive.noteToUnarchive,
     );
 
     const closeModalHandler = () => {
         dispatch(closeModal());
     };
 
-    const onArchiveNoteSubmit = async (e: FormEvent) => {
+    const onUnarchiveNoteSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
         try {
-            const archiveNoteResponse = await updateNote(noteToArchive.id, {
-                isArchived: true,
+            const unarchiveNoteResponse = await updateNote(noteToUnarchive.id, {
+                isArchived: false,
             });
 
-            if (archiveNoteResponse.message) {
-                toast.error(archiveNoteResponse.message);
+            if (unarchiveNoteResponse.message) {
+                toast.error(unarchiveNoteResponse.message);
                 return;
             }
 
-            if (archiveNoteResponse.id) {
+            if (unarchiveNoteResponse.id) {
                 toast.success("Note updated successfuly");
 
                 const timeoutId = setTimeout(() => {
@@ -59,9 +59,11 @@ export const ConfirmArchiveNote = () => {
             <div className="text-lg mt-10">
                 Are you sure want to archive note:
             </div>
-            <div className="font-semibold text-xl">{noteToArchive.title}?</div>
+            <div className="font-semibold text-xl">
+                {noteToUnarchive.title}?
+            </div>
             <div className="gap-2 mt-10 grid grid-cols-[150px_150px]">
-                <Button color="purple" onClick={onArchiveNoteSubmit}>
+                <Button color="purple" onClick={onUnarchiveNoteSubmit}>
                     Sumbit
                 </Button>
                 <Button color="red" onClick={closeModalHandler}>
