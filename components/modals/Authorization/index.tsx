@@ -37,14 +37,9 @@ export const Authorization = () => {
 
                 if (loginData.token) {
                     toast.success("Successfully logged in");
+
                     setCookie("token", loginData.token);
-
-                    const timeoutId = setTimeout(() => {
-                        closeModalHandler();
-
-                        clearTimeout(timeoutId);
-                    }, 4000);
-
+                    closeModalHandler();
                     router.refresh();
                 }
 
@@ -60,14 +55,9 @@ export const Authorization = () => {
 
                 if (registerData.token) {
                     toast.success("Successfully registered and logged in");
+                    
                     setCookie("token", registerData.token);
-
-                    const timeoutId = setTimeout(() => {
-                        closeModalHandler();
-
-                        clearTimeout(timeoutId);
-                    }, 4000);
-
+                    closeModalHandler();
                     router.refresh();
                 }
 

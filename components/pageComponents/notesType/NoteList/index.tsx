@@ -43,7 +43,7 @@ export const NoteList = ({ serverNotes, notesType }: NoteListProps) => {
     return (
         <div className="p-8 pr-4 border-r-2 border-gray-200">
             {notesType === "all" && <CreateNote />}
-            <div className="mt-4">
+            <div className={notesType === "all" ? "mt-4" : ""}>
                 {notes.length ? (
                     notes.map((note, index) => (
                         <NoteComponent key={index} note={note} />

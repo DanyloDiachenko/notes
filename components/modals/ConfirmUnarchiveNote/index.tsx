@@ -38,12 +38,7 @@ export const ConfirmUnarchiveNote = () => {
             if (unarchiveNoteResponse.id) {
                 toast.success("Note updated successfuly");
 
-                const timeoutId = setTimeout(() => {
-                    closeModalHandler();
-
-                    clearTimeout(timeoutId);
-                }, 4000);
-
+                closeModalHandler();
                 router.push(`/${params.type}`);
             }
         } catch (error) {

@@ -49,12 +49,7 @@ export const CreateTag = () => {
             if (createTagResponse.id) {
                 toast.success("Tag created successfuly");
 
-                const timeoutId = setTimeout(() => {
-                    closeModalHandler();
-
-                    clearTimeout(timeoutId);
-                }, 4000);
-
+                closeModalHandler();
                 router.refresh();
             }
         } catch (error) {

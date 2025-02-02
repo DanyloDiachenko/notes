@@ -34,12 +34,7 @@ export const ConfirmDeleteTag = () => {
 
             toast.success("Tag deleted successfuly");
 
-            const timeoutId = setTimeout(() => {
-                closeModalHandler();
-
-                clearTimeout(timeoutId);
-            }, 4000);
-
+            closeModalHandler();
             router.refresh();
         } catch (error) {
             console.log(error);

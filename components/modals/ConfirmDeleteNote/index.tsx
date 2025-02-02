@@ -36,12 +36,7 @@ export const ConfirmDeleteNote = () => {
 
             toast.success("Note deleted successfuly");
 
-            const timeoutId = setTimeout(() => {
-                closeModalHandler();
-
-                clearTimeout(timeoutId);
-            }, 4000);
-
+            closeModalHandler();
             router.push(`/${params.type}`);
         } catch (error) {
             console.log(error);

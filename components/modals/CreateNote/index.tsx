@@ -30,7 +30,7 @@ export const CreateNote = () => {
     const onCreateNoteSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
-        if (!noteTitle || !noteDetails || !noteTags.length) {
+        if (!noteTitle || !noteDetails) {
             toast.error("Please fill all fields");
             return;
         }
@@ -50,12 +50,7 @@ export const CreateNote = () => {
             if (createNoteResponse.id) {
                 toast.success("Note created successfuly");
 
-                const timeoutId = setTimeout(() => {
-                    closeModalHandler();
-
-                    clearTimeout(timeoutId);
-                }, 4000);
-
+                closeModalHandler();
                 router.refresh();
             }
         } catch (error) {

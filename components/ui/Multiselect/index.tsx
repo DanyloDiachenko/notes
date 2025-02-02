@@ -92,7 +92,7 @@ export const Multiselect = ({
                                 className="cursor-pointer"
                             >
                                 {option.title}
-                                {activeOptions.length == index && ","}
+                                {index !== availableOptions.length - 1 && ","}
                             </li>
                         ))
                     ) : (

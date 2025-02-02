@@ -57,12 +57,7 @@ export const EditTag = () => {
             if (editTagResponse.id) {
                 toast.success("Tag updated successfuly");
 
-                const timeoutId = setTimeout(() => {
-                    closeModalHandler();
-
-                    clearTimeout(timeoutId);
-                }, 4000);
-
+                closeModalHandler();
                 router.refresh();
             }
         } catch (error) {

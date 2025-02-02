@@ -3,7 +3,7 @@
 import { FaSearch } from "react-icons/fa";
 import { HeaderProps } from "./header.props";
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { getHeadingText } from "./getHeadingText";
 import { IoIosLogIn } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,6 +15,7 @@ import { setSearchNote } from "@/store/slices/searchNote";
 export const Header = ({ pathname, isAuthorized }: HeaderProps) => {
     const dispatch = useDispatch();
     const clientPathname = usePathname();
+    const router = useRouter();
 
     const searchNote = useSelector(
         (state: RootState) => state.searchNote.search,
@@ -27,6 +28,10 @@ export const Header = ({ pathname, isAuthorized }: HeaderProps) => {
     };
 
     const setSearchNoteHandler = (search: string) => {
+        if (clientPathname === "/") {
+            router.push("/all");
+        }
+
         dispatch(setSearchNote(search));
     };
 
