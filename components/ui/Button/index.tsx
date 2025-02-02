@@ -10,7 +10,7 @@ export const Button = ({
     const colorStyles = {
         purple: "bg-[#7351f5] text-white hover:bg-[#4020c3]",
         gray: "border-2 border-gray-200 text-gray-600 hover:bg-gray-200 hover:text-gray-800",
-        red: "bg-red-500 text-white hover:bg-red-300",
+        red: "bg-red-600 text-white hover:bg-red-500",
     };
 
     return (
