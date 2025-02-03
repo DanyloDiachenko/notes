@@ -1,28 +1,23 @@
 "use client";
 
-import { closeModal } from "@/store/slices/openedModal";
-import { RootState } from "@/store/store";
-import { useDispatch, useSelector } from "react-redux";
-import { CreateNote } from "./CreateNote";
-import { EditNote } from "./EditNote";
-import { ConfirmArchiveNote } from "./ConfirmArchiveNote";
-import { ConfirmDeleteNote } from "./ConfirmDeleteNote";
-import { CreateTag } from "./CreateTag";
-import { ConfirmDeleteTag } from "./ConfirmDeleteTag";
-import { EditTag } from "./EditTag";
-import { Authorization } from "./Authorization";
+import { closeModal, selectOpenedModal } from "@/store/slices/openedModal";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 import { IoMdClose } from "react-icons/io";
-import { ConfirmUnarchiveNote } from "./ConfirmUnarchiveNote";
+import { modals } from "./modals";
 
 export const Modals = () => {
-    const dispatch = useDispatch();
-    const openedModal = useSelector(
-        (state: RootState) => state.openedModal.openedModal,
-    );
+    const dispatch = useAppDispatch();
+    const openedModal = useAppSelector(selectOpenedModal);
 
     const closeModalHandler = () => {
         dispatch(closeModal());
     };
+
+    const currentModal = modals.find((modal) => modal.key === openedModal);
+
+    if (!currentModal) {
+        return <></>;
+    }
 
     return (
         <>
@@ -46,17 +41,9 @@ export const Modals = () => {
                     className="absolute top-2 right-3"
                     onClick={closeModalHandler}
                 >
-                    x
+                    <IoMdClose />
                 </button>
-                {openedModal === "createNote" && <CreateNote />}
-                {openedModal === "editNote" && <EditNote />}
-                {openedModal === "confirmArchiveNote" && <ConfirmArchiveNote />}
-                {openedModal === "confirmDeleteNote" && <ConfirmDeleteNote />}
-                {openedModal === "createTag" && <CreateTag />}
-                {openedModal === "confirmDeleteTag" && <ConfirmDeleteTag />}
-                {openedModal === "editTag" && <EditTag />}
-                {openedModal === "authorization" && <Authorization />}
-                {openedModal === "confirmUnarchiveNote" && <ConfirmUnarchiveNote />}
+                {currentModal.component}
             </div>
         </>
     );

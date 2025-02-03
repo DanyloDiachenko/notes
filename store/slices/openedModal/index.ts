@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { OpenedModalState } from "./openedPopupState.interface";
+import { OpenedModalState } from "./openedModalState.interface";
 import { Modal } from "@/types/modal.enum";
 
 const initialState: OpenedModalState = {
@@ -7,7 +7,7 @@ const initialState: OpenedModalState = {
 };
 
 export const openedModalSlice = createSlice({
-    name: "openedPopup",
+    name: "openedModal",
     initialState,
     reducers: {
         setOpenedModal: (state, action: PayloadAction<Modal>) => {
@@ -21,5 +21,5 @@ export const openedModalSlice = createSlice({
 
 export const { setOpenedModal, closeModal } = openedModalSlice.actions;
 
-export const selectOpenedModal = (state: { openedPopup: OpenedModalState }) =>
-    state.openedPopup.openedModal;
+export const selectOpenedModal = (state: { openedModal: OpenedModalState }) =>
+    state.openedModal.openedModal;
