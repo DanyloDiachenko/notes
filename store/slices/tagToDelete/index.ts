@@ -1,25 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TagToDeleteState } from "./tagToDeleteState.interface";
+import { TagState } from "./tagState.interface";
 
-const initialState: TagToDeleteState = {
-    tagToDelete: {
-        id: "",
-        title: "",
-        slug: "",
-    },
+const initialState: TagState = {
+    tag: null,
 };
 
-export const tagTodeleteSlice = createSlice({
-    name: "tagToDelete",
+export const tagSlice = createSlice({
+    name: "tag",
     initialState,
     reducers: {
-        setTagToDelete: (
-            state,
-            action: PayloadAction<TagToDeleteState["tagToDelete"]>,
-        ) => {
-            state.tagToDelete = action.payload;
+        setTag: (state, action: PayloadAction<TagState["tag"]>) => {
+            state.tag = action.payload;
         },
     },
 });
 
-export const { setTagToDelete } = tagTodeleteSlice.actions;
+export const { setTag } = tagSlice.actions;
+
+export const selectTag = (state: { tag: TagState }) => state.tag.tag;

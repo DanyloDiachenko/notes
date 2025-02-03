@@ -1,27 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { NoteToArchiveState } from "./noteToArchiveState.interface";
+import { NoteState } from "./noteState.interface";
 
-const initialState: NoteToArchiveState = {
-    noteToArchive: {
-        id: "",
-        title: "",
-        content: "",
-        tags: [],
-        updatedAt: "",
-    },
+const initialState: NoteState = {
+    note: null,
 };
 
-export const noteToArchiveSlice = createSlice({
-    name: "noteToArchive",
+export const noteSlice = createSlice({
+    name: "note",
     initialState,
     reducers: {
-        setNoteToArchive: (
-            state,
-            action: PayloadAction<NoteToArchiveState["noteToArchive"]>,
-        ) => {
-            state.noteToArchive = action.payload;
+        setNote: (state, action: PayloadAction<NoteState["note"]>) => {
+            state.note = action.payload;
         },
     },
 });
 
-export const { setNoteToArchive } = noteToArchiveSlice.actions;
+export const { setNote } = noteSlice.actions;
+
+export const selectNote = (state: { note: NoteState }) => state.note.note;

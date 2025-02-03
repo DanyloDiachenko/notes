@@ -3,7 +3,7 @@ import { OpenedModalState } from "./openedPopupState.interface";
 import { Modal } from "@/types/modal.type";
 
 const initialState: OpenedModalState = {
-    openedModal: "",
+    openedModal: Modal.None,
 };
 
 export const openedModalSlice = createSlice({
@@ -14,9 +14,12 @@ export const openedModalSlice = createSlice({
             state.openedModal = action.payload;
         },
         closeModal: (state) => {
-            state.openedModal = "";
+            state.openedModal = Modal.None;
         },
     },
 });
 
 export const { setOpenedModal, closeModal } = openedModalSlice.actions;
+
+export const selectOpenedModal = (state: { openedPopup: OpenedModalState }) =>
+    state.openedPopup.openedModal;
