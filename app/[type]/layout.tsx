@@ -1,4 +1,4 @@
-import { getNotes } from "@/api/notes";
+import { getNotes } from "@/api/notes.api";
 import { NoteList } from "@/components/pageComponents/notesType/NoteList";
 import { getPathname } from "@/helpers/getPathname";
 import { Note } from "@/types/note.interface";

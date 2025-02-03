@@ -7,9 +7,9 @@ import { getPathname } from "@/helpers/getPathname";
 import { ReduxProvider } from "@/components/providers/Redux";
 import { Modals } from "@/components/modals";
 import { getCookie } from "@/helpers/getCookie";
-import { getProfile } from "@/api/auth";
+import { getProfile } from "@/api/auth.api";
 import { ToastProvider } from "@/components/providers/Toast";
-import { getTags } from "@/api/tags";
+import { getTags } from "@/api/tags.api";
 import { Tag } from "@/types/tag.interface";
 
 const geistSans = Inter({

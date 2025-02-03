@@ -1,6 +1,6 @@
 "use client";
 
-import { deleteNote } from "@/api/notes";
+import { deleteNote } from "@/api/notes.api";
 import { Button } from "@/components/ui/Button";
 import { closeModal } from "@/store/slices/openedModal";
 import { RootState } from "@/store/store";

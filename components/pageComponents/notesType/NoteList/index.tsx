@@ -6,7 +6,7 @@ import { Note as NoteComponent } from "./Note";
 import { NoteListProps } from "./noteList.props";
 import { Note } from "@/types/note.interface";
 import { usePathname, useParams, useSearchParams } from "next/navigation";
-import { getNotes } from "@/api/notes";
+import { getNotes } from "@/api/notes.api";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 

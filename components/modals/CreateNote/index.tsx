@@ -9,9 +9,9 @@ import { FormEvent, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Multiselect } from "@/components/ui/Multiselect";
 import { Tag } from "@/types/tag.interface";
-import { getTags } from "@/api/tags";
+import { getTags } from "@/api/tags.api";
 import { SelectOption } from "@/types/selectOption.interface";
-import { createNote } from "@/api/notes";
+import { createNote } from "@/api/notes.api";
 import { toast } from "react-toastify";
 
 export const CreateNote = () => {

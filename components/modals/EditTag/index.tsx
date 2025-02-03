@@ -1,6 +1,6 @@
 "use client";
 
-import { updateTag } from "@/api/tags";
+import { updateTag } from "@/api/tags.api";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { closeModal } from "@/store/slices/openedModal";

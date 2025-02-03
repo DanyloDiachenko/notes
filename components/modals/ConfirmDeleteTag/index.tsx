@@ -1,6 +1,6 @@
 "use client";
 
-import { deleteTag } from "@/api/tags";
+import { deleteTag } from "@/api/tags.api";
 import { Button } from "@/components/ui/Button";
 import { closeModal } from "@/store/slices/openedModal";
 import { RootState } from "@/store/store";

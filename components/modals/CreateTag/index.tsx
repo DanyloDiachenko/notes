@@ -1,6 +1,6 @@
 "use client";
 
-import { createTag } from "@/api/tags";
+import { createTag } from "@/api/tags.api";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { closeModal } from "@/store/slices/openedModal";

@@ -1,6 +1,6 @@
 "use client";
 
-import { login, register } from "@/api/auth";
+import { login, register } from "@/api/auth.api";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { cn } from "@/helpers/cn";
@@ -55,7 +55,7 @@ export const Authorization = () => {
 
                 if (registerData.token) {
                     toast.success("Successfully registered and logged in");
-                    
+
                     setCookie("token", registerData.token);
                     closeModalHandler();
                     router.refresh();

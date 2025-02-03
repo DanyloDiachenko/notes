@@ -1,5 +1,5 @@
 import { PageProps } from "@/.next/types/app/page";
-import { getNote } from "@/api/notes";
+import { getNote } from "@/api/notes.api";
 import { NoteActions } from "@/components/pageComponents/noteDetails/Actions";
 import { NoteDetails } from "@/components/pageComponents/noteDetails/Details";
 import { Note as INote } from "@/types/note.interface";
