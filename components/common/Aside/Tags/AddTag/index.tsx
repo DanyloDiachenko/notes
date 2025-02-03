@@ -2,14 +2,15 @@
 
 import { Button } from "@/components/ui/Button";
 import { setOpenedModal } from "@/store/slices/openedModal";
+import { useAppDispatch } from "@/store/store";
+import { Modal } from "@/types/modal.enum";
 import { FiPlus } from "react-icons/fi";
-import { useDispatch } from "react-redux";
 
 export const AddTag = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const onAddTagButtonClick = () => {
-        dispatch(setOpenedModal("createTag"));
+        dispatch(setOpenedModal(Modal.CreateTag));
     };
 
     return (

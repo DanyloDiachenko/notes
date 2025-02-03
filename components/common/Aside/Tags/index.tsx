@@ -19,7 +19,7 @@ export const Tags = async ({ isAuthorized }: TagsProps) => {
         <div className="px-4 mt-2 text-gray-500">
             <div className="font-semibold">Tags</div>
             {tags.length ? (
-                tags.map((tag, index) => <Tag key={index} tag={tag} />)
+                tags.map((tag) => <Tag key={tag.id} tag={tag} />)
             ) : (
                 <div className="mt-4 font-medium">Nothing here...</div>
             )}
