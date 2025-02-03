@@ -32,10 +32,10 @@ const NoteTypeLayout = async ({
         }
     }
 
-    const serverNotes: Note[] = await getNotes({
+    const serverNotes = await getNotes({
         notesType: notesType,
         tag: tag,
-    });
+    }) as Note[];
 
     return (
         <>

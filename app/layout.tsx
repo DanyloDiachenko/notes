@@ -11,6 +11,7 @@ import { getProfile } from "@/api/auth.api";
 import { ToastProvider } from "@/components/providers/Toast";
 import { getTags } from "@/api/tags.api";
 import { Tag } from "@/types/tag.interface";
+import { GetTagsResponse } from "@/api/responses/tags.types";
 
 const geistSans = Inter({
     variable: "--font-inter",
@@ -41,7 +42,7 @@ const RootLayout = async ({
         try {
             const profile = await getProfile();
 
-            if (profile.email) {
+            if ("email" in profile) {
                 isAuthorized = true;
             }
         } catch (error) {
@@ -53,7 +54,7 @@ const RootLayout = async ({
 
     if (isAuthorized) {
         try {
-            tags = await getTags();
+            tags = (await getTags()) as Tag[];
         } catch (error) {
             console.log(error);
         }

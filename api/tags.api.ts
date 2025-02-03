@@ -6,7 +6,10 @@ import {
     GetTagsResponse,
     UpdateTagResponse,
 } from "./responses/tags.types";
-import { CreateTagBody, UpdateTagBody } from "./requestBodies/tags.interfaces";
+import {
+    CreateTagRequestBody,
+    UpdateTagRequestBody,
+} from "./requestBodies/tags.interfaces";
 
 export const getTags = async (): Promise<GetTagsResponse> => {
     return fetchApi({ endpoint: "/tags", isAuthRequired: true, method: "GET" });
@@ -21,7 +24,7 @@ export const getTag = async (tagId: string): Promise<GetTagResponse> => {
 };
 
 export const createTag = async (
-    createTagBody: CreateTagBody,
+    createTagBody: CreateTagRequestBody,
 ): Promise<CreateTagResponse> => {
     return fetchApi({
         endpoint: "/tags",
@@ -33,7 +36,7 @@ export const createTag = async (
 
 export const updateTag = async (
     tagId: string,
-    updateTagBody: UpdateTagBody,
+    updateTagBody: UpdateTagRequestBody,
 ): Promise<UpdateTagResponse> => {
     return fetchApi({
         endpoint: `/tags/${tagId}`,

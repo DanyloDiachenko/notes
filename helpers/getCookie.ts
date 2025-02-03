@@ -1,9 +1,7 @@
-/* import { cookies } from "next/headers"; */
-
 export const getCookie = async (name: string): Promise<string | null> => {
     if (typeof document === "undefined") {
         const { cookies } = await import("next/headers");
-        
+
         const cookieData = (await cookies()).get(name);
 
         return cookieData ? cookieData.value : null;
