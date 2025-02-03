@@ -17,7 +17,7 @@ const Note = async ({ params }: PageProps) => {
         try {
             const noteData = await getNote(noteId);
 
-            if (noteData.message) {
+            if ("message" in noteData) {
                 notFound();
             }
 

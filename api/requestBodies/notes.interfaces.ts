@@ -1,4 +1,4 @@
-import { NotesType } from "@/types/notesType.type";
+import { NotesType } from "@/types/notesType.enum";
 
 export interface GetNotesRequestBody {
     notesType?: NotesType;

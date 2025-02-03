@@ -9,9 +9,6 @@ import { Modals } from "@/components/modals";
 import { getCookie } from "@/helpers/getCookie";
 import { getProfile } from "@/api/auth.api";
 import { ToastProvider } from "@/components/providers/Toast";
-import { getTags } from "@/api/tags.api";
-import { Tag } from "@/types/tag.interface";
-import { GetTagsResponse } from "@/api/responses/tags.types";
 
 const geistSans = Inter({
     variable: "--font-inter",
@@ -33,10 +30,9 @@ const RootLayout = async ({
     const pathname = await getPathname();
     const token = await getCookie("token");
 
-    let tags: Tag[] = [];
     let isAuthorized = false;
 
-    if (!token) {
+    if (!token || !token.length) {
         isAuthorized = false;
     } else {
         try {
@@ -44,19 +40,12 @@ const RootLayout = async ({
 
             if ("email" in profile) {
                 isAuthorized = true;
+            } else {
+                isAuthorized = false;
             }
         } catch (error) {
             console.log(error);
-
             isAuthorized = false;
-        }
-    }
-
-    if (isAuthorized) {
-        try {
-            tags = (await getTags()) as Tag[];
-        } catch (error) {
-            console.log(error);
         }
     }
 
@@ -66,11 +55,7 @@ const RootLayout = async ({
                 className={`${geistSans.variable} antialiased grid grid-cols-[minmax(200px,_280px)_1fr]`}
             >
                 <ReduxProvider>
-                    <Aside
-                        pathname={pathname}
-                        tags={tags}
-                        isAuthorized={isAuthorized}
-                    />
+                    <Aside isAuthorized={isAuthorized} />
                     <main className="w-full">
                         <Header
                             pathname={pathname}

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
-import { Modal } from "@/types/modal.type";
+import { Modal } from "@/types/modal.enum";
 import { setOpenedModal } from "@/store/slices/openedModal";
 import { useDispatch } from "react-redux";
 import { MdOutlineDelete, MdOutlineModeEditOutline } from "react-icons/md";
