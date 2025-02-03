@@ -1,18 +1,20 @@
-import { Note } from "@/types/note.interface";
 import { fetchApi } from "./fetchApi.api";
-import { UnathorizedResponse } from "./responses/common/unathorized.interface";
-import { NotFoundResponse } from "./responses/common/notFound.interface";
-import { BadRequestResponse } from "./responses/common/badRequest.interface";
-
-interface GetNotesRequestBody {
-    notesType?: "all" | "archived";
-    tag?: string;
-    search?: string;
-}
+import {
+    CreateNoteRequestBody,
+    GetNotesRequestBody,
+    UpdateNoteRequestBody,
+} from "./requestBodies/notes.interfaces";
+import {
+    CreateNoteResponse,
+    DeleteNoteResponse,
+    GetNoteResponse,
+    GetNotesResponse,
+    UpdateNoteResponse,
+} from "./responses/notes.interfaces";
 
 export const getNotes = async (
     params: GetNotesRequestBody,
-): Promise<Note[] | UnathorizedResponse> => {
+): Promise<GetNotesResponse> => {
     const queryParams = new URLSearchParams();
 
     if (params.notesType) {
@@ -35,24 +37,16 @@ export const getNotes = async (
     });
 };
 
-export const getNote = async (
-    noteId: string,
-): Promise<Note | UnathorizedResponse | NotFoundResponse> =>
+export const getNote = async (noteId: string): Promise<GetNoteResponse> =>
     fetchApi({
         endpoint: `/notes/${noteId}`,
         isAuthRequired: true,
         method: "GET",
     });
 
-interface CreateNoteBody {
-    title: string;
-    content: string;
-    tagIds: string[];
-}
-
 export const createNote = async (
     createNoteBody: CreateNoteBody,
-): Promise<Note | BadRequestResponse> =>
+): Promise<CreateNoteResponse> =>
     fetchApi({
         endpoint: "/notes",
         method: "POST",
@@ -60,14 +54,10 @@ export const createNote = async (
         isAuthRequired: true,
     });
 
-interface UpdateNoteBody extends Partial<CreateNoteBody> {
-    isArchived?: boolean;
-}
-
 export const updateNote = async (
     noteId: string,
     updateNoteBody: UpdateNoteBody,
-): Promise<Note | NotFoundResponse> =>
+): Promise<UpdateNoteResponse> =>
     fetchApi({
         endpoint: `/notes/${noteId}`,
         method: "PUT",
@@ -75,9 +65,7 @@ export const updateNote = async (
         isAuthRequired: true,
     });
 
-export const deleteNote = async (
-    noteId: string,
-): Promise<NotFoundResponse | {}> =>
+export const deleteNote = async (noteId: string): Promise<DeleteNoteResponse> =>
     fetchApi({
         endpoint: `/notes/${noteId}`,
         method: "DELETE",
