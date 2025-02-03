@@ -55,7 +55,7 @@ const RootLayout = async ({
                 className={`${geistSans.variable} antialiased grid grid-cols-[minmax(200px,_280px)_1fr]`}
             >
                 <ReduxProvider>
-                    <Aside isAuthorized={isAuthorized} />
+                    <Aside isAuthorized={isAuthorized} pathname={pathname} />
                     <main className="w-full">
                         <Header
                             pathname={pathname}

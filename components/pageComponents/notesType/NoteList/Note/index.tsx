@@ -5,8 +5,7 @@ import { NoteProps } from "./note.props";
 import { useParams } from "next/navigation";
 import { formatDate } from "@/helpers/formatDate";
 
-export const Note = ({ note }: NoteProps) => {
-    const notesType = useParams().type as string;
+export const Note = ({ note, notesType }: NoteProps) => {
     const noteId = useParams().noteId;
 
     return (

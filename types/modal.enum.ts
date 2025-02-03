@@ -1,6 +1,6 @@
 export enum Modal {
     None = "",
-    CrateNote = "createNote",
+    CreateNote = "createNote",
     EditNote = "editNote",
     ConfirmArchiveNote = "confirmArchiveNote",
     ConfirmDeleteNote = "confirmDeleteNote",
