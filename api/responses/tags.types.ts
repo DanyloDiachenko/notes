@@ -12,4 +12,4 @@ export type CreateTagResponse = Tag | UnathorizedResponse | BadRequestResponse;
 
 export type UpdateTagResponse = Tag | UnathorizedResponse | NotFoundResponse;
 
-export type DeleteTagResponse = NotFoundResponse | DeleteSuccessResponse;
+export type DeleteTagResponse = NotFoundResponse | UnathorizedResponse | DeleteSuccessResponse;
