@@ -3,7 +3,7 @@ import {
     GetProfileResponse,
     LoginResponse,
     RegisterResponse,
-} from "./responses/auth.interfaces";
+} from "./responses/auth.types";
 import {
     LoginRequestBody,
     RegisterRequestBody,

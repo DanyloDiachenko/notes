@@ -1,16 +1,18 @@
-import { Tag } from "@/types/tag.interface";
 import { fetchApi } from "./fetchApi.api";
-import { UnathorizedResponse } from "./responses/common/unathorized.interface";
-import { NotFoundResponse } from "./responses/common/notFound.interface";
-import { BadRequestResponse } from "./responses/common/badRequest.interface";
+import {
+    CreateTagResponse,
+    DeleteTagResponse,
+    GetTagResponse,
+    GetTagsResponse,
+    UpdateTagResponse,
+} from "./responses/tags.types";
+import { CreateTagBody, UpdateTagBody } from "./requestBodies/tags.interfaces";
 
-export const getTags = async (): Promise<Tag[] | UnathorizedResponse> => {
+export const getTags = async (): Promise<GetTagsResponse> => {
     return fetchApi({ endpoint: "/tags", isAuthRequired: true, method: "GET" });
 };
 
-export const getTag = async (
-    tagId: string,
-): Promise<Tag | UnathorizedResponse | NotFoundResponse> => {
+export const getTag = async (tagId: string): Promise<GetTagResponse> => {
     return fetchApi({
         endpoint: `/tags/${tagId}`,
         isAuthRequired: true,
@@ -18,14 +20,9 @@ export const getTag = async (
     });
 };
 
-interface CreateTagBody {
-    title: string;
-    slug: string;
-}
-
 export const createTag = async (
     createTagBody: CreateTagBody,
-): Promise<Tag | UnathorizedResponse | BadRequestResponse> => {
+): Promise<CreateTagResponse> => {
     return fetchApi({
         endpoint: "/tags",
         method: "POST",
@@ -34,12 +31,10 @@ export const createTag = async (
     });
 };
 
-interface UpdateTagBody extends Partial<CreateTagBody> {}
-
 export const updateTag = async (
     tagId: string,
     updateTagBody: UpdateTagBody,
-): Promise<Tag | NotFoundResponse> => {
+): Promise<UpdateTagResponse> => {
     return fetchApi({
         endpoint: `/tags/${tagId}`,
         method: "PUT",
@@ -48,9 +43,7 @@ export const updateTag = async (
     });
 };
 
-export const deleteTag = async (
-    tagId: string,
-): Promise<NotFoundResponse | {}> => {
+export const deleteTag = async (tagId: string): Promise<DeleteTagResponse> => {
     return fetchApi({
         endpoint: `/tags/${tagId}`,
         method: "DELETE",

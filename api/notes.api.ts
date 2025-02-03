@@ -10,7 +10,7 @@ import {
     GetNoteResponse,
     GetNotesResponse,
     UpdateNoteResponse,
-} from "./responses/notes.interfaces";
+} from "./responses/notes.types";
 
 export const getNotes = async (
     params: GetNotesRequestBody,
@@ -45,7 +45,7 @@ export const getNote = async (noteId: string): Promise<GetNoteResponse> =>
     });
 
 export const createNote = async (
-    createNoteBody: CreateNoteBody,
+    createNoteBody: CreateNoteRequestBody,
 ): Promise<CreateNoteResponse> =>
     fetchApi({
         endpoint: "/notes",
@@ -56,7 +56,7 @@ export const createNote = async (
 
 export const updateNote = async (
     noteId: string,
-    updateNoteBody: UpdateNoteBody,
+    updateNoteBody: UpdateNoteRequestBody,
 ): Promise<UpdateNoteResponse> =>
     fetchApi({
         endpoint: `/notes/${noteId}`,
