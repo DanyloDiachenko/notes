@@ -19,3 +19,6 @@ export const searchNoteSlice = createSlice({
 });
 
 export const { setSearchNote } = searchNoteSlice.actions;
+
+export const selectSearchNote = (state: { searchNote: SearchNoteState }) =>
+    state.searchNote.search;

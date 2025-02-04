@@ -6,4 +6,5 @@ export interface MultiselectProps {
     activeOptions: SelectOption[];
     setActiveOptions: (options: SelectOption[]) => void;
     className: string;
+    id: string;
 }

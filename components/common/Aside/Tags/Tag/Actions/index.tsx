@@ -1,38 +1,24 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
-import { Modal } from "@/types/modal.type";
+import { Modal } from "@/types/modal.enum";
 import { setOpenedModal } from "@/store/slices/openedModal";
-import { useDispatch } from "react-redux";
 import { MdOutlineDelete, MdOutlineModeEditOutline } from "react-icons/md";
 import { ActionsProps } from "./actions.props";
-import { Tag } from "@/types/tag.interface";
-import { setTagToEdit } from "@/store/slices/tagToEdit";
-import { setTagToDelete } from "@/store/slices/tagToDelete";
+import { useAppDispatch } from "@/store/store";
+import { setTag } from "@/store/slices/tag";
 
 export const Actions = ({ tag }: ActionsProps) => {
-    const dispatch = useDispatch();
-
-    const setOpenedModalHandler = (modalToOpen: Modal) => {
-        dispatch(setOpenedModal(modalToOpen));
-    };
-
-    const setTagToEditHandler = (tag: Tag) => {
-        dispatch(setTagToEdit(tag));
-    };
-
-    const setTagToDeleteHandler = (tag: Tag) => {
-        dispatch(setTagToDelete(tag));
-    };
+    const dispatch = useAppDispatch();
 
     const onEditClick = () => {
-        setOpenedModalHandler("editTag");
-        setTagToEditHandler(tag);
+        dispatch(setOpenedModal(Modal.EditTag));
+        dispatch(setTag(tag));
     };
 
     const onDeleteClick = () => {
-        setOpenedModalHandler("confirmDeleteTag");
-        setTagToDeleteHandler(tag);
+        dispatch(setOpenedModal(Modal.ConfirmDeleteTag));
+        dispatch(setTag(tag));
     };
 
     return (

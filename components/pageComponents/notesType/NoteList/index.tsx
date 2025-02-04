@@ -6,29 +6,32 @@ import { Note as NoteComponent } from "./Note";
 import { NoteListProps } from "./noteList.props";
 import { Note } from "@/types/note.interface";
 import { usePathname, useParams, useSearchParams } from "next/navigation";
-import { getNotes } from "@/api/notes";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
+import { getNotes } from "@/api/notes.api";
+import { useAppSelector } from "@/store/store";
+import { selectSearchNote } from "@/store/slices/searchNote";
+import { NotesType } from "@/types/notesType.enum";
 
 export const NoteList = ({ serverNotes, notesType }: NoteListProps) => {
     const pathname = usePathname();
     const params = useParams();
     const searchParams = useSearchParams();
 
-    const search = useSelector((state: RootState) => state.searchNote.search);
+    const noteId = params.noteId as string | undefined;
+
+    const search = useAppSelector(selectSearchNote);
 
     const [notes, setNotes] = useState<Note[]>(serverNotes);
 
     const getAndSetNotes = async () => {
-        const notesType = params.type as "all" | "archived";
+        const notesType = params.type as NotesType;
         const tag = searchParams.get("tag") || undefined;
 
         try {
-            const notesResponse = await getNotes({
+            const notesResponse = (await getNotes({
                 notesType,
                 tag,
                 search,
-            });
+            })) as Note[];
 
             setNotes(notesResponse);
         } catch (error) {
@@ -46,7 +49,12 @@ export const NoteList = ({ serverNotes, notesType }: NoteListProps) => {
             <div className={notesType === "all" ? "mt-4" : ""}>
                 {notes.length ? (
                     notes.map((note, index) => (
-                        <NoteComponent key={index} note={note} />
+                        <NoteComponent
+                            key={index}
+                            note={note}
+                            notesType={notesType}
+                            noteId={noteId}
+                        />
                     ))
                 ) : (
                     <div className="font-medium">Nothing here...</div>

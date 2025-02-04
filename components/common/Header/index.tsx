@@ -6,25 +6,23 @@ import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { getHeadingText } from "./getHeadingText";
 import { IoIosLogIn } from "react-icons/io";
-import { useDispatch, useSelector } from "react-redux";
 import { setOpenedModal } from "@/store/slices/openedModal";
 import { Button } from "@/components/ui/Button";
-import { RootState } from "@/store/store";
-import { setSearchNote } from "@/store/slices/searchNote";
+import { useAppDispatch, useAppSelector } from "@/store/store";
+import { selectSearchNote, setSearchNote } from "@/store/slices/searchNote";
+import { Modal } from "@/types/modal.enum";
 
 export const Header = ({ pathname, isAuthorized }: HeaderProps) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const clientPathname = usePathname();
     const router = useRouter();
 
-    const searchNote = useSelector(
-        (state: RootState) => state.searchNote.search,
-    );
+    const searchNote = useAppSelector(selectSearchNote);
 
     const [headingText, setHeadeingText] = useState(getHeadingText(pathname));
 
     const onLoginClick = () => {
-        dispatch(setOpenedModal("authorization"));
+        dispatch(setOpenedModal(Modal.Authorization));
     };
 
     const setSearchNoteHandler = (search: string) => {

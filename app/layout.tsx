@@ -7,12 +7,12 @@ import { getPathname } from "@/helpers/getPathname";
 import { ReduxProvider } from "@/components/providers/Redux";
 import { Modals } from "@/components/modals";
 import { getCookie } from "@/helpers/getCookie";
-import { getProfile } from "@/api/auth";
+import { getProfile } from "@/api/auth.api";
 import { ToastProvider } from "@/components/providers/Toast";
-import { getTags } from "@/api/tags";
-import { Tag } from "@/types/tag.interface";
+import { ReactNode } from "react";
+import { cn } from "@/helpers/cn";
 
-const geistSans = Inter({
+const inter = Inter({
     variable: "--font-inter",
     weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
     preload: true,
@@ -27,49 +27,40 @@ export const metadata: Metadata = {
 const RootLayout = async ({
     children,
 }: Readonly<{
-    children: React.ReactNode;
+    children: ReactNode;
 }>) => {
     const pathname = await getPathname();
     const token = await getCookie("token");
 
-    let tags: Tag[] = [];
-    let isAuthorized = false;
+    let isAuthorized;
 
-    if (!token) {
+    if (!token || !token.length) {
         isAuthorized = false;
     } else {
         try {
             const profile = await getProfile();
 
-            if (profile.email) {
+            if ("email" in profile) {
                 isAuthorized = true;
+            } else {
+                isAuthorized = false;
             }
         } catch (error) {
             console.log(error);
-
             isAuthorized = false;
-        }
-    }
-
-    if (isAuthorized) {
-        try {
-            tags = await getTags();
-        } catch (error) {
-            console.log(error);
         }
     }
 
     return (
         <html lang="en">
             <body
-                className={`${geistSans.variable} antialiased grid grid-cols-[minmax(200px,_280px)_1fr]`}
+                className={cn(
+                    inter.variable,
+                    "antialiased grid grid-cols-[minmax(200px,_280px)_1fr]",
+                )}
             >
                 <ReduxProvider>
-                    <Aside
-                        pathname={pathname}
-                        tags={tags}
-                        isAuthorized={isAuthorized}
-                    />
+                    <Aside isAuthorized={isAuthorized} pathname={pathname} />
                     <main className="w-full">
                         <Header
                             pathname={pathname}

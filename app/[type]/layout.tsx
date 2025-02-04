@@ -1,7 +1,8 @@
-import { getNotes } from "@/api/notes";
+import { getNotes } from "@/api/notes.api";
 import { NoteList } from "@/components/pageComponents/notesType/NoteList";
 import { getPathname } from "@/helpers/getPathname";
 import { Note } from "@/types/note.interface";
+import { NotesType } from "@/types/notesType.enum";
 import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 
@@ -15,27 +16,19 @@ const NoteTypeLayout = async ({
     const pathname = await getPathname();
     const paramsData = await params;
 
-    const notesType = paramsData.type;
+    const notesType = paramsData.type as NotesType;
 
     const tag =
         new URLSearchParams(new URL(pathname).search).get("tag") || undefined;
 
-    switch (notesType) {
-        case "all": {
-            break;
-        }
-        case "archived": {
-            break;
-        }
-        default: {
-            return notFound();
-        }
+    if (notesType !== "all" && notesType !== "archived") {
+        return notFound();
     }
 
-    const serverNotes: Note[] = await getNotes({
+    const serverNotes = (await getNotes({
         notesType: notesType,
         tag: tag,
-    });
+    })) as Note[];
 
     return (
         <>

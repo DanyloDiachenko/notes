@@ -1,24 +1,21 @@
-"use client";
-
 import Link from "next/link";
 import { NoteProps } from "./note.props";
-import { useParams } from "next/navigation";
 import { formatDate } from "@/helpers/formatDate";
+import { cn } from "@/helpers/cn";
 
-export const Note = ({ note }: NoteProps) => {
-    const notesType = useParams().type as string;
-    const noteId = useParams().noteId;
-
+export const Note = ({ note, notesType, noteId }: NoteProps) => {
     return (
         <div
-            className={`p-3 border-b-2 border-gray-200 ${
-                noteId === note.id ? "bg-slate-100 border-opacity-0" : ""
-            }`}
+            className={cn(
+                "p-3 border-b-2 border-gray-200 duration-500",
+                noteId === note.id ? "bg-slate-100 border-opacity-0" : "",
+            )}
         >
             <Link
-                className={`font-bold text-xl text-slate-800 hover:text-[#7351f5] ${
-                    noteId === note.id ? "text-[#7351f5_!important]" : ""
-                }`}
+                className={cn(
+                    "font-bold text-xl text-slate-800 hover:text-[#7351f5]",
+                    noteId === note.id ? "text-[#7351f5_!important]" : "",
+                )}
                 href={`/${notesType}/${note.id}`}
             >
                 {note.title}
