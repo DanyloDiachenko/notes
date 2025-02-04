@@ -8,12 +8,12 @@ import { setCookie } from "@/helpers/setCookie";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
 import { closeModal } from "@/store/slices/openedModal";
+import { useAppDispatch } from "@/store/store";
 
 export const Authorization = () => {
     const router = useRouter();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const [tab, setTab] = useState<"login" | "register">("login");
     const [email, setEmail] = useState("");
@@ -35,16 +35,17 @@ export const Authorization = () => {
             try {
                 const loginData = await login({ email, password });
 
+                if ("message" in loginData) {
+                    toast.error(loginData.message);
+                    return;
+                }
+
                 if (loginData.token) {
                     toast.success("Successfully logged in");
 
                     setCookie("token", loginData.token);
                     closeModalHandler();
                     router.refresh();
-                }
-
-                if (loginData.message) {
-                    toast.error(loginData.message);
                 }
             } catch (error) {
                 console.log(error);
@@ -53,16 +54,16 @@ export const Authorization = () => {
             try {
                 const registerData = await register({ email, password });
 
-                if (registerData.token) {
+                if ("message" in registerData) {
+                    toast.error(registerData.message);
+                }
+
+                if ("token" in registerData) {
                     toast.success("Successfully registered and logged in");
 
                     setCookie("token", registerData.token);
                     closeModalHandler();
                     router.refresh();
-                }
-
-                if (registerData.message) {
-                    toast.error(registerData.message);
                 }
             } catch (error) {
                 console.log(error);
@@ -122,7 +123,7 @@ export const Authorization = () => {
                 </label>
                 <div className="gap-2 mt-10 grid grid-cols-[150px_150px]">
                     <Button color="purple" onClick={onAuthSubmit}>
-                        Sumbit
+                        Submit
                     </Button>
                     <Button color="red" onClick={closeModalHandler}>
                         Discard

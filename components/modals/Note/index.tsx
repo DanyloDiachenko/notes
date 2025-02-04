@@ -15,12 +15,9 @@ import { Tag } from "@/types/tag.interface";
 import { toast } from "react-toastify";
 import { useAppSelector } from "@/store/store";
 import { selectNote } from "@/store/slices/note";
+import { NoteProps } from "./note.props";
 
-interface NoteModalProps {
-    mode: "create" | "edit";
-}
-
-export const Note = ({ mode }: NoteModalProps) => {
+export const Note = ({ mode }: NoteProps) => {
     const router = useRouter();
     const dispatch = useDispatch();
     const note = useAppSelector(selectNote);
