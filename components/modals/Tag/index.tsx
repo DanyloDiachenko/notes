@@ -9,8 +9,9 @@ import { useAppDispatch, useAppSelector } from "@/store/store";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { toast } from "react-toastify";
+import { TagProps } from "./tag.props";
 
-export const Tag = ({ type }: { type: "create" | "edit" }) => {
+export const Tag = ({ type }: TagProps) => {
     const dispatch = useAppDispatch();
     const router = useRouter();
     const tag = useAppSelector(selectTag);
