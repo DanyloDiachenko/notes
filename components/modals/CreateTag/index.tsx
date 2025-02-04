@@ -4,14 +4,14 @@ import { createTag } from "@/api/tags.api";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { closeModal } from "@/store/slices/openedModal";
+import { useAppDispatch } from "@/store/store";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
-import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 export const CreateTag = () => {
     const router = useRouter();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const [tagTitle, setTagTitle] = useState("");
     const [tagKeyCode, setTagKeyCode] = useState("");
@@ -27,13 +27,10 @@ export const CreateTag = () => {
             toast.error("Please fill all fields");
             return;
         }
-        for (let i = 0; i < tagKeyCode.length; i++) {
-            if (!/^[a-zA-Z0-9]$/.test(tagKeyCode[i])) {
-                toast.error(
-                    "Tag key code should only contain letters and numbers",
-                );
-                return;
-            }
+
+        if (!/^[a-zA-Z0-9]+$/.test(tagKeyCode)) {
+            toast.error("Tag key code should only contain letters and numbers");
+            return;
         }
 
         try {
@@ -42,10 +39,11 @@ export const CreateTag = () => {
                 slug: tagKeyCode,
             });
 
-            if (createTagResponse.message) {
+            if ("message" in createTagResponse) {
                 toast.error(createTagResponse.message);
                 return;
             }
+
             if (createTagResponse.id) {
                 toast.success("Tag created successfuly");
 
@@ -78,16 +76,18 @@ export const CreateTag = () => {
                     <Input
                         type="text"
                         className="mt-2"
-                        placeholder="Tag title..."
+                        placeholder="Tag key code..."
                         value={tagKeyCode}
                         onChange={(e) => setTagKeyCode(e.target.value)}
                     />
                 </label>
                 <div className="gap-2 mt-10 grid grid-cols-[150px_150px]">
                     <Button color="purple" onClick={onCreateTagSubmit}>
-                        Sumbit
+                        Submit
                     </Button>
-                    <Button color="red">Discard</Button>
+                    <Button color="red" onClick={closeModalHandler}>
+                        Discard
+                    </Button>
                 </div>
             </form>
         </div>

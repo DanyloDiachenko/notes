@@ -4,53 +4,45 @@ import { updateTag } from "@/api/tags.api";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { closeModal } from "@/store/slices/openedModal";
-import { setTagToEdit } from "@/store/slices/tagToEdit";
-import { TagToEditState } from "@/store/slices/tagToEdit/openedPopupState.interface";
-import { RootState } from "@/store/store";
+import { selectTag, setTag } from "@/store/slices/tag";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 import { useRouter } from "next/navigation";
 import { FormEvent } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 export const EditTag = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const router = useRouter();
-    const tagToEdit = useSelector(
-        (state: RootState) => state.tagToEdit.tagToEdit,
-    );
-
-    const onEditTagFields = (tagToEdit: TagToEditState["tagToEdit"]) => {
-        dispatch(setTagToEdit(tagToEdit));
-    };
+    const tag = useAppSelector(selectTag);
 
     const closeModalHandler = () => {
         dispatch(closeModal());
     };
 
+    if (!tag) {
+        return null;
+    }
+
     const onEditTagSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
-        if (tagToEdit.title === "" || tagToEdit.slug === "") {
+        if (tag.title === "" || tag.slug === "") {
             toast.error("Please fill all fields");
             return;
         }
-        for (let i = 0; i < tagToEdit.slug.length; i++) {
-            if (!/^[a-zA-Z0-9]$/.test(tagToEdit.slug[i])) {
-                toast.error(
-                    "Tag key code should only contain letters and numbers",
-                );
-                return;
-            }
+
+        if (!/^[a-zA-Z0-9]+$/.test(tag.slug)) {
+            toast.error("Tag key code should only contain letters and numbers");
+            return;
         }
 
         try {
-            const editTagResponse = await updateTag({
-                id: tagToEdit.id,
-                title: tagToEdit.title,
-                slug: tagToEdit.slug,
+            const editTagResponse = await updateTag(tag.id, {
+                title: tag.title,
+                slug: tag.slug,
             });
 
-            if (editTagResponse.message) {
+            if ("message" in editTagResponse) {
                 toast.error(editTagResponse.message);
                 return;
             }
@@ -75,12 +67,9 @@ export const EditTag = () => {
                         type="text"
                         className="mt-2"
                         placeholder="Tag title..."
-                        value={tagToEdit.title}
+                        value={tag.title}
                         onChange={(e) =>
-                            onEditTagFields({
-                                ...tagToEdit,
-                                title: e.target.value,
-                            })
+                            dispatch(setTag({ ...tag, title: e.target.value }))
                         }
                     />
                 </label>
@@ -90,18 +79,15 @@ export const EditTag = () => {
                         type="text"
                         className="mt-2"
                         placeholder="Tag key code..."
-                        value={tagToEdit.slug}
+                        value={tag.slug}
                         onChange={(e) =>
-                            onEditTagFields({
-                                ...tagToEdit,
-                                slug: e.target.value,
-                            })
+                            dispatch(setTag({ ...tag, slug: e.target.value }))
                         }
                     />
                 </label>
                 <div className="gap-2 mt-10 grid grid-cols-[150px_150px]">
                     <Button color="purple" onClick={onEditTagSubmit}>
-                        Sumbit
+                        Submit
                     </Button>
                     <Button color="red" onClick={closeModalHandler}>
                         Discard

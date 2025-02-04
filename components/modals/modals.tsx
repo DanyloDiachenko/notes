@@ -11,7 +11,7 @@ import { EditTag } from "./EditTag";
 import { Modal as IModal } from "./modal.interface";
 
 export const modals: IModal[] = [
-    { key: Modal.CrateNote, component: <CreateNote /> },
+    { key: Modal.CreateNote, component: <CreateNote /> },
     { key: Modal.EditNote, component: <EditNote /> },
     { key: Modal.ConfirmArchiveNote, component: <ConfirmArchiveNote /> },
     { key: Modal.ConfirmDeleteNote, component: <ConfirmDeleteNote /> },
