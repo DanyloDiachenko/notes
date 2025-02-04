@@ -12,21 +12,24 @@ import { getTags } from "@/api/tags.api";
 import { SelectOption } from "@/types/selectOption.interface";
 import { updateNote } from "@/api/notes.api";
 import { toast } from "react-toastify";
-import { RootState } from "@/store/store";
+import { RootState, useAppSelector } from "@/store/store";
 import { Textarea } from "@/components/ui/Textarea";
+import { selectNote } from "@/store/slices/note";
 
 export const EditNote = () => {
     const router = useRouter();
     const dispatch = useDispatch();
 
-    const noteToEdit = useSelector(
-        (state: RootState) => state.noteToEdit.noteToEdit,
-    );
+    const note = useAppSelector(selectNote);
 
-    const [noteTitle, setNoteTitle] = useState(noteToEdit.title);
-    const [noteDetails, setNoteDetails] = useState(noteToEdit.content);
+    if (!note) {
+        return null;
+    }
+
+    const [noteTitle, setNoteTitle] = useState(note.title);
+    const [noteDetails, setNoteDetails] = useState(note.content);
     const [noteTags, setNoteTags] = useState<SelectOption[]>(
-        noteToEdit.tags.map((tag) => ({
+        note.tags.map((tag) => ({
             title: tag.title,
             value: tag.id,
         })),
@@ -46,13 +49,13 @@ export const EditNote = () => {
         }
 
         try {
-            const editNoteResponse = await updateNote(noteToEdit.id, {
+            const editNoteResponse = await updateNote(note.id, {
                 title: noteTitle,
                 content: noteDetails,
                 tagIds: noteTags.map((tag) => tag.value),
             });
 
-            if (editNoteResponse.message) {
+            if ("message" in editNoteResponse) {
                 toast.error(editNoteResponse.message);
                 return;
             }
@@ -70,7 +73,7 @@ export const EditNote = () => {
 
     const getTagsHandler = async () => {
         try {
-            const tags = await getTags();
+            const tags = (await getTags()) as Tag[];
 
             setTags(tags);
         } catch (error) {
@@ -123,7 +126,7 @@ export const EditNote = () => {
                         onClick={onEditNoteSubmit}
                         type="submit"
                     >
-                        Sumbit
+                        Submit
                     </Button>
                     <Button color="red" onClick={closeModalHandler}>
                         Discard

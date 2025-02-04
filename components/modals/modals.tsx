@@ -5,19 +5,18 @@ import { ConfirmDeleteNote } from "./ConfirmDeleteNote";
 import { ConfirmDeleteTag } from "./ConfirmDeleteTag";
 import { ConfirmUnarchiveNote } from "./ConfirmUnarchiveNote";
 import { CreateNote } from "./CreateNote";
-import { CreateTag } from "./CreateTag";
 import { EditNote } from "./EditNote";
-import { EditTag } from "./EditTag";
 import { Modal as IModal } from "./modal.interface";
+import { Tag } from "./Tag";
 
 export const modals: IModal[] = [
     { key: Modal.CreateNote, component: <CreateNote /> },
     { key: Modal.EditNote, component: <EditNote /> },
     { key: Modal.ConfirmArchiveNote, component: <ConfirmArchiveNote /> },
     { key: Modal.ConfirmDeleteNote, component: <ConfirmDeleteNote /> },
-    { key: Modal.CreateTag, component: <CreateTag /> },
+    { key: Modal.CreateTag, component: <Tag type="create" /> },
     { key: Modal.ConfirmDeleteTag, component: <ConfirmDeleteTag /> },
-    { key: Modal.EditTag, component: <EditTag /> },
+    { key: Modal.EditTag, component: <Tag type="edit" /> },
     { key: Modal.Authorization, component: <Authorization /> },
     { key: Modal.ConfirmUnarchiveNote, component: <ConfirmUnarchiveNote /> },
 ];

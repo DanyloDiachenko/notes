@@ -42,7 +42,7 @@ export const CreateNote = () => {
                 tagIds: noteTags.map((tag) => tag.value),
             });
 
-            if (createNoteResponse.message) {
+            if ("message" in createNoteResponse) {
                 toast.error(createNoteResponse.message);
                 return;
             }
@@ -60,7 +60,7 @@ export const CreateNote = () => {
 
     const getTagsHandler = async () => {
         try {
-            const tags = await getTags();
+            const tags = (await getTags()) as Tag[];
 
             setTags(tags);
         } catch (error) {
