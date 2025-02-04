@@ -16,10 +16,10 @@ export const Tag = ({ tag }: TagProps) => {
     }?tag=${tag.slug}`;
 
     return (
-        <div className={`mt-4 flex items-center justify-between`}>
+        <div className="mt-4 flex items-center justify-between">
             <Link
                 className={cn(
-                    "flex items-center gap-2 text-gray-500 duration-300",
+                    "flex items-center gap-2 text-gray-500 duration-500",
                     tagSearchParam === tag.slug ? "text-[#7351f5]" : "",
                 )}
                 href={tagHref}

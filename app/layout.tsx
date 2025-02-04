@@ -10,6 +10,7 @@ import { getCookie } from "@/helpers/getCookie";
 import { getProfile } from "@/api/auth.api";
 import { ToastProvider } from "@/components/providers/Toast";
 import { ReactNode } from "react";
+import { cn } from "@/helpers/cn";
 
 const inter = Inter({
     variable: "--font-inter",
@@ -53,7 +54,10 @@ const RootLayout = async ({
     return (
         <html lang="en">
             <body
-                className={`${inter.variable} antialiased grid grid-cols-[minmax(200px,_280px)_1fr]`}
+                className={cn(
+                    inter.variable,
+                    "antialiased grid grid-cols-[minmax(200px,_280px)_1fr]",
+                )}
             >
                 <ReduxProvider>
                     <Aside isAuthorized={isAuthorized} pathname={pathname} />

@@ -47,7 +47,7 @@ export const Authorization = () => {
                 router.refresh();
             }
         } catch (error) {
-            console.error("Authentication error:", error);
+            console.error(error);
         }
     };
 
@@ -70,7 +70,7 @@ export const Authorization = () => {
             <div className="grid grid-cols-2 mt-3 text-xl font-semibold text-center gap-8">
                 <button
                     className={cn(
-                        "border-b-4 pb-2 cursor-pointer border-b-white duration-300",
+                        "border-b-4 pb-2 cursor-pointer border-b-white duration-500",
                         tab === "login"
                             ? "text-gray-800 border-gray-300"
                             : "hover:border-gray-100",
@@ -83,7 +83,7 @@ export const Authorization = () => {
                 </button>
                 <button
                     className={cn(
-                        "border-b-4 pb-2 cursor-pointer border-b-white duration-300",
+                        "border-b-4 pb-2 cursor-pointer border-b-white duration-500",
                         tab === "register"
                             ? "text-gray-800 border-gray-300"
                             : "hover:border-gray-100",

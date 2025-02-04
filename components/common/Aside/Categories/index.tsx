@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { NotesType } from "@/types/notesType.enum";
 import { getActiveTab } from "./getActiveTab";
 import { categories } from "./categories";
+import { cn } from "@/helpers/cn";
 
 export const Categories = ({ pathname, isAuthorized }: CategoriesProps) => {
     const clientPathname = usePathname();
@@ -36,12 +37,13 @@ export const Categories = ({ pathname, isAuthorized }: CategoriesProps) => {
             {categories.map((category, index) => (
                 <button
                     key={index}
-                    className={`mt-6 p-2 px-4 flex justify-between w-full items-center rounded-md
-                    text-gray-800 hover:bg-blue-50 hover:text-gray-800 duration-300 ${
+                    className={cn(
+                        "mt-6 p-2 px-4 flex justify-between w-full items-center rounded-md",
+                        "text-gray-800 hover:bg-blue-50 hover:text-gray-800 duration-500 last:mt-2",
                         activeTab === category.type
                             ? "bg-blue-100 hover:bg-blue-100"
-                            : ""
-                    }`}
+                            : "",
+                    )}
                     onClick={() => onTabClick(category.type)}
                 >
                     <div className="flex items-center">
