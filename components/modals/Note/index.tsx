@@ -13,15 +13,14 @@ import { createNote, updateNote } from "@/api/notes.api";
 import { SelectOption } from "@/types/selectOption.interface";
 import { Tag } from "@/types/tag.interface";
 import { toast } from "react-toastify";
-import { useAppSelector } from "@/store/store";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 import { selectNote } from "@/store/slices/note";
 import { NoteProps } from "./note.props";
 
 export const Note = ({ mode }: NoteProps) => {
     const router = useRouter();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const note = useAppSelector(selectNote);
-    console.log(note);
 
     const [noteTitle, setNoteTitle] = useState(
         mode === "edit" ? note?.title || "" : "",
@@ -95,19 +94,25 @@ export const Note = ({ mode }: NoteProps) => {
                 {mode === "edit" ? "Edit Note" : "Create New Note"}
             </div>
             <form action="#" className="mt-10 block" onSubmit={onSubmit}>
-                <label>
-                    <div className="font-medium text-lg">Note Title</div>
-                    <Input
-                        type="text"
-                        className="mt-2"
-                        placeholder="Note title..."
-                        value={noteTitle}
-                        onChange={(e) => setNoteTitle(e.target.value)}
-                    />
+                <label
+                    htmlFor="noteTitle"
+                    className="block font-medium text-lg"
+                >
+                    Note Title
                 </label>
-                <label className="mt-4 block">
+                <Input
+                    id="noteTitle"
+                    name="note title"
+                    className="mt-2"
+                    type="text"
+                    placeholder="Note title..."
+                    value={noteTitle}
+                    onChange={(e) => setNoteTitle(e.target.value)}
+                />
+                <label className="mt-4 block" htmlFor="noteTags">
                     <div className="font-medium text-lg">Note Tags</div>
                     <Multiselect
+                        id="noteTags"
                         placeholder="Select tags..."
                         activeOptions={noteTags}
                         setActiveOptions={setNoteTags}
@@ -118,15 +123,17 @@ export const Note = ({ mode }: NoteProps) => {
                         className="mt-2"
                     />
                 </label>
-                <label className="mt-4 block">
-                    <div className="font-medium text-lg">Note Details</div>
-                    <Textarea
-                        className="mt-2"
-                        placeholder="Note details..."
-                        value={noteDetails}
-                        onChange={(e) => setNoteDetails(e.target.value)}
-                    />
+                <label className="mt-4 block font-medium text-lg">
+                    Note Details
                 </label>
+                <Textarea
+                    className="mt-2"
+                    placeholder="Note details..."
+                    value={noteDetails}
+                    onChange={(e) => setNoteDetails(e.target.value)}
+                    id="noteDetails"
+                    name="note details"
+                />
                 <div className="gap-2 mt-10 grid grid-cols-[150px_150px]">
                     <Button color="purple" type="submit">
                         Submit

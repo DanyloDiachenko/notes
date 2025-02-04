@@ -13,6 +13,7 @@ export const Multiselect = ({
     options,
     setActiveOptions,
     className,
+    id,
 }: MultiselectProps) => {
     const optionsRef = useRef<HTMLUListElement>(null);
 
@@ -51,7 +52,10 @@ export const Multiselect = ({
     }, [activeOptions, options]);
 
     return (
-        <div className={cn("relative font-medium text-base", className)}>
+        <div
+            className={cn("relative font-medium text-base", className)}
+            id={id}
+        >
             <div
                 className="flex items-center p-1 px-3 bg-gray-100 rounded-md min-h-12"
                 onClick={() => setIsOptionsOpened(true)}

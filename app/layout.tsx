@@ -9,8 +9,9 @@ import { Modals } from "@/components/modals";
 import { getCookie } from "@/helpers/getCookie";
 import { getProfile } from "@/api/auth.api";
 import { ToastProvider } from "@/components/providers/Toast";
+import { ReactNode } from "react";
 
-const geistSans = Inter({
+const inter = Inter({
     variable: "--font-inter",
     weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
     preload: true,
@@ -25,12 +26,12 @@ export const metadata: Metadata = {
 const RootLayout = async ({
     children,
 }: Readonly<{
-    children: React.ReactNode;
+    children: ReactNode;
 }>) => {
     const pathname = await getPathname();
     const token = await getCookie("token");
 
-    let isAuthorized = false;
+    let isAuthorized;
 
     if (!token || !token.length) {
         isAuthorized = false;
@@ -52,7 +53,7 @@ const RootLayout = async ({
     return (
         <html lang="en">
             <body
-                className={`${geistSans.variable} antialiased grid grid-cols-[minmax(200px,_280px)_1fr]`}
+                className={`${inter.variable} antialiased grid grid-cols-[minmax(200px,_280px)_1fr]`}
             >
                 <ReduxProvider>
                     <Aside isAuthorized={isAuthorized} pathname={pathname} />

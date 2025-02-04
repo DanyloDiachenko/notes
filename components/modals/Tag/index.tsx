@@ -76,27 +76,34 @@ export const Tag = ({ mode }: TagProps) => {
             <div className="text-3xl font-bold mt-6 text-center">
                 {mode === "edit" ? "Edit Tag" : "Create New Tag"}
             </div>
-            <form className="mt-10 block" onSubmit={onSubmit}>
-                <label>
-                    <div className="font-medium text-lg">Tag Title</div>
-                    <Input
-                        type="text"
-                        className="mt-2"
-                        placeholder="Tag title..."
-                        value={tagTitle}
-                        onChange={(e) => setTagTitle(e.target.value)}
-                    />
+            <form className="mt-10 block " onSubmit={onSubmit}>
+                <label className="font-medium text-lg" htmlFor="tagTitle">
+                    Tag Title
                 </label>
-                <label className="mt-4 block">
-                    <div className="font-medium text-lg">Tag Key Code</div>
-                    <Input
-                        type="text"
-                        className="mt-2"
-                        placeholder="Tag key code..."
-                        value={tagKeyCode}
-                        onChange={(e) => setTagKeyCode(e.target.value)}
-                    />
+                <Input
+                    id="tagTitle"
+                    name="tag title"
+                    type="text"
+                    className="mt-2"
+                    placeholder="Tag title..."
+                    value={tagTitle}
+                    onChange={(e) => setTagTitle(e.target.value)}
+                />
+                <label
+                    className="mt-4 block font-medium text-lg"
+                    htmlFor="tagKeyCode"
+                >
+                    Tag Key Code
                 </label>
+                <Input
+                    id="tagKeyCode"
+                    name="tag key code"
+                    type="text"
+                    className="mt-2"
+                    placeholder="Tag key code..."
+                    value={tagKeyCode}
+                    onChange={(e) => setTagKeyCode(e.target.value)}
+                />
                 <div className="gap-2 mt-10 grid grid-cols-[150px_150px]">
                     <Button color="purple" type="submit">
                         Submit

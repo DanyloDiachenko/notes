@@ -23,7 +23,35 @@ export const Authorization = () => {
         dispatch(closeModal());
     };
 
-    const onAuthSubmit = async (e: React.FormEvent) => {
+    const authenticateUser = async (action: "login" | "register") => {
+        try {
+            const response =
+                action === "login"
+                    ? await login({ email, password })
+                    : await register({ email, password });
+
+            if ("message" in response) {
+                toast.error(response.message);
+                return;
+            }
+
+            if ("token" in response) {
+                toast.success(
+                    action === "login"
+                        ? "Successfully logged in"
+                        : "Successfully registered and logged in",
+                );
+
+                setCookie("token", response.token);
+                closeModalHandler();
+                router.refresh();
+            }
+        } catch (error) {
+            console.error("Authentication error:", error);
+        }
+    };
+
+    const onAuthSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!email || !password) {
@@ -31,44 +59,7 @@ export const Authorization = () => {
             return;
         }
 
-        if (tab === "login") {
-            try {
-                const loginData = await login({ email, password });
-
-                if ("message" in loginData) {
-                    toast.error(loginData.message);
-                    return;
-                }
-
-                if (loginData.token) {
-                    toast.success("Successfully logged in");
-
-                    setCookie("token", loginData.token);
-                    closeModalHandler();
-                    router.refresh();
-                }
-            } catch (error) {
-                console.log(error);
-            }
-        } else {
-            try {
-                const registerData = await register({ email, password });
-
-                if ("message" in registerData) {
-                    toast.error(registerData.message);
-                }
-
-                if ("token" in registerData) {
-                    toast.success("Successfully registered and logged in");
-
-                    setCookie("token", registerData.token);
-                    closeModalHandler();
-                    router.refresh();
-                }
-            } catch (error) {
-                console.log(error);
-            }
-        }
+        authenticateUser(tab);
     };
 
     return (
@@ -85,6 +76,8 @@ export const Authorization = () => {
                             : "hover:border-gray-100",
                     )}
                     onClick={() => setTab("login")}
+                    role="tab"
+                    aria-selected={tab === "login"}
                 >
                     Login
                 </button>
@@ -96,31 +89,40 @@ export const Authorization = () => {
                             : "hover:border-gray-100",
                     )}
                     onClick={() => setTab("register")}
+                    role="tab"
+                    aria-selected={tab === "register"}
                 >
                     Register
                 </button>
             </div>
-            <form action="#" className="mt-10 block">
-                <label htmlFor="">
-                    <div className="font-medium text-lg">Email</div>
-                    <Input
-                        className="mt-2"
-                        type="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
+            <form action="#" className="block mt-10">
+                <label htmlFor="email" className="block font-medium text-lg">
+                    Email
                 </label>
-                <label htmlFor="" className="mt-4 block">
-                    <div className="font-medium text-lg">Password</div>
-                    <Input
-                        className="mt-2"
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
+                <Input
+                    id="email"
+                    name="email"
+                    className="mt-2"
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <label
+                    htmlFor="password"
+                    className="block font-medium text-lg mt-4"
+                >
+                    Email
                 </label>
+                <Input
+                    id="password"
+                    name="password"
+                    className="mt-2"
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
                 <div className="gap-2 mt-10 grid grid-cols-[150px_150px]">
                     <Button color="purple" onClick={onAuthSubmit}>
                         Submit
