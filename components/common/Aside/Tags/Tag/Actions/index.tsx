@@ -6,7 +6,7 @@ import { setOpenedModal } from "@/store/slices/openedModal";
 import { MdOutlineDelete, MdOutlineModeEditOutline } from "react-icons/md";
 import { ActionsProps } from "./actions.props";
 import { useAppDispatch } from "@/store/store";
-import { setTag } from "@/store/slices/tagToDelete";
+import { setTag } from "@/store/slices/tag";
 
 export const Actions = ({ tag }: ActionsProps) => {
     const dispatch = useAppDispatch();

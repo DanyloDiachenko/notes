@@ -1,13 +1,8 @@
-"use client";
-
 import Link from "next/link";
 import { NoteProps } from "./note.props";
-import { useParams } from "next/navigation";
 import { formatDate } from "@/helpers/formatDate";
 
-export const Note = ({ note, notesType }: NoteProps) => {
-    const noteId = useParams().noteId;
-
+export const Note = ({ note, notesType, noteId }: NoteProps) => {
     return (
         <div
             className={`p-3 border-b-2 border-gray-200 ${

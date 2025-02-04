@@ -16,6 +16,8 @@ export const NoteList = ({ serverNotes, notesType }: NoteListProps) => {
     const params = useParams();
     const searchParams = useSearchParams();
 
+    const noteId = params.noteId as string | undefined;
+
     const search = useAppSelector(selectSearchNote);
 
     const [notes, setNotes] = useState<Note[]>(serverNotes);
@@ -51,6 +53,7 @@ export const NoteList = ({ serverNotes, notesType }: NoteListProps) => {
                             key={index}
                             note={note}
                             notesType={notesType}
+                            noteId={noteId}
                         />
                     ))
                 ) : (

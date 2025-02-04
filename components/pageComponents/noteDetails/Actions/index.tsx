@@ -5,54 +5,35 @@ import { MdOutlineDelete, MdOutlineModeEditOutline } from "react-icons/md";
 import { NoteActionsProps } from "./noteActions.props";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/types/modal.enum";
-import { useDispatch } from "react-redux";
 import { setOpenedModal } from "@/store/slices/openedModal";
-import { setNoteToEdit } from "@/store/slices/noteToEdit";
-import { setNoteToDelete } from "@/store/slices/noteToDelete";
-import { setNoteToArchive } from "@/store/slices/noteToArchive";
-import { setNoteToUnarchive } from "@/store/slices/noteToUnarchive";
+import { useAppDispatch } from "@/store/store";
+import { setNote } from "@/store/slices/note";
 
 export const NoteActions = ({ note, noteType }: NoteActionsProps) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const setOpenedModalHandler = (modalToOpen: Modal) => {
         dispatch(setOpenedModal(modalToOpen));
     };
 
-    const setNoteToEditHandler = () => {
-        dispatch(setNoteToEdit(note));
-    };
-
-    const setNoteToDeleteHandler = () => {
-        dispatch(setNoteToDelete(note));
-    };
-
-    const setNoteToArchiveHandler = () => {
-        dispatch(setNoteToArchive(note));
-    };
-
-    const setNoteToUnarchiveHandler = () => {
-        dispatch(setNoteToUnarchive(note));
-    };
-
     const onEditNoteClick = () => {
-        setOpenedModalHandler("editNote");
-        setNoteToEditHandler();
+        setOpenedModalHandler(Modal.EditNote);
+        setNote(note);
     };
 
     const onDeleteNoteClick = () => {
-        setOpenedModalHandler("confirmDeleteNote");
-        setNoteToDeleteHandler();
+        setOpenedModalHandler(Modal.ConfirmDeleteNote);
+        setNote(note);
     };
 
     const onArchiveNoteClick = () => {
-        setOpenedModalHandler("confirmArchiveNote");
-        setNoteToArchiveHandler();
+        setOpenedModalHandler(Modal.ConfirmArchiveNote);
+        setNote(note);
     };
 
     const onUnarchiveNoteClick = () => {
-        setOpenedModalHandler("confirmUnarchiveNote");
-        setNoteToUnarchiveHandler();
+        setOpenedModalHandler(Modal.ConfirmUnarchiveNote);
+        setNote(note);
     };
 
     return (

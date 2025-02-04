@@ -2,8 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { openedModalSlice } from "./slices/openedModal";
 import { searchNoteSlice } from "./slices/searchNote";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { noteSlice } from "./slices/noteToArchive";
-import { tagSlice } from "./slices/tagToDelete";
+import { noteSlice } from "./slices/note";
+import { tagSlice } from "./slices/tag";
 
 export const store = configureStore({
     reducer: {
