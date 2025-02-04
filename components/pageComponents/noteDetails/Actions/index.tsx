@@ -18,22 +18,22 @@ export const NoteActions = ({ note, noteType }: NoteActionsProps) => {
 
     const onEditNoteClick = () => {
         setOpenedModalHandler(Modal.EditNote);
-        setNote(note);
+        dispatch(setNote(note));
     };
 
     const onDeleteNoteClick = () => {
         setOpenedModalHandler(Modal.ConfirmDeleteNote);
-        setNote(note);
+        dispatch(setNote(note));
     };
 
     const onArchiveNoteClick = () => {
         setOpenedModalHandler(Modal.ConfirmArchiveNote);
-        setNote(note);
+        dispatch(setNote(note));
     };
 
     const onUnarchiveNoteClick = () => {
         setOpenedModalHandler(Modal.ConfirmUnarchiveNote);
-        setNote(note);
+        dispatch(setNote(note));
     };
 
     return (

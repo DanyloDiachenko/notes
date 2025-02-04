@@ -11,13 +11,17 @@ import { FormEvent, useState } from "react";
 import { toast } from "react-toastify";
 import { TagProps } from "./tag.props";
 
-export const Tag = ({ type }: TagProps) => {
+export const Tag = ({ mode }: TagProps) => {
     const dispatch = useAppDispatch();
     const router = useRouter();
     const tag = useAppSelector(selectTag);
 
-    const [tagTitle, setTagTitle] = useState(tag?.title || "");
-    const [tagKeyCode, setTagKeyCode] = useState(tag?.slug || "");
+    const [tagTitle, setTagTitle] = useState(
+        mode === "edit" ? tag?.title || "" : "",
+    );
+    const [tagKeyCode, setTagKeyCode] = useState(
+        mode === "edit" ? tag?.slug || "" : "",
+    );
 
     const closeModalHandler = () => {
         dispatch(closeModal());
@@ -38,7 +42,7 @@ export const Tag = ({ type }: TagProps) => {
 
         try {
             let response;
-            if (type === "edit" && tag) {
+            if (mode === "edit" && tag) {
                 response = await updateTag(tag.id, {
                     title: tagTitle,
                     slug: tagKeyCode,
@@ -56,7 +60,7 @@ export const Tag = ({ type }: TagProps) => {
             }
 
             toast.success(
-                type === "edit"
+                mode === "edit"
                     ? "Tag updated successfully"
                     : "Tag created successfully",
             );
@@ -70,7 +74,7 @@ export const Tag = ({ type }: TagProps) => {
     return (
         <div className="relative">
             <div className="text-3xl font-bold mt-6 text-center">
-                {type === "edit" ? "Edit Tag" : "Create New Tag"}
+                {mode === "edit" ? "Edit Tag" : "Create New Tag"}
             </div>
             <form className="mt-10 block" onSubmit={onSubmit}>
                 <label>

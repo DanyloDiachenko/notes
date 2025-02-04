@@ -3,31 +3,61 @@
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
+import { Multiselect } from "@/components/ui/Multiselect";
 import { closeModal } from "@/store/slices/openedModal";
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Multiselect } from "@/components/ui/Multiselect";
-import { Tag } from "@/types/tag.interface";
 import { getTags } from "@/api/tags.api";
+import { createNote, updateNote } from "@/api/notes.api";
 import { SelectOption } from "@/types/selectOption.interface";
-import { createNote } from "@/api/notes.api";
+import { Tag } from "@/types/tag.interface";
 import { toast } from "react-toastify";
+import { useAppSelector } from "@/store/store";
+import { selectNote } from "@/store/slices/note";
 
-export const CreateNote = () => {
+interface NoteModalProps {
+    mode: "create" | "edit";
+}
+
+export const Note = ({ mode }: NoteModalProps) => {
     const router = useRouter();
     const dispatch = useDispatch();
+    const note = useAppSelector(selectNote);
+    console.log(note);
 
-    const [noteTitle, setNoteTitle] = useState("");
-    const [noteDetails, setNoteDetails] = useState("");
-    const [noteTags, setNoteTags] = useState<SelectOption[]>([]);
+    const [noteTitle, setNoteTitle] = useState(
+        mode === "edit" ? note?.title || "" : "",
+    );
+    const [noteDetails, setNoteDetails] = useState(
+        mode === "edit" ? note?.content || "" : "",
+    );
+    const [noteTags, setNoteTags] = useState<SelectOption[]>(
+        mode === "edit"
+            ? note?.tags.map((tag) => ({ title: tag.title, value: tag.id })) ||
+                  []
+            : [],
+    );
     const [tags, setTags] = useState<Tag[]>([]);
+
+    useEffect(() => {
+        const fetchTags = async () => {
+            try {
+                const tags = (await getTags()) as Tag[];
+                setTags(tags);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchTags();
+    }, []);
 
     const closeModalHandler = () => {
         dispatch(closeModal());
     };
 
-    const onCreateNoteSubmit = async (e: FormEvent) => {
+    const onSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
         if (!noteTitle || !noteDetails) {
@@ -36,49 +66,39 @@ export const CreateNote = () => {
         }
 
         try {
-            const createNoteResponse = await createNote({
+            const payload = {
                 title: noteTitle,
                 content: noteDetails,
                 tagIds: noteTags.map((tag) => tag.value),
-            });
+            };
 
-            if ("message" in createNoteResponse) {
-                toast.error(createNoteResponse.message);
+            const response =
+                mode === "edit" && note
+                    ? await updateNote(note.id, payload)
+                    : await createNote(payload);
+
+            if ("message" in response) {
+                toast.error(response.message);
                 return;
             }
 
-            if (createNoteResponse.id) {
-                toast.success("Note created successfuly");
-
-                closeModalHandler();
-                router.refresh();
-            }
+            toast.success(
+                `Note ${mode === "edit" ? "updated" : "created"} successfully`,
+            );
+            closeModalHandler();
+            router.refresh();
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     };
-
-    const getTagsHandler = async () => {
-        try {
-            const tags = (await getTags()) as Tag[];
-
-            setTags(tags);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    useEffect(() => {
-        getTagsHandler();
-    }, []);
 
     return (
         <div className="relative">
             <div className="text-3xl font-bold mt-6 text-center">
-                Create New Note
+                {mode === "edit" ? "Edit Note" : "Create New Note"}
             </div>
-            <form action="#" className="mt-10 block">
-                <label htmlFor="">
+            <form action="#" className="mt-10 block" onSubmit={onSubmit}>
+                <label>
                     <div className="font-medium text-lg">Note Title</div>
                     <Input
                         type="text"
@@ -88,7 +108,7 @@ export const CreateNote = () => {
                         onChange={(e) => setNoteTitle(e.target.value)}
                     />
                 </label>
-                <label htmlFor="" className="mt-4 block">
+                <label className="mt-4 block">
                     <div className="font-medium text-lg">Note Tags</div>
                     <Multiselect
                         placeholder="Select tags..."
@@ -101,7 +121,7 @@ export const CreateNote = () => {
                         className="mt-2"
                     />
                 </label>
-                <label htmlFor="" className="mt-4 block">
+                <label className="mt-4 block">
                     <div className="font-medium text-lg">Note Details</div>
                     <Textarea
                         className="mt-2"
@@ -111,12 +131,8 @@ export const CreateNote = () => {
                     />
                 </label>
                 <div className="gap-2 mt-10 grid grid-cols-[150px_150px]">
-                    <Button
-                        color="purple"
-                        onClick={onCreateNoteSubmit}
-                        type="submit"
-                    >
-                        Sumbit
+                    <Button color="purple" type="submit">
+                        Submit
                     </Button>
                     <Button color="red" onClick={closeModalHandler}>
                         Discard

@@ -87,7 +87,7 @@ export const Multiselect = ({
                     {availableOptions.length ? (
                         availableOptions.map((option, index) => (
                             <li
-                                key={index}
+                                key={option.value}
                                 onClick={() => onOptionClick(option)}
                                 className="cursor-pointer"
                             >

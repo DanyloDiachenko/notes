@@ -1,3 +1,3 @@
 export interface TagProps {
-    type: "create" | "edit";
+    mode: "create" | "edit";
 }
