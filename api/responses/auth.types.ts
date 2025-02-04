@@ -20,8 +20,6 @@ interface LoginResponseSuccess {
     email: string;
 }
 
-interface RegisterResponseSuccess extends LoginResponseSuccess {}
-
 export type LoginResponse =
     | LoginResponseSuccess
     | UnathorizedResponse
