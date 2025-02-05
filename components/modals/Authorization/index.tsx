@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { closeModal } from "@/store/slices/openedModal";
 import { useAppDispatch } from "@/store/store";
+import { validateEmail } from "./validateEmail";
 
 export const Authorization = () => {
     const router = useRouter();
@@ -56,6 +57,11 @@ export const Authorization = () => {
 
         if (!email || !password) {
             toast.error("Please fill all fields");
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            toast.error("Email must be email");
             return;
         }
 
@@ -107,6 +113,7 @@ export const Authorization = () => {
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                 />
                 <label
                     htmlFor="password"
@@ -122,6 +129,7 @@ export const Authorization = () => {
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
                 />
                 <div className="gap-2 mt-10 grid grid-cols-[150px_150px]">
                     <Button color="purple" onClick={onAuthSubmit}>
