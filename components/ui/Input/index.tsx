@@ -1,5 +1,5 @@
 import { cn } from "@/helpers/cn";
-import { InputProps } from "./input.props";
+import { InputProps } from "./Input.props";
 
 export const Input = ({ className, ...rest }: InputProps) => {
     return (

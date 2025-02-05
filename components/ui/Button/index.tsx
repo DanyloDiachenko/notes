@@ -1,5 +1,5 @@
 import { cn } from "@/helpers/cn";
-import { ButtonProps } from "./button.props";
+import { ButtonProps } from "./Button.props";
 
 export const Button = ({
     color,

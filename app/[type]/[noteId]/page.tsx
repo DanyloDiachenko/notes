@@ -1,7 +1,7 @@
 import { PageProps } from "@/.next/types/app/page";
 import { getNote } from "@/api/notes.api";
-import { NoteActions } from "@/components/pageComponents/noteDetails/Actions";
-import { NoteDetails } from "@/components/pageComponents/noteDetails/Details";
+import { NoteActions } from "@/components/page-components/note-details/Actions";
+import { NoteDetails } from "@/components/page-components/note-details/Details";
 import { Note as INote } from "@/types/note.interface";
 import { notFound } from "next/navigation";
 

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { Modal } from "@/types/modal.enum";
 import { setOpenedModal } from "@/store/slices/openedModal";
 import { MdOutlineDelete, MdOutlineModeEditOutline } from "react-icons/md";
-import { ActionsProps } from "./actions.props";
+import { ActionsProps } from "./Actions.props";
 import { useAppDispatch } from "@/store/store";
 import { setTag } from "@/store/slices/tag";
 

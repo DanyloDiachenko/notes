@@ -1,7 +1,7 @@
 "use client";
 
 import { FaSearch } from "react-icons/fa";
-import { HeaderProps } from "./header.props";
+import { HeaderProps } from "./Header.props";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { getHeadingText } from "./getHeadingText";

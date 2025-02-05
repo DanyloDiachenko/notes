@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from "@/store/store";
 import { useParams, useRouter } from "next/navigation";
 import { FormEvent } from "react";
 import { toast } from "react-toastify";
-import { ConfirmationProps } from "./confirmation.props";
+import { ConfirmationProps } from "./Confirmation.props";
 import { selectNote } from "@/store/slices/note";
 import { getTitle } from "./getTitle";
 import { getMessage } from "./getMessage";

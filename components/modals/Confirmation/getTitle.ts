@@ -1,4 +1,4 @@
-import { ConfirmationProps } from "./confirmation.props";
+import { ConfirmationProps } from "./Confirmation.props";
 
 export const getTitle = (type: ConfirmationProps["type"]) => {
     switch (type) {

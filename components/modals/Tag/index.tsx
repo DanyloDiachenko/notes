@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from "@/store/store";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { toast } from "react-toastify";
-import { TagProps } from "./tag.props";
+import { TagProps } from "./Tag.props";
 
 export const Tag = ({ mode }: TagProps) => {
     const dispatch = useAppDispatch();

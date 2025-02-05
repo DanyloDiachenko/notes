@@ -3,7 +3,7 @@
 import { Actions } from "./Actions";
 import { usePathname, useSearchParams } from "next/navigation";
 import { HiOutlineTag } from "react-icons/hi2";
-import { TagProps } from "./tag.props";
+import { TagProps } from "./Tag.props";
 import Link from "next/link";
 import { cn } from "@/helpers/cn";
 
