@@ -17,6 +17,7 @@ export const Note = ({ note, notesType, noteId }: NoteProps) => {
                     noteId === note.id ? "text-[#7351f5_!important]" : "",
                 )}
                 href={`/${notesType}/${note.id}`}
+                scroll={false}
             >
                 {note.title}
             </Link>

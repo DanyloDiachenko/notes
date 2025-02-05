@@ -23,6 +23,7 @@ export const Tag = ({ tag }: TagProps) => {
                     tagSearchParam === tag.slug ? "text-[#7351f5]" : "",
                 )}
                 href={tagHref}
+                scroll={false}
             >
                 <HiOutlineTag className="size-5" />
                 <span className="font-medium">{tag.title}</span>

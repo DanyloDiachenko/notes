@@ -36,7 +36,7 @@ export const Tag = ({ mode }: TagProps) => {
             return;
         }
 
-        if (validateKeyCode(tagKeyCode)) {
+        if (!validateKeyCode(tagKeyCode)) {
             toast.error("Tag key code should only contain letters and numbers");
             return;
         }
