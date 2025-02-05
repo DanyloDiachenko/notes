@@ -25,7 +25,7 @@ export const Categories = ({ pathname, isAuthorized }: CategoriesProps) => {
             return;
         }
 
-        router.push(`/${tab}`);
+        router.push(`/${tab}`, { scroll: false });
     };
 
     useEffect(() => {
