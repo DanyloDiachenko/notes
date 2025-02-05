@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { AsideProps } from "./aside.props";
+import { AsideProps } from "./Aside.props";
 import { Categories } from "./Categories";
 import { Tags } from "./Tags";
 

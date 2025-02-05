@@ -1,5 +1,5 @@
 import { Tag } from "@/types/tag.interface";
-import { ConfirmationProps } from "./confirmation.props";
+import { ConfirmationProps } from "./Confirmation.props";
 import { Note } from "@/types/note.interface";
 
 export const getMessage = (

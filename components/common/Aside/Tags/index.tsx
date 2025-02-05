@@ -1,4 +1,4 @@
-import { TagsProps } from "./tags.props";
+import { TagsProps } from "./Tags.props";
 import { AddTag } from "./AddTag";
 import { Tag } from "./Tag";
 import { Tag as ITag } from "@/types/tag.interface";

@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
-import { CategoriesProps } from "./categories.props";
+import { CategoriesProps } from "./Categories.props";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { NotesType } from "@/types/notesType.enum";

@@ -1,5 +1,5 @@
 import { cn } from "@/helpers/cn";
-import { TextareaProps } from "./textarea.props";
+import { TextareaProps } from "./Textarea.props";
 
 export const Textarea = ({ className, ...rest }: TextareaProps) => {
     return (

@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/helpers/cn";
-import { MultiselectProps } from "./multiselect.props";
+import { MultiselectProps } from "./Multiselect.props";
 import { KeyboardEvent, MouseEvent, useEffect, useRef, useState } from "react";
 import { onOutsideClick } from "@/helpers/onOutsideClick";
 import { IoMdClose } from "react-icons/io";
