@@ -108,6 +108,7 @@ export const Note = ({ mode }: NoteProps) => {
                     placeholder="Note title..."
                     value={noteTitle}
                     onChange={(e) => setNoteTitle(e.target.value)}
+                    required={mode === "create"}
                 />
                 <label className="mt-4 block" htmlFor="noteTags">
                     <div className="font-medium text-lg">Note Tags</div>
@@ -133,6 +134,7 @@ export const Note = ({ mode }: NoteProps) => {
                     onChange={(e) => setNoteDetails(e.target.value)}
                     id="noteDetails"
                     name="note details"
+                    required={mode === "create"}
                 />
                 <div className="gap-2 mt-10 grid grid-cols-[150px_150px]">
                     <Button color="purple" type="submit">

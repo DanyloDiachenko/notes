@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { toast } from "react-toastify";
 import { TagProps } from "./Tag.props";
+import { validateKeyCode } from "./validateKeyCode";
 
 export const Tag = ({ mode }: TagProps) => {
     const dispatch = useAppDispatch();
@@ -35,7 +36,7 @@ export const Tag = ({ mode }: TagProps) => {
             return;
         }
 
-        if (!/^[a-zA-Z0-9]+$/.test(tagKeyCode)) {
+        if (validateKeyCode(tagKeyCode)) {
             toast.error("Tag key code should only contain letters and numbers");
             return;
         }
@@ -88,6 +89,7 @@ export const Tag = ({ mode }: TagProps) => {
                     placeholder="Tag title..."
                     value={tagTitle}
                     onChange={(e) => setTagTitle(e.target.value)}
+                    required={mode === "create"}
                 />
                 <label
                     className="mt-4 block font-medium text-lg"
@@ -103,6 +105,7 @@ export const Tag = ({ mode }: TagProps) => {
                     placeholder="Tag key code..."
                     value={tagKeyCode}
                     onChange={(e) => setTagKeyCode(e.target.value)}
+                    required={mode === "create"}
                 />
                 <div className="gap-2 mt-10 grid grid-cols-[150px_150px]">
                     <Button color="purple" type="submit">
