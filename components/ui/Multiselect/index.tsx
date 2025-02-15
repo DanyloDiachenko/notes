@@ -89,11 +89,11 @@ export const Multiselect = ({
 
     return (
         <div
-            className={cn("relative font-medium text-base", className)}
+            className={cn("relative font-medium", className)}
             id={id}
         >
             <div
-                className="flex items-center p-1 px-3 bg-gray-100 rounded-md min-h-12"
+                className="flex items-center p-1 px-2 sm:px-3 bg-gray-100 rounded-md min-h-10 sm:min-h-12"
                 onClick={() => setIsOptionsOpened(true)}
                 aria-haspopup="listbox"
                 aria-expanded={isOptionsOpened}
@@ -108,7 +108,7 @@ export const Multiselect = ({
                     <ul className="flex gap-2">
                         {activeOptions.map((option, index) => (
                             <li
-                                className="flex items-center p-1 px-2 gap-3 text-gray-800 bg-gray-300 rounded-md"
+                                className="flex items-center p-1 px-2 gap-3 text-gray-800 bg-gray-300 rounded-md text-sm sm:text-base"
                                 key={index}
                             >
                                 <span>{option.title}</span>
@@ -128,12 +128,12 @@ export const Multiselect = ({
                         ))}
                     </ul>
                 ) : (
-                    <div className="text-gray-400">{placeholder}</div>
+                    <div className="text-gray-400 text-sm sm:text-base">{placeholder}</div>
                 )}
             </div>
             {isOptionsOpened && (
                 <ul
-                    className="absolute flex gap-1 top-[52px] right-0 left-0 w-full bg-gray-50 p-2 text-gray-600 z-10"
+                    className="absolute flex gap-1 sm:top-[52px] top-11 right-0 left-0 w-full bg-gray-50 p-2 text-gray-600 z-10"
                     ref={optionsRef}
                     role="listbox"
                     aria-activedescendant={
@@ -151,7 +151,7 @@ export const Multiselect = ({
                                 onClick={() => onOptionClick(option)}
                                 role="option"
                                 className={cn(
-                                    "cursor-pointer",
+                                    "cursor-pointer text-sm sm:text-base",
                                     highlightedOptionIndex === index &&
                                         "bg-blue-100",
                                 )}

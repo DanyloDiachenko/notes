@@ -13,6 +13,9 @@ import { selectNote } from "@/store/slices/note";
 import { getTitle } from "./getTitle";
 import { getMessage } from "./getMessage";
 import { selectTag } from "@/store/slices/tag";
+import { IoArchiveOutline } from "react-icons/io5";
+import { Modal } from "@/types/modal.enum";
+import { RiDeleteBin2Line } from "react-icons/ri";
 
 export const Confirmation = ({ type }: ConfirmationProps) => {
     const router = useRouter();
@@ -78,12 +81,21 @@ export const Confirmation = ({ type }: ConfirmationProps) => {
     };
 
     return (
-        <div className="relative">
-            <div className="text-3xl font-bold mt-6 text-center">
+        <div className="relative h-[96%]">
+            <div className="text-xl sm:text-3xl font-bold mt-3 sm:mt-6 text-center">
                 {getTitle(type)}
             </div>
-            <div className="text-lg mt-10">{getMessage(type, note, tag)}</div>
-            <div className="gap-2 mt-10 grid grid-cols-[150px_150px]">
+            <div className="mt-6 sm:mt-10 overflow-y-auto max-h-[70%]">
+                <div className="block text-base sm:text-lg">
+                    {getMessage(type, note, tag)}
+                </div>
+                {type === "archiveNote" || type === "unarchiveNote" ? (
+                    <IoArchiveOutline className="size-20 mx-auto mt-4 text-gray-600" />
+                ) : (
+                    <RiDeleteBin2Line className="size-20 mx-auto mt-4 text-gray-600" />
+                )}
+            </div>
+            <div className="gap-2 items-end grid grid-cols-[1fr_1fr] sm:grid-cols-[150px_150px] absolute bottom-0 left-0 right-0">
                 <Button color="purple" onClick={onSubmitClick}>
                     Submit
                 </Button>

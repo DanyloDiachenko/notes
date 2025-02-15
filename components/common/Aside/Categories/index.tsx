@@ -38,7 +38,7 @@ export const Categories = ({ pathname, isAuthorized }: CategoriesProps) => {
                 <button
                     key={index}
                     className={cn(
-                        "mt-6 p-2 px-4 flex justify-between w-full items-center rounded-md",
+                        "mt-4 sm:mt-6 p-2 px-2 sm:px-4 flex justify-between w-full items-center rounded-md",
                         "text-gray-800 hover:bg-blue-50 hover:text-gray-800 duration-500 last:mt-2",
                         activeTab === category.type
                             ? "bg-blue-100 hover:bg-blue-100"

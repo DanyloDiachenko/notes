@@ -73,26 +73,32 @@ export const Tag = ({ mode }: TagProps) => {
     };
 
     return (
-        <div className="relative">
-            <div className="text-3xl font-bold mt-6 text-center">
+        <div className="relative h-[90%]">
+            <div className="text-xl sm:text-3xl font-bold mt-3 sm:mt-6 text-center">
                 {mode === "edit" ? "Edit Tag" : "Create New Tag"}
             </div>
-            <form className="mt-10 block " onSubmit={onSubmit}>
-                <label className="font-medium text-lg" htmlFor="tagTitle">
+            <form
+                className="mt-6 sm:mt-10 block overflow-y-auto max-h-[60%]"
+                onSubmit={onSubmit}
+            >
+                <label
+                    className="mt-4 block font-medium sm:text-lg"
+                    htmlFor="tagTitle"
+                >
                     Tag Title
                 </label>
                 <Input
                     id="tagTitle"
                     name="tag title"
                     type="text"
-                    className="mt-2"
+                    className="mt-1 sm:mt-2"
                     placeholder="Tag title..."
                     value={tagTitle}
                     onChange={(e) => setTagTitle(e.target.value)}
                     required={mode === "create"}
                 />
                 <label
-                    className="mt-4 block font-medium text-lg"
+                    className="mt-4 block font-medium sm:text-lg"
                     htmlFor="tagKeyCode"
                 >
                     Tag Key Code
@@ -101,13 +107,13 @@ export const Tag = ({ mode }: TagProps) => {
                     id="tagKeyCode"
                     name="tag key code"
                     type="text"
-                    className="mt-2"
+                    className="mt-1 sm:mt-2"
                     placeholder="Tag key code..."
                     value={tagKeyCode}
                     onChange={(e) => setTagKeyCode(e.target.value)}
                     required={mode === "create"}
                 />
-                <div className="gap-2 mt-10 grid grid-cols-[150px_150px]">
+                <div className="gap-2 items-end grid grid-cols-[1fr_1fr] sm:grid-cols-[150px_150px] absolute bottom-0 left-0 right-0">
                     <Button color="purple" type="submit">
                         Submit
                     </Button>

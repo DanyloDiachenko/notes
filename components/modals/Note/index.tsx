@@ -89,46 +89,53 @@ export const Note = ({ mode }: NoteProps) => {
     };
 
     return (
-        <div className="relative">
-            <div className="text-3xl font-bold mt-6 text-center">
+        <div className="relative h-[96%]">
+            <div className="text-xl sm:text-3xl font-bold mt-3 sm:mt-6 text-center">
                 {mode === "edit" ? "Edit Note" : "Create New Note"}
             </div>
-            <form action="#" className="mt-10 block" onSubmit={onSubmit}>
+            <form
+                action="#"
+                className="mt-6 sm:mt-10 block overflow-y-auto max-h-[70%]"
+                onSubmit={onSubmit}
+            >
                 <label
                     htmlFor="noteTitle"
-                    className="block font-medium text-lg"
+                    className="block font-medium sm:text-lg"
                 >
                     Note Title
                 </label>
                 <Input
                     id="noteTitle"
                     name="note title"
-                    className="mt-2"
+                    className="mt-1 sm:mt-2"
                     type="text"
                     placeholder="Note title..."
                     value={noteTitle}
                     onChange={(e) => setNoteTitle(e.target.value)}
                     required={mode === "create"}
                 />
-                <label className="mt-4 block" htmlFor="noteTags">
-                    <div className="font-medium text-lg">Note Tags</div>
-                    <Multiselect
-                        id="noteTags"
-                        placeholder="Select tags..."
-                        activeOptions={noteTags}
-                        setActiveOptions={setNoteTags}
-                        options={tags.map((tag) => ({
-                            title: tag.title,
-                            value: tag.id,
-                        }))}
-                        className="mt-2"
-                    />
+                <label
+                    className="mt-4 block font-medium sm:text-lg"
+                    htmlFor="noteTags"
+                >
+                    Note Tags
                 </label>
-                <label className="mt-4 block font-medium text-lg">
+                <Multiselect
+                    id="noteTags"
+                    placeholder="Select tags..."
+                    activeOptions={noteTags}
+                    setActiveOptions={setNoteTags}
+                    options={tags.map((tag) => ({
+                        title: tag.title,
+                        value: tag.id,
+                    }))}
+                    className="mt-1 sm:mt-2"
+                />
+                <label className="mt-4 block font-medium sm:text-lg">
                     Note Details
                 </label>
                 <Textarea
-                    className="mt-2"
+                    className="mt-1 sm:mt-2"
                     placeholder="Note details..."
                     value={noteDetails}
                     onChange={(e) => setNoteDetails(e.target.value)}
@@ -136,7 +143,7 @@ export const Note = ({ mode }: NoteProps) => {
                     name="note details"
                     required={mode === "create"}
                 />
-                <div className="gap-2 mt-10 grid grid-cols-[150px_150px]">
+                <div className="gap-2 items-end grid grid-cols-[1fr_1fr] sm:grid-cols-[150px_150px] absolute bottom-0 left-0 right-0">
                     <Button color="purple" type="submit">
                         Submit
                     </Button>

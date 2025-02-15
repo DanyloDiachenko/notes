@@ -49,7 +49,7 @@ export const Header = ({ pathname, isAuthorized }: HeaderProps) => {
     }, [clientPathname]);
 
     return (
-        <header className="xl:p-8 pt-10 px-4 pb-4 flex justify-between items-center border-b-2 border-gray-200">
+        <header className="xl:p-8 pt-12 px-4 pb-4 flex justify-between items-center border-b-2 border-gray-200">
             <h1 className="font-bold sm:text-4xl text-2xl">{headingText}</h1>
             <div
                 className={cn(
