@@ -42,6 +42,8 @@ export const NoteActions = ({ note, noteType }: NoteActionsProps) => {
                 className="xl:mt-4 gap-2 xl:w-full h-auto aspect-square xl:aspect-auto sm:p-0 sm:py-3"
                 color="purple"
                 onClick={onEditNoteClick}
+                name="Edit Note"
+                aria-label="Edit Note"
             >
                 <MdOutlineModeEditOutline className="size-5" />
                 <span className="hidden xl:block">Edit Note</span>
@@ -54,6 +56,8 @@ export const NoteActions = ({ note, noteType }: NoteActionsProps) => {
                         ? () => onArchiveNoteClick()
                         : () => onUnarchiveNoteClick()
                 }
+                name={noteType === "all" ? "Archive Note" : "Unarchive Note"}
+                aria-label={noteType === "all" ? "Archive Note" : "Unarchive Note"}
             >
                 <IoArchiveOutline className="size-5" />
                 <span className="hidden xl:block">
@@ -64,6 +68,8 @@ export const NoteActions = ({ note, noteType }: NoteActionsProps) => {
                 className="sm:mt-3 gap-2 h-auto aspect-square xl:aspect-auto xl:w-full sm:p-0 sm:py-3"
                 color="red"
                 onClick={onDeleteNoteClick}
+                name="Delete Note"
+                aria-label="Delete Note"
             >
                 <MdOutlineDelete className="size-5" />
                 <span className="hidden xl:block">Delete Note</span>
