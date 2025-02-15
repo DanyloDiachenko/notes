@@ -11,6 +11,9 @@ import { Button } from "@/components/ui/Button";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { selectSearchNote, setSearchNote } from "@/store/slices/searchNote";
 import { Modal } from "@/types/modal.enum";
+import { MdLogout } from "react-icons/md";
+import { setCookie } from "@/helpers/setCookie";
+import { toast } from "react-toastify";
 
 export const Header = ({ pathname, isAuthorized }: HeaderProps) => {
     const dispatch = useAppDispatch();
@@ -23,6 +26,13 @@ export const Header = ({ pathname, isAuthorized }: HeaderProps) => {
 
     const onLoginClick = () => {
         dispatch(setOpenedModal(Modal.Authorization));
+    };
+
+    const onLogoutClick = () => {
+        setCookie("token", "");
+        router.push("/");
+        router.refresh();
+        toast.success("You have successfully logged out");
     };
 
     const setSearchNoteHandler = (search: string) => {
@@ -55,16 +65,27 @@ export const Header = ({ pathname, isAuthorized }: HeaderProps) => {
                         <FaSearch className="absolute left-2 top-3 size-5 opacity-20" />
                     </div>
                 )}
-                {!isAuthorized && (
-                    <Button
-                        color="gray"
-                        onClick={onLoginClick}
-                        className="p-2 w-auto px-5 gap-2"
-                    >
-                        <IoIosLogIn className="size-6 text-gray-400" />
-                        Authorization
-                    </Button>
-                )}
+                <Button
+                    color="gray"
+                    onClick={
+                        isAuthorized
+                            ? () => onLogoutClick()
+                            : () => onLoginClick()
+                    }
+                    className="p-2 w-auto px-5 gap-2"
+                >
+                    {isAuthorized ? (
+                        <>
+                            <MdLogout className="size-6 text-gray-400" />
+                            Logout
+                        </>
+                    ) : (
+                        <>
+                            <IoIosLogIn className="size-6 text-gray-400" />
+                            Authorization
+                        </>
+                    )}
+                </Button>
             </div>
         </header>
     );
