@@ -1,1 +1,1 @@
-adaptive & hello message to user & unlogin & meta descriptions & seo
+adaptive & unlogin & meta descriptions & seo

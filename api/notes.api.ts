@@ -1,7 +1,7 @@
 import { fetchApi } from "./fetchApi.api";
+import { GetNotesParams } from "./params/notes.interface";
 import {
     CreateNoteRequestBody,
-    GetNotesRequestBody,
     UpdateNoteRequestBody,
 } from "./requestBodies/notes.interfaces";
 import {
@@ -13,7 +13,7 @@ import {
 } from "./responses/notes.types";
 
 export const getNotes = async (
-    params: GetNotesRequestBody,
+    params: GetNotesParams,
 ): Promise<GetNotesResponse> => {
     const queryParams = new URLSearchParams();
 
