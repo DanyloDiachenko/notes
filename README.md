@@ -1,1 +1,1 @@
-adaptive & unlogin & meta descriptions & seo
+adaptive & meta descriptions & seo

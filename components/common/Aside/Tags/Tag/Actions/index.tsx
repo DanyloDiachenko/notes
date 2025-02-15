@@ -25,7 +25,7 @@ export const Actions = ({ tag }: ActionsProps) => {
         <div className="flex items-center gap-2">
             <Button
                 color="gray"
-                className="p-0"
+                className="!p-0"
                 onClick={onEditClick}
                 aria-label="Edit tag"
             >
@@ -33,7 +33,7 @@ export const Actions = ({ tag }: ActionsProps) => {
             </Button>
             <Button
                 color="red"
-                className="p-0 px-0"
+                className="!p-0"
                 onClick={onDeleteClick}
                 aria-label="Delete tag"
             >

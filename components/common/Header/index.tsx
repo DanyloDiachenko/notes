@@ -14,6 +14,7 @@ import { Modal } from "@/types/modal.enum";
 import { MdLogout } from "react-icons/md";
 import { setCookie } from "@/helpers/setCookie";
 import { toast } from "react-toastify";
+import { cn } from "@/helpers/cn";
 
 export const Header = ({ pathname, isAuthorized }: HeaderProps) => {
     const dispatch = useAppDispatch();
@@ -48,21 +49,27 @@ export const Header = ({ pathname, isAuthorized }: HeaderProps) => {
     }, [clientPathname]);
 
     return (
-        <header className="p-8 flex justify-between items-center border-b-2 border-gray-200">
-            <h1 className="font-bold text-4xl">{headingText}</h1>
-            <div className="flex items-center gap-4">
+        <header className="xl:p-8 pt-10 px-4 pb-4 flex justify-between items-center border-b-2 border-gray-200">
+            <h1 className="font-bold sm:text-4xl text-2xl">{headingText}</h1>
+            <div
+                className={cn(
+                    "flex items-center gap-4",
+                    isAuthorized &&
+                        "flex-col xl:flex-row gap-2 xl:gap-4 justify-end xl:justify-normal",
+                )}
+            >
                 {isAuthorized && (
-                    <div className="relative w-[300px]">
+                    <div className="relative max-w-[300px] w-full">
                         <input
                             type="text"
-                            className="w-full border-2 border-gray-200 rounded-md p-2 pl-8"
+                            className="w-full border-2 border-gray-200 rounded-md p-2 sm:pl-8 pl-7 text-sm sm:text-base"
                             placeholder="Search in..."
                             value={searchNote}
                             onChange={(e) =>
                                 setSearchNoteHandler(e.target.value)
                             }
                         />
-                        <FaSearch className="absolute left-2 top-3 size-5 opacity-20" />
+                        <FaSearch className="absolute left-2 top-3 sm:size-5 size-4 opacity-20" />
                     </div>
                 )}
                 <Button
@@ -72,16 +79,16 @@ export const Header = ({ pathname, isAuthorized }: HeaderProps) => {
                             ? () => onLogoutClick()
                             : () => onLoginClick()
                     }
-                    className="p-2 w-auto px-5 gap-2"
+                    className="sm:p-2 p-1 w-auto sm:px-5 px-3 gap-2 ml-auto"
                 >
                     {isAuthorized ? (
                         <>
-                            <MdLogout className="size-6 text-gray-400" />
+                            <MdLogout className="sm:size-6 size-4 text-gray-400" />
                             Logout
                         </>
                     ) : (
                         <>
-                            <IoIosLogIn className="size-6 text-gray-400" />
+                            <IoIosLogIn className="sm:size-6 size-4 text-gray-400" />
                             Authorization
                         </>
                     )}

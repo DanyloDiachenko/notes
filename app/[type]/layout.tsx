@@ -31,7 +31,7 @@ const NoteTypeLayout = async ({ children, params }: NoteTypeLayoutProps) => {
 
     return (
         <>
-            <div className="grid grid-cols-[0.25fr_0.5fr_0.25fr]">
+            <div className="grid xl:grid-cols-[0.25fr_0.5fr_0.25fr] sm:grid-cols-[200px_auto_80px] grid-cols-1fr">
                 <NoteList serverNotes={serverNotes} notesType={notesType} />
                 {children}
             </div>

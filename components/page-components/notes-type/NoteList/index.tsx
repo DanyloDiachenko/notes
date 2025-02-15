@@ -44,7 +44,7 @@ export const NoteList = ({ serverNotes, notesType }: NoteListProps) => {
     }, [pathname, params, searchParams, search]);
 
     return (
-        <div className="p-8 pr-4 border-r-2 border-gray-200">
+        <div className="xl:p-8 xl:pr-4 sm:p-4 p-2 border-r-2 border-gray-200">
             {notesType === "all" && <CreateNote />}
             <div className={notesType === "all" ? "mt-4" : ""}>
                 {notes.length ? (

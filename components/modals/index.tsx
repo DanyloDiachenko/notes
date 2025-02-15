@@ -31,7 +31,7 @@ export const Modals = () => {
                 className={cn(
                     "fixed top-0 right-0 left-0 bottom-0 bg-slate-900 w-full h-full transition-[opacity]",
                     openedModal
-                        ? "opacity-30 z-10 duration-500 "
+                        ? "opacity-30 z-20 duration-500 "
                         : "opacity-0 -z-10 duration-0",
                 )}
                 onClick={closeModalHandler}
@@ -42,7 +42,7 @@ export const Modals = () => {
                 ref={modalRef}
                 className={cn(
                     "max-w-[700px] w-full absolute bg-white right-[50%] left-[50%] translate-x-[-50%] p-6 transition-[opacity] opacity-0 top-20",
-                    openedModal ? "z-20 opacity-100 duration-500" : "-z-10",
+                    openedModal ? "z-30 opacity-100 duration-500" : "-z-10",
                 )}
                 role="dialog"
                 aria-labelledby="modal-title"

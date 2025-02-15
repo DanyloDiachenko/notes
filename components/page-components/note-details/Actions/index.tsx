@@ -37,17 +37,17 @@ export const NoteActions = ({ note, noteType }: NoteActionsProps) => {
     };
 
     return (
-        <div className="pl-4 pr-8">
+        <div className="xl:pl-4 xl:pr-8 sm:p-4 p-2 fixed right-0 flex sm:block items-center gap-2 bottom-0 sm:static">
             <Button
-                className="mt-6 gap-2"
+                className="xl:mt-4 gap-2 xl:w-full h-auto aspect-square xl:aspect-auto sm:p-0 sm:py-3"
                 color="purple"
                 onClick={onEditNoteClick}
             >
                 <MdOutlineModeEditOutline className="size-5" />
-                <span>Edit Note</span>
+                <span className="hidden xl:block">Edit Note</span>
             </Button>
             <Button
-                className="mt-3 gap-2"
+                className="sm:mt-3 gap-2 h-auto aspect-square xl:aspect-auto xl:w-full sm:p-0 sm:py-3"
                 color="gray"
                 onClick={
                     noteType === "all"
@@ -56,15 +56,17 @@ export const NoteActions = ({ note, noteType }: NoteActionsProps) => {
                 }
             >
                 <IoArchiveOutline className="size-5" />
-                <span>{noteType === "all" ? "Archive" : "Unarchive"} Note</span>
+                <span className="hidden xl:block">
+                    {noteType === "all" ? "Archive" : "Unarchive"} Note
+                </span>
             </Button>
             <Button
-                className="mt-3 gap-2"
+                className="sm:mt-3 gap-2 h-auto aspect-square xl:aspect-auto xl:w-full sm:p-0 sm:py-3"
                 color="red"
                 onClick={onDeleteNoteClick}
             >
                 <MdOutlineDelete className="size-5" />
-                <span>Delete Note</span>
+                <span className="hidden xl:block">Delete Note</span>
             </Button>
         </div>
     );

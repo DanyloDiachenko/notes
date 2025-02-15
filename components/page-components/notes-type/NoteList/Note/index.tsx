@@ -7,13 +7,13 @@ export const Note = ({ note, notesType, noteId }: NoteProps) => {
     return (
         <div
             className={cn(
-                "p-3 border-b-2 border-gray-200 duration-500",
+                "xl:p-3 sm:p-2 p-1 border-b-2 border-gray-200 duration-500",
                 noteId === note.id ? "bg-slate-100 border-opacity-0" : "",
             )}
         >
             <Link
                 className={cn(
-                    "font-bold text-xl text-slate-800 hover:text-[#7351f5]",
+                    "font-bold text-md sm:text-xl text-slate-800 hover:text-[#7351f5]",
                     noteId === note.id ? "text-[#7351f5_!important]" : "",
                 )}
                 href={`/${notesType}/${note.id}`}
@@ -25,13 +25,13 @@ export const Note = ({ note, notesType, noteId }: NoteProps) => {
                 {note.tags.map((tag, index) => (
                     <div
                         key={index}
-                        className="bg-slate-300 p-1 rounded-sm text-sm font-medium"
+                        className="bg-slate-300 p-1 rounded-sm sm:text-sm text-xs font-medium"
                     >
                         {tag.title}
                     </div>
                 ))}
             </div>
-            <div className="text-slate-600 mt-3 font-medium">
+            <div className="text-slate-600 mt-3 font-medium text-sm sm:text-base">
                 {formatDate(note.updatedAt)}
             </div>
         </div>

@@ -11,6 +11,9 @@ import { getProfile } from "@/api/auth.api";
 import { ToastProvider } from "@/components/providers/Toast";
 import { ReactNode } from "react";
 import { cn } from "@/helpers/cn";
+import { Tag } from "@/types/tag.interface";
+import { getTags } from "@/api/tags.api";
+import { Tag as ITag } from "@/types/tag.interface";
 
 const inter = Inter({
     variable: "--font-inter",
@@ -32,6 +35,7 @@ interface RootLayoutProps {
 const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
     const pathname = await getPathname();
     const token = await getCookie("token");
+    let tags: Tag[] = [];
 
     let isAuthorized;
 
@@ -52,16 +56,28 @@ const RootLayout = async ({ children }: Readonly<RootLayoutProps>) => {
         }
     }
 
+    if (isAuthorized) {
+        try {
+            tags = (await getTags()) as ITag[];
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <html lang="en">
             <body
                 className={cn(
                     inter.variable,
-                    "antialiased grid grid-cols-[minmax(200px,_280px)_1fr]",
+                    "antialiased grid grid-cols-1fr xl:grid-cols-[minmax(200px,_280px)_1fr]",
                 )}
             >
                 <ReduxProvider>
-                    <Aside isAuthorized={isAuthorized} pathname={pathname} />
+                    <Aside
+                        isAuthorized={isAuthorized}
+                        pathname={pathname}
+                        tags={tags}
+                    />
                     <main className="w-full">
                         <Header
                             pathname={pathname}

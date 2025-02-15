@@ -16,7 +16,7 @@ export const Button = ({
     return (
         <button
             className={cn(
-                "p-3 px-4 flex items-center justify-center rounded-lg w-full font-semibold",
+                "sm:p-3 p-2 sm:px-4 px-3 flex items-center justify-center rounded-lg w-full font-semibold text-sm xl:text-base",
                 color && colorStyles[color],
                 className,
             )}
