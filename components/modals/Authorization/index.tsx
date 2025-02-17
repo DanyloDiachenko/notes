@@ -122,7 +122,7 @@ export const Authorization = () => {
                     htmlFor="password"
                     className="mt-4 block font-medium sm:text-lg"
                 >
-                    Email
+                    Password
                 </label>
                 <Input
                     id="password"
