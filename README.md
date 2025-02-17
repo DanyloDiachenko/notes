@@ -16,6 +16,10 @@ NotesApp is a user-friendly online note-taking service designed to help users cr
 
 -   `NEXT_PUBLIC_API_URL`: Defines the backend API endpoint (example: `http://localhost:3001/api`).
 
+## Perfomance & SEO:
+<img width="1800" alt="Screenshot 2025-02-17 at 09 41 10" src="https://github.com/user-attachments/assets/3ef69f00-a0e5-4a4c-9196-dc3c71d4307d" />
+<img width="1800" alt="Screenshot 2025-02-17 at 09 40 39" src="https://github.com/user-attachments/assets/99a4c9a2-d4a3-4a7a-a6a1-535351c86247" />
+
 ## Screenshoots:
 
 <img width="1800" alt="Screenshot 2025-02-17 at 09 12 26" src="https://github.com/user-attachments/assets/b55aae0b-5686-42d6-b1f2-c0ed5efe4ed2" />
@@ -30,9 +34,5 @@ NotesApp is a user-friendly online note-taking service designed to help users cr
 <img width="1800" alt="Screenshot 2025-02-17 at 09 38 08" src="https://github.com/user-attachments/assets/0f1a16f4-8a97-43f1-939c-f4fa4b14f749" />
 <img width="1800" alt="Screenshot 2025-02-17 at 09 39 27" src="https://github.com/user-attachments/assets/e78a90ae-85e4-4ac8-9a15-a9fa8b46b0d3" />
 <img width="1800" alt="Screenshot 2025-02-17 at 09 39 34" src="https://github.com/user-attachments/assets/2691e34e-f868-41cc-817c-aacffc765b68" />
-
-## Perfomance & SEO:
-<img width="1800" alt="Screenshot 2025-02-17 at 09 41 10" src="https://github.com/user-attachments/assets/3ef69f00-a0e5-4a4c-9196-dc3c71d4307d" />
-<img width="1800" alt="Screenshot 2025-02-17 at 09 40 39" src="https://github.com/user-attachments/assets/99a4c9a2-d4a3-4a7a-a6a1-535351c86247" />
 
 This application is built for users who need a simple and efficient way to manage their notes online, with support for categorization through tags and a seamless user experience.
