@@ -73,8 +73,14 @@ export const Confirmation = ({ type }: ConfirmationProps) => {
                     : "Updated successfully",
             );
 
+            router.refresh();
             closeModalHandler();
-            router.push(`/${params.type}`);
+
+            const timeoutId = setTimeout(() => {
+                router.push(`/${params.type || ""}`);
+
+                clearTimeout(timeoutId);
+            }, 500);
         } catch (error) {
             console.error(error);
         }
