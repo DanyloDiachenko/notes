@@ -1,23 +1,22 @@
 {
-    "title": "NotesApp – Зберігай свої нотатки в одному місці!",
-    "description": "Зручний та простий сервіс для зберігання нотаток. Створюй, редагуй та видаляй нотатки в будь-який момент! Фільтруй за тегами та шукай потрібну інформацію швидко та легко.",
-    "keywords": "нотатки, замітки, зберігання, сервіс, теги, фільтри, пошук",
+    "title": "NotesApp – Store your notes and memos online!",
+    "description": "A convenient service for storing notes and memos. Create, edit, and delete notes online! Filter and search notes by tags.",
     "openGraph": {
-        "title": "NotesApp – Зберігай свої нотатки в одному місці!",
-        "description": "Зручний та простий сервіс для зберігання нотаток. Створюй, редагуй та видаляй нотатки в будь-який момент! Фільтруй за тегами та шукай потрібну інформацію швидко та легко.",
+        "title": "NotesApp – Store your notes and memos online!",
+        "description": "A convenient service for storing notes and memos. Create, edit, and delete notes online! Filter and search notes by tags.",
         "type": "website",
-        "url": "https://self-notes-app.vercel.app",
         "images": [
             {
-                "url": "https://self-notes-app.vercel.app/logo.png",
+                "url": "/logo.png",
                 "width": 2448,
                 "height": 896,
-                "alt": "NotesApp – Зберігайте свої нотатки та замітки онлайн!"
+                "alt": "NotesApp – Store your notes and memos online!"
             }
         ]
     },
     "icons": {
         "icon": "/favicon.ico",
         "apple": "/apple-touch-icon.png"
-    }
+    },
+    "manifest": "/manifest.json"
 }

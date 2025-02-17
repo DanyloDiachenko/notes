@@ -24,21 +24,20 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-    title: "NotesApp – Зберігайте свої нотатки та замітки онлайн!",
+    title: "NotesApp – Store your notes and memos online!",
     description:
-        "Зручний сервіс для зберігання нотаток та заміток. Створюйте, редагуйте та видаляйте нотатки онлайн! Фільтруйте та шукайте нотатки за тегами.",
+        "A convenient service for storing notes and memos. Create, edit, and delete notes online! Filter and search notes by tags.",
     openGraph: {
-        title: "NotesApp – Зберігайте свої нотатки та замітки онлайн!",
+        title: "NotesApp – Store your notes and memos online!",
         description:
-            "Зручний сервіс для зберігання нотаток та заміток. Створюйте, редагуйте та видаляйте нотатки онлайн! Фільтруйте та шукайте нотатки за тегами.",
+            "A convenient service for storing notes and memos. Create, edit, and delete notes online! Filter and search notes by tags.",
         type: "website",
-        url: "https://self-notes-app.vercel.app/",
         images: [
             {
-                url: "https://self-notes-app.vercel.app/logo.png",
+                url: "/logo.png",
                 width: 2448,
                 height: 896,
-                alt: "NotesApp – Зберігайте свої нотатки та замітки онлайн!",
+                alt: "NotesApp – Store your notes and memos online!",
             },
         ],
     },
